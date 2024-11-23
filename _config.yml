@@ -16,7 +16,7 @@ timezone: Asia/Shanghai
 
 title: Ling的小窝 # the main title
 
-tagline: 在这里歇歇脚吧  # it will display as the subtitle
+tagline: 在这里歇歇脚吧 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -223,3 +223,19 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+jekyll_compose:
+  auto_open: false
+  default_front_matter:
+    drafts: # 草稿
+      description: "描述"
+      image: "../images/image.jpg"
+      category: "类别"
+      tags: ["tag1", "tag2"]
+  posts: # 文章的默认设置
+    description: "描述"
+    image: "../images/image.jpg"
+    category: "类别"
+    tags: ["", ""]
+    published: false # 默认为未发布
+    sitemap: false # 默认不包含在 sitemap 中
