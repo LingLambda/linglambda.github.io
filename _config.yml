@@ -232,6 +232,7 @@ jekyll_compose:
       image: "../images/image.jpg"
       category: "类别"
       tags: ["tag1", "tag2"]
+<<<<<<< HEAD
   posts: # 文章的默认设置
     description: "描述"
     image: "../images/image.jpg"
@@ -239,3 +240,12 @@ jekyll_compose:
     tags: ["", ""]
     published: false # 默认为未发布
     sitemap: false # 默认不包含在 sitemap 中
+=======
+    posts: # 文章的默认设置
+      description: "描述"
+      image: "../images/image.jpg"
+      category: "类别"
+      tags: ["tag1", "tag2"]
+      published: true # 默认为未发布
+      sitemap: true # 默认不包含在 sitemap 中
+>>>>>>> b5abc11 (添加自动化创建页面脚本)
