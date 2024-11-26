@@ -4,8 +4,10 @@ title: 关于archlinux
 date: 2024-11-24 19:28
 description: 在使用archlinux时遇到的一些问题和解决方案
 image: "../images/arch1.jpg"
-category: GNU/Linux
+category: 记录
 tags:
+- Linux
+- GNU/Linux
 - archlinux
 published: true
 sitemap: true
