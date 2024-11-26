@@ -29,4 +29,11 @@ sitemap: true
 
 `export GTK_IM_MODULE=fcitx`
 
+## 4. “电源管理方案”无法调整，调整会回弹回平衡
+
+安装 `powerdevil`包和`power-profiles-daemon`包，
+启动`power-profiles-daemon`的systemd服务（`systemctl enable power-profiles-daemon`）然后重启  
+[archlinux-电源管理](https://wiki.archlinuxcn.org/wiki/%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86)
+
+
 > 持续更新
