@@ -116,7 +116,7 @@ comments:
   # utterances settings › https://utteranc.es/
   utterances:
     repo: LingLambda/linglambda.github.io # <gh-username>/<repo>
-    issue_term: pathname < url | pathname | title | ...>
+    issue_term: pathname #< url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
     repo: # <gh-username>/<repo>
