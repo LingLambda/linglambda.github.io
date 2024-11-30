@@ -20,8 +20,11 @@ sitemap: true
 
 ## 2. 检测不到音频设备，音频无声
 
-检查是否安装了`linux-headers`，如果是其他内核，以zen内核举例，
-安装`linux-zen-headers`
+检查是否安装了`linux-headers`，`alsa-firmware`，一些较新型号
+的笔记本电脑（2019年底/2021）需要`sof-firmware` 和
+`alsa-ucm-conf`，它们使用 Sound Open Firmware
+提供的固件实现驱动程序。安装完成后重启电脑。
+[来源]("https://wiki.archlinuxcn.org/wiki/ALSA#%E6%8E%92%E9%99%A4ALSA%E6%95%85%E9%9A%9C")
 
 ## 3. qq中无法使用fcitx输入法
 
@@ -32,8 +35,8 @@ sitemap: true
 ## 4. “电源管理方案”无法调整，调整会回弹回平衡
 
 安装 `powerdevil`包和`power-profiles-daemon`包，
-启动`power-profiles-daemon`的systemd服务（`systemctl enable power-profiles-daemon`）然后重启  
+启动`power-profiles-daemon`的systemd服务
+（`systemctl enable power-profiles-daemon`）然后重启  
 [archlinux-电源管理](https://wiki.archlinuxcn.org/wiki/%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86)
-
 
 > 持续更新
