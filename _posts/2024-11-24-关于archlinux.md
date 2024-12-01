@@ -24,7 +24,7 @@ sitemap: true
 的笔记本电脑（2019年底/2021）需要`sof-firmware` 和
 `alsa-ucm-conf`，它们使用 Sound Open Firmware
 提供的固件实现驱动程序。安装完成后重启电脑。
-[来源]("https://wiki.archlinuxcn.org/wiki/ALSA#%E6%8E%92%E9%99%A4ALSA%E6%95%85%E9%9A%9C")
+[来源](https://wiki.archlinuxcn.org/wiki/ALSA#%E6%8E%92%E9%99%A4ALSA%E6%95%85%E9%9A%9C)
 
 ## 3. qq中无法使用fcitx输入法
 
