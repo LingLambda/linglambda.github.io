@@ -17,8 +17,9 @@ sitemap: true
 
 `yay -S fcitx5-rime`
 
-## 2. 安装雾凇拼音
+## 2. 安装雾凇拼音(小鹤双拼方案)
 
+如使用其他方案安装对应的软件包即可[所有方案](https://aur.archlinux.org/packages/rime-ice-git)
 `yay -S rime-ice-double-pinyin-flypy-git`
 
 ## 3. 启用中州韵输入法
