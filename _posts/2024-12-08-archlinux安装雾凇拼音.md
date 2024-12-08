@@ -19,19 +19,20 @@ sitemap: true
 
 ## 2. 安装雾凇拼音(小鹤双拼方案)
 
-如使用其他方案安装对应的软件包即可[所有方案](https://aur.archlinux.org/packages/rime-ice-git)
+如使用其他方案安装对应的软件包即可  
+[所有方案](https://aur.archlinux.org/packages/rime-ice-git)  
 `yay -S rime-ice-double-pinyin-flypy-git`
 
 ## 3. 启用中州韵输入法
 
-![启用中州韵1](../images/rime1.png)
+![启用中州韵1](../images/rime1.png)  
 ![启用中州韵2](../images/rime2.png)
 
 ## 4. 创建中州韵配置
 
-`mkdir ~/.local/share/fcitx5/rime/`
-`cd ~/.local/share/fcitx5/rime/`
-`touch default.custom.yaml`
+`mkdir ~/.local/share/fcitx5/rime/`  
+`cd ~/.local/share/fcitx5/rime/`  
+`touch default.custom.yaml`  
 编辑default.custom.yaml为如下内容
 
 ```yaml
