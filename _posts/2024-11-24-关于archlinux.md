@@ -6,13 +6,12 @@ description: 在使用archlinux时遇到的一些问题和解决方案
 image: "../images/arch1.jpg"
 category: 记录
 tags:
-- Linux
-- GNU/Linux
-- archlinux
+  - Linux
+  - GNU/Linux
+  - archlinux
 published: true
 sitemap: true
 ---
-
 
 ## 1. nvidia，nvidia-open驱动都无法调用显卡
 
@@ -38,5 +37,9 @@ sitemap: true
 启动`power-profiles-daemon`的systemd服务
 （`systemctl enable power-profiles-daemon`）然后重启  
 [archlinux-电源管理](https://wiki.archlinuxcn.org/wiki/%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86)
+
+## 5. 使用wqy-microhei时，韩文字体堆叠在一块，不正常显示
+
+该字体有缺陷，安装`wqy-microhei-kr-patched `(aur)字体包可修复
 
 > 持续更新
