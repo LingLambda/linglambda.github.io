@@ -43,6 +43,18 @@ __include: rime_ice_suggestion:/
 # 针对对应处方的定制条目，请使用 <recipe>.custom.yaml 中配置，例如 rime_ice.custom.yaml
 ```
 
+下面是我的配置
+
+```yaml
+patch:
+  schema_list:
+    - schema: double_pinyin_flypy
+ascii_composer:
+  switch_key:
+    Shift_L: noop
+    Shift_R: noop
+```
+
 ## 5. 重载配置
 
 `rm ~/.local/share/fcitx5/rime/default.yaml && fcitx5-remote -r`
