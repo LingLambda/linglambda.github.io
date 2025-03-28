@@ -1,11 +1,32 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseHead from "../components/BaseHead.astro";
+import TitileCard from "../components/TitileCard.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Welcome to Astro! Everything between these triple-dash code fences
+// is your "component frontmatter". It never runs in the browser.
+console.log('This runs in your terminal, not the browser!');
 ---
+<!-- Below is your "component template." It's just HTML, but with
+    some magic sprinkled in to help you build great templates. -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎来到我的主页</title>
+  </head>
+  <body>
+    <BaseHead/>
+    <TitileCard/>
+  </body>
+</html>
+<style>
+  * {
+    box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
+  }
 
-<Layout>
-	<Welcome />
-</Layout>
+ html
+ body{
+  margin: 0;
+  padding: 0;
+ }
+
+</style>
