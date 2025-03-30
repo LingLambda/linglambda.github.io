@@ -1,23 +1,26 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import TitileCard from "../components/TitileCard.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+import c from '../../post/2024-11-26-杂项备忘.md'
 
 // Welcome to Astro! Everything between these triple-dash code fences
 // is your "component frontmatter". It never runs in the browser.
-console.log('This runs in your terminal, not the browser!');
+
+console.log(c)
 ---
 <!-- Below is your "component template." It's just HTML, but with
     some magic sprinkled in to help you build great templates. -->
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>欢迎来到我的主页</title>
-  </head>
-  <body>
-    <BaseHead/>
-    <TitileCard/>
-  </body>
-</html>
+
+<SiteLayout title="欢迎来到我的空间">
+  <TitileCard/>
+  <div>
+  </div>
+
+</SiteLayout>
+
+
 <style>
   * {
     box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
