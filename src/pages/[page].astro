@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from "astro:content";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+export const getStaticPaths = async () => {
+  const blogs = await getCollection("blog");
+  return blogs.map((item) => ({
+    params: {
+      page: item.data.title,
+    },
+    props: {
+      title: item.data.title,
+      Content: item,
+    },
+  }));
+};
+
+const { title, Content: rawContent } = Astro.props;
+const { Content } = await render(rawContent);
+---
+
+<SiteLayout title="欢迎来到我的空间">
+  <h2>{title}</h2>
+  <Content />
+</SiteLayout>
+
+<style></style>
