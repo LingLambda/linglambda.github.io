@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+import BaseHead from "../components/BaseHead.astro";
+import notByAi from '../assets/Authored-By-Human-Not-By-AI-Badge-white.svg'
+---
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="主要站点，列出了所有博客文章" />
+    <meta name="keywords" content="主页，博客" />
+    <meta name="author" content="LingLambda" />
+    <title>Ling的小窝</title>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <BaseHead />
+      </header>
+      <main>
+        <section>
+          <h1>页面主标题</h1>
+          <p>这里是页面的主要内容。</p>
+
+          <article>
+            <slot />
+          </article>
+        </section>
+      </main>
+
+      <footer>
+        <Image src={notByAi} alt="not-by-ai" />
+          <p> &copy; 2025 </p> <p>LingLambda</p>
+      </footer>
+    </div>
+  </body>
+
+  <style>
+    #container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    header {
+      padding: 30px;
+    }
+
+    footer {
+      display: flex;
+      flex-direction: row;
+      padding: 20px;
+    }
+
+    footer > *{
+      margin: 5px;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+  </style>
+</html>

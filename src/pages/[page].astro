@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import SiteLayout from "../layouts/SiteLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 export const getStaticPaths = async () => {
   const blogs = await getCollection("blog");
@@ -19,9 +19,9 @@ const { title, Content: rawContent } = Astro.props;
 const { Content } = await render(rawContent);
 ---
 
-<SiteLayout title="欢迎来到我的空间">
+<BaseLayout title="欢迎来到我的空间">
   <h2>{title}</h2>
   <Content />
-</SiteLayout>
+</BaseLayout>
 
 <style></style>
