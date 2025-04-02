@@ -24,4 +24,20 @@ const { Content } = await render(rawContent);
   <Content />
 </BaseLayout>
 
-<style></style>
+<style>
+  * {
+    box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
+  }
+
+  html body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* 确保body和html占满全屏 */
+    margin: 0;
+  }
+
+  img {
+    max-width: 500px;
+    height: auto; 
+  }
+</style>

@@ -4,18 +4,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TitleCard from "../components/TitileCard.astro";
 import { getCount } from "../utils/utils.ts";
 const allBlogPosts = await getCollection("blog");
+
 ---
 
 <BaseLayout>
   {
     allBlogPosts.map(async (blog) => {
-      const { title: t, date: d } = blog.data;
-      const b = blog.body;
-      const w = getCount(b?b:"");
+      const { title, date,description} = blog.data;
+      const wordNum = getCount(blog.body?blog.body:"");
       const { Content } = await render(blog);
       return (
-        <TitleCard title={t} wordNum={w} date={d}>
-          {b}
+        <TitleCard title={title} wordNum={wordNum} date={date}>
+          {description}
         </TitleCard>
       );
     })
@@ -32,6 +32,6 @@ const allBlogPosts = await getCollection("blog");
     padding: 0;
     height: 100%; /* 确保body和html占满全屏 */
     margin: 0;
-    padding: 0;
   }
+
 </style>
