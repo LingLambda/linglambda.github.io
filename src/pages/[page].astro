@@ -16,20 +16,21 @@ export const getStaticPaths = async () => {
       title: item.data.title,
       description: item.data.description,
       date: item.data.date,
+      tags:item.data.tags,
       fontNum: getWordCount(item.body ? item.body : ""),
       Content: item,
     },
   }));
 };
 
-const { title, description, date, fontNum, Content: rawContent } = Astro.props;
+const { title, description, date, fontNum, Content: rawContent, tags} = Astro.props;
 const { Content } = await render(rawContent);
 const MIN_READ_COUNT = 350;
 const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
 console.log(fontNum);
 ---
 
-<BaseLayout>
+<BaseLayout description={description} keywords={tags}>
   <div class="blog-head">
     <h1 class="title">{title}</h1>
     <p class="description">{description}</p>
@@ -44,20 +45,7 @@ console.log(fontNum);
   </Prose>
 </BaseLayout>
 
-<style is:global>
-  * {
-    box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
-  }
-  html {
-    scrollbar-gutter: stable; /* 防止滚动条导致页面宽度不一致 */
-  }
-  html body {
-    margin: 0;
-    padding: 0;
-    height: 100%; /* 确保body和html占满全屏 */
-    margin: 0;
-  }
-
+<style>
   em {
     font-style: normal;
   }

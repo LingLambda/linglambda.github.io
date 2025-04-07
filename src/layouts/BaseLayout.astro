@@ -1,94 +1,131 @@
 ---
 import { Image } from "astro:assets";
 import BaseHead from "../components/HeadMenu.astro";
-import notByAi from '../assets/Authored-By-Human-Not-By-AI-Badge-white.svg'
+import notByAi from "../assets/Authored-By-Human-Not-By-AI-Badge-white.svg";
 import "../styles/global.css";
+
+const { description, keywords } = Astro.props;
 ---
 
 <html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href='/favicon.svg' type="image/svg">
+    <link rel="icon" href="/favicon.svg" type="image/svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="主要站点，列出了所有博客文章" />
-    <meta name="keywords" content="主页，博客" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta name="author" content="LingLambda" />
     <title>Ling的小窝</title>
   </head>
   <body>
     <div id="container">
       <header id="menu">
-        <BaseHead/>
+        <BaseHead />
       </header>
       <main>
         <section>
-            <slot />
+          <slot />
         </section>
       </main>
-      <hr style="width:600px;color:#808080; margin-top: 200px;">
+      <hr style="width:600px;color:#808080; margin-top: 1rem;" />
       <footer>
-        <Image src={notByAi} alt="not-by-ai" />
-          <p> &copy; 2025 </p> <p>LingLambda</p>
+        <!-- <Image src={notByAi} alt="not-by-ai" /> -->
+        <p>&copy; 2025</p>
+        <p>LingLambda</p>
+        <p>
+          本站采用 <a href="https://astro.build" id="astro-link">Astro</a> 编写
+        </p>
       </footer>
     </div>
   </body>
 
   <script>
-    let lastScrollTop  = 0;
-    window.addEventListener('scroll',()=>{
-      const menu = document.getElementById('menu')
-      if(!menu || !(menu instanceof HTMLElement )){
-        return
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", () => {
+      const menu = document.getElementById("menu");
+      if (!menu || !(menu instanceof HTMLElement)) {
+        return;
       }
       const scrollTop = window.scrollY;
-      if(scrollTop>lastScrollTop){
-        console.log("aaa")
-        menu.style.top='-85px';
-      }else{
-        console.log("bbb")
-        menu.style.top='5px';
+      if (scrollTop > lastScrollTop) {
+        console.log("aaa");
+        menu.style.top = "-85px";
+      } else {
+        console.log("bbb");
+        menu.style.top = "5px";
       }
       lastScrollTop = scrollTop;
-    })
+    });
   </script>
-
-  <style>
-    #menu{
-      top:5px;
-      position: fixed;
-      transition: top 0.2s ease-in-out;
-    }
-
-    #container {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-    header {
-      padding: 30px;
-    }
-
-    main {
-      margin-top: 120px;
-    }
-
-    footer {
-      display: flex;
-      flex-direction: row;
-      padding: 20px;
-    }
-
-    footer > *{
-      margin: 5px;
-    }
-
-    h1 {
-      font-size: 2rem;
-    }
-    img{
-      max-width: 500px;
-    }
-  </style>
 </html>
+
+<style>
+  * {
+    box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
+  }
+  html {
+    scrollbar-gutter: stable; /* 防止滚动条导致页面宽度不一致 */
+  }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* 确保body和html占满全屏 */
+    margin: 0;
+  }
+
+  #menu {
+    top: 5px;
+    position: fixed;
+    transition: top 0.2s ease-in-out;
+  }
+
+  #container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  #astro-link {
+    text-decoration: none;
+    color: 808080;
+  }
+
+  #astro-link:hover {
+    border-bottom: 1px solid black;
+    color: black;
+  }
+
+  header {
+    padding: 30px;
+  }
+
+  main {
+    flex-grow: 1; /* 使 main 占据剩余空间 */
+    margin-top: 120px;
+  }
+
+  footer {
+    height: auto; /* 让 footer 根据内容自适应高度 */
+    width: 100%;
+    background-color: white;
+    color: #808080;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  footer > * {
+    margin: 5px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  img {
+    max-width: 500px;
+  }
+</style>

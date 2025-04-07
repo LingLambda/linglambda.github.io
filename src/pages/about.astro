@@ -4,23 +4,8 @@ import Prose from "../components/Prose.astro";
 import { Content } from "../posts/about.md";
 ---
 
-<BaseLayout>
+<BaseLayout description='本页面记录了关于我的信息' keywords="关于,Ling,LingLambda">
   <Prose>
     <Content />
   </Prose>
 </BaseLayout>
-
-<style is:global>
-  * {
-    box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
-  }
-  html {
-    scrollbar-gutter: stable; /* 防止滚动条导致页面宽度不一致 */
-  }
-  html body {
-    margin: 0;
-    padding: 0;
-    height: 100%; /* 确保body和html占满全屏 */
-    margin: 0;
-  }
-</style>

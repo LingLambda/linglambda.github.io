@@ -1,27 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import TitleCard from "../components/TitileCard.astro";
-import { getCollectionOrderByDate, getWordCount } from "../utils/utils.ts";
-const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
-  return data.published === true;
-});
 ---
 
-<BaseLayout>
-你好啊
+<BaseLayout description='本页面是站点主页' keywords="主页,main,Ling,LingLambda">
+LingLambda的温馨小站
 </BaseLayout>
-
-<style is:global>
-  * {
-    box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
-  }
-  html {
-    scrollbar-gutter: stable; /* 防止滚动条导致页面宽度不一致 */
-  }
-  html body {
-    margin: 0;
-    padding: 0;
-    height: 100%; /* 确保body和html占满全屏 */
-    margin: 0;
-  }
-</style>
