@@ -47,13 +47,7 @@ const { description, keywords } = Astro.props;
         return;
       }
       const scrollTop = window.scrollY;
-      if (scrollTop > lastScrollTop) {
-        console.log("aaa");
-        menu.style.top = "-85px";
-      } else {
-        console.log("bbb");
-        menu.style.top = "5px";
-      }
+      menu.style.top = scrollTop > lastScrollTop ? "-85px" : "5px";
       lastScrollTop = scrollTop;
     });
   </script>
