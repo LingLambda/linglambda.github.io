@@ -1,5 +1,4 @@
 ---
-layout: post
 title: archlinux安装雾凇拼音
 date: 2024-12-08 21:25
 description: archlinux安装雾凇拼音下的小鹤双拼方案

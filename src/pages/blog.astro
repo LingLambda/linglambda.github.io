@@ -8,7 +8,17 @@ const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
 ---
 
 <BaseLayout>
-你好啊
+  {
+    blogs.map(async (blog) => {
+      const { title, date, description } = blog.data;
+      const wordNum = getWordCount(blog.body ? blog.body : "");
+      return (
+        <TitleCard title={title} wordNum={wordNum} date={date}>
+          {description}
+        </TitleCard>
+      );
+    })
+  }
 </BaseLayout>
 
 <style is:global>

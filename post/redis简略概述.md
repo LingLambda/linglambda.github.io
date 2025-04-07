@@ -1,5 +1,4 @@
 ---
-layout: post
 title: redis简略概述
 date: 2024-11-27 16:58
 description: redis简略概述

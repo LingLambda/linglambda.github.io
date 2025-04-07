@@ -1,5 +1,4 @@
 ---
-layout: post
 title: qq与饥荒互通消息
 date: 2024-9-9 17:04
 description: 利用koishi和DS-TO-QQ实现饥荒qq消息互通

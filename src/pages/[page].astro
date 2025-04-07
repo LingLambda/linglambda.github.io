@@ -1,11 +1,13 @@
 ---
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Prose from "../components/Prose.astro";
-import { getCount } from "../utils/utils";
+import { getCollectionOrderByDate, getWordCount } from "../utils/utils";
 
 export const getStaticPaths = async () => {
-  const blogs = await getCollection("blog");
+  const blogs = await getCollectionOrderByDate("blog",({data})=>{
+    return data.published === true;
+  });
   return blogs.map((item) => ({
     params: {
       page: item.data.title,
@@ -14,7 +16,7 @@ export const getStaticPaths = async () => {
       title: item.data.title,
       description: item.data.description,
       date: item.data.date,
-      fontNum: getCount(item.body ? item.body : ""),
+      fontNum: getWordCount(item.body ? item.body : ""),
       Content: item,
     },
   }));
@@ -46,7 +48,9 @@ console.log(fontNum);
   * {
     box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
   }
-
+  html {
+    scrollbar-gutter: stable; /* 防止滚动条导致页面宽度不一致 */
+  }
   html body {
     margin: 0;
     padding: 0;

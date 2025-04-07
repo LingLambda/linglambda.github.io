@@ -1,5 +1,4 @@
 ---
-layout: post
 title: OAuth2登录基本流程
 date: 2025-2-11 9:25
 description: 记录OAuth2登录实现方式

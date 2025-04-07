@@ -1,6 +1,5 @@
 ---
-layout: post
-title: 模板标题
+title: template
 date: 2024-11-24 19:28
 description: 描述
 image: "../public/assets/images/arch1.jpg"

@@ -1,8 +1,7 @@
 ---
-layout: post
 title: 记录一次arch滚挂
 date: 2025-02-14 09:35
-description: arch于2025-02-14滚挂了：`can't access tty job control turned off`，望周知啊啊啊
+description: arch于2025-02-14滚挂了：`can't access tty job control turned off`，望周知
 category: 记录
 tags:
   - archlinux

@@ -1,14 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import TitleCard from "../components/TitileCard.astro";
-import { getCollectionOrderByDate, getWordCount } from "../utils/utils.ts";
-const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
-  return data.published === true;
-});
+import Prose from "../components/Prose.astro";
+import { Content } from "../posts/about.md";
 ---
 
 <BaseLayout>
-你好啊
+  <Prose>
+    <Content />
+  </Prose>
 </BaseLayout>
 
 <style is:global>
