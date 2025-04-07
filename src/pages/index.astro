@@ -4,7 +4,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TitleCard from "../components/TitileCard.astro";
 import { getCount } from "../utils/utils.ts";
 const allBlogPosts = await getCollection("blog");
-
 ---
 
 <BaseLayout>
@@ -22,7 +21,7 @@ const allBlogPosts = await getCollection("blog");
   }
 </BaseLayout>
 
-<style>
+<style is:global>
   * {
     box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
   }

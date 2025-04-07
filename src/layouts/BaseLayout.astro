@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import BaseHead from "../components/BaseHead.astro";
+import BaseHead from "../components/HeadMenu.astro";
 import notByAi from '../assets/Authored-By-Human-Not-By-AI-Badge-white.svg'
+import "../styles/global.css";
 ---
 
 <html lang="zh">
@@ -15,20 +16,15 @@ import notByAi from '../assets/Authored-By-Human-Not-By-AI-Badge-white.svg'
   </head>
   <body>
     <div id="container">
-      <header>
-        <BaseHead />
+      <header id="menu">
+        <BaseHead/>
       </header>
       <main>
         <section>
-          <h1>页面主标题</h1>
-          <p>这里是页面的主要内容。</p>
-
-          <article>
             <slot />
-          </article>
         </section>
       </main>
-
+      <hr style="width:600px;color:#808080; margin-top: 200px;">
       <footer>
         <Image src={notByAi} alt="not-by-ai" />
           <p> &copy; 2025 </p> <p>LingLambda</p>
@@ -36,7 +32,32 @@ import notByAi from '../assets/Authored-By-Human-Not-By-AI-Badge-white.svg'
     </div>
   </body>
 
+  <script>
+    let lastScrollTop  = 0;
+    window.addEventListener('scroll',()=>{
+      const menu = document.getElementById('menu')
+      if(!menu || !(menu instanceof HTMLElement )){
+        return
+      }
+      const scrollTop = window.scrollY;
+      if(scrollTop>lastScrollTop){
+        console.log("aaa")
+        menu.style.top='-85px';
+      }else{
+        console.log("bbb")
+        menu.style.top='5px';
+      }
+      lastScrollTop = scrollTop;
+    })
+  </script>
+
   <style>
+    #menu{
+      top:5px;
+      position: fixed;
+      transition: top 0.2s ease-in-out;
+    }
+
     #container {
       display: flex;
       flex-direction: column;
@@ -46,6 +67,10 @@ import notByAi from '../assets/Authored-By-Human-Not-By-AI-Badge-white.svg'
 
     header {
       padding: 30px;
+    }
+
+    main {
+      margin-top: 120px;
     }
 
     footer {
@@ -60,6 +85,9 @@ import notByAi from '../assets/Authored-By-Human-Not-By-AI-Badge-white.svg'
 
     h1 {
       font-size: 2rem;
+    }
+    img{
+      max-width: 500px;
     }
   </style>
 </html>

@@ -5,13 +5,16 @@ const { title, date, wordNum } = Astro.props;
 <a class="post-card" href={title}>
   <div class="card-top">
     <div class="card-title">{title}</div>
-    <div class="card-date">{date}</div>
     <div class="word-num">{wordNum}字</div>
   </div>
-  <div class="card-description">
+  <div class="card-center">
     <slot />
   </div>
+  <div class="card-bottom">
+    <div class="card-date">{date}</div>
+  </div>
 </a>
+
 
 <style>
   a {
@@ -21,8 +24,10 @@ const { title, date, wordNum } = Astro.props;
   .post-card {
     display: flex;
     flex-direction: column;
+    gap: 10px; /* 行间距 */
     align-items: center;
-    width: 600px;
+    max-width: 600px;
+    min-width: 380px;
     height: 130px;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -30,18 +35,26 @@ const { title, date, wordNum } = Astro.props;
     border-radius: 10px;
     padding: 10px 25px; /* 给容器添加左右内边距 */
     cursor: pointer; /* 悬浮时显示手指 */
+    transition: box-shadow 0.15s ease-out;
+  }
+
+  .post-card > * {
+    align-self: flex-start;
+    white-space: nowrap;
+    overflow: hidden; /* 超出隐藏 */
+    text-overflow: ellipsis; /* 超出显示省略号 */
+    width: 100%; /* 超出显示省略必须有明确的宽度 */
   }
 
   .post-card:hover {
     /* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
     box-shadow: 0px 2px 3px 5px #dddddd;
-    transition: box-shadow 0.2s ease-out;
   }
 
   .card-top {
     align-self: flex-start;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-end; /* 贴着交叉轴底部（使字在同一水平线上） */
   }
 
   .card-top > * {
@@ -50,18 +63,5 @@ const { title, date, wordNum } = Astro.props;
 
   .card-title {
     font-size: 1.2rem;
-  }
-
-  .card-description {
-    margin-top: 10px;
-    overflow: hidden; /* 超出隐藏 */
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* 限制最多 3 行 */
-    -webkit-box-orient: vertical;
-  }
-
-  img {
-    max-width: 500px;
-    height: auto; 
   }
 </style>

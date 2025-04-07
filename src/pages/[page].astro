@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Prose from "../components/Prose.astro";
+import { getCount } from "../utils/utils";
 
 export const getStaticPaths = async () => {
   const blogs = await getCollection("blog");
@@ -10,21 +12,37 @@ export const getStaticPaths = async () => {
     },
     props: {
       title: item.data.title,
+      description: item.data.description,
+      date: item.data.date,
+      fontNum: getCount(item.body ? item.body : ""),
       Content: item,
     },
   }));
 };
 
-const { title, Content: rawContent } = Astro.props;
+const { title, description, date, fontNum, Content: rawContent } = Astro.props;
 const { Content } = await render(rawContent);
+const MIN_READ_COUNT = 350;
+const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
+console.log(fontNum);
 ---
 
-<BaseLayout title="欢迎来到我的空间">
-  <h2>{title}</h2>
-  <Content />
+<BaseLayout>
+  <div class="blog-head">
+    <h1 class="title">{title}</h1>
+    <p class="description">{description}</p>
+    <div class="other-info">
+      <p class="date"><em>{date}</em></p>
+      <p class="read-time"><em>{readTimeMin}</em> 分钟 阅读</p>
+    </div>
+  </div>
+
+  <Prose>
+    <Content />
+  </Prose>
 </BaseLayout>
 
-<style>
+<style is:global>
   * {
     box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
   }
@@ -36,8 +54,39 @@ const { Content } = await render(rawContent);
     margin: 0;
   }
 
-  img {
-    max-width: 500px;
-    height: auto; 
+  em {
+    font-style: normal;
+  }
+
+  .blog-head {
+    padding-bottom: 50px;
+  }
+
+  .blog-head > * {
+    line-height: 50px;
+  }
+
+  .other-info > * {
+    line-height: 20px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-weight: lighter;
+    font-size: 1.3rem;
+  }
+  .other-info {
+    font-size: 0.9rem;
+  }
+
+  .blog-head .description {
+    color: #808080;
+  }
+
+  .blog-head .other-info p {
+    color: #808080;
   }
 </style>
