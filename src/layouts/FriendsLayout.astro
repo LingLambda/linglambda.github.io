@@ -1,0 +1,16 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+---
+
+<BaseLayout>
+  <div id="cards">
+    <slot>暂时还没有内容哦</slot>
+  </div>
+</BaseLayout>
+
+<style>
+  #cards {
+    display: grid;
+    grid: auto-flow auto / repeat(2, auto);
+  }
+</style>

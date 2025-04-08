@@ -4,34 +4,59 @@ import { Image } from "astro:assets";
 const { name, url, description, icon } = Astro.props;
 ---
 
-<div class="main">
+<a class="main" href={url}>
   <div class="left">
     <Image
-      src="https://q.qlogo.cn/headimg_dl?dst_uin=1011303349&spec=640&img_type=jpg"
+      src={icon}
       alt="descriptive text"
       width="128"
       height="128"
     />
   </div>
   <div class="right">
-    <p class="title">12345</p>
-    <p>56789</p>
+    <p class="name">{name}</p>
+    <p class="description">{description}</p>
   </div>
-</div>
+</a>
 
 <style>
   .main {
+    text-decoration: none; /* 去除下划线 */
+    color: inherit; /* 继承父元素的颜色 */
+    margin: 0 20px 20px 20px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 400px;
-    height: 200px;
+    width: 350px;
+    height: 160px;
 
     background-color: white;
     border: 2px solid black; /* 添加黑色的边框，宽度为 2px */
     border-radius: 40px;
-    padding: 0 25px; /* 给容器添加左右内边距 */
   }
+  .main:hover{
+    background-color: #f4f3f6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .name{
+    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden; /* 超出隐藏 */
+    text-overflow: ellipsis; /* 超出显示省略号 */
+    width: 100%; /* 超出显示省略必须有明确的宽度 */
+  }
+  
+  .description{
+    font-weight: lighter;
+    font-size: 1.2rem;
+    color: #808080;
+    white-space: nowrap;
+    overflow: hidden; /* 超出隐藏 */
+    text-overflow: ellipsis; /* 超出显示省略号 */
+    width: 100%; /* 超出显示省略必须有明确的宽度 */
+  }
+
   img {
     border-radius: 90px;
   }

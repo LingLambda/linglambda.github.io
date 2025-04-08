@@ -15,7 +15,7 @@ export const getWordCount = (text: string) => {
 };
 
 /**
- * 获取指定名称集合，并根据日期倒序排列
+ * 获取指定名称集合，并根据日期倒序排列（我服了这类型系统)
  */
 export const getCollectionOrderByDate = async <C extends keyof AnyEntryMap>(
   collection: C,

@@ -1,8 +1,28 @@
 ---
 import FriendCard from "../components/FriendCard.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import FriendsLayout from "../layouts/FriendsLayout.astro";
 ---
 
-<BaseLayout description="本页面供奉着我的朋友们(不是" keywords="friends,links">
-  <FriendCard />
-</BaseLayout>
+<FriendsLayout
+  description="本页面供奉着我的朋友们(不是"
+  keywords="friends,links"
+>
+  <FriendCard
+    name="Keritial"
+    description="一个平淡的个体."
+    icon="https://avatars.githubusercontent.com/u/50075277?v=4"
+    url="https://krtl.top"
+  />
+  <FriendCard
+    name="Keritial"
+    description="两个平淡的个体."
+    icon="https://avatars.githubusercontent.com/u/50075277?v=4"
+    url="https://krtl.top"
+  />
+  <FriendCard
+    name="Keritial"
+    description="三个平淡的个体."
+    icon="https://avatars.githubusercontent.com/u/50075277?v=4"
+    url="https://krtl.top"
+  />
+</FriendsLayout>

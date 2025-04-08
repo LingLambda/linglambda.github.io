@@ -36,6 +36,7 @@ const { title, date, wordNum } = Astro.props;
     padding: 10px 25px; /* 给容器添加左右内边距 */
     cursor: pointer; /* 悬浮时显示手指 */
     transition: box-shadow 0.15s ease-out;
+    transition: background-color 0.15s ease-out;
   }
 
   .post-card > * {
@@ -48,7 +49,8 @@ const { title, date, wordNum } = Astro.props;
 
   .post-card:hover {
     /* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
-    box-shadow: 0px 2px 3px 5px #dddddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #f4f3f6;
   }
 
   .card-top {
