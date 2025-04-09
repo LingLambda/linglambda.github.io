@@ -3,13 +3,26 @@
 ---
 
 <nav class="menu">
-  <a href="/" data-astro-prefetch>Ling的小窝</a>
-  <a href="/blog"  data-astro-prefetch>博客</a>
-  <a href="/time-line"  data-astro-prefetch>时线</a>
-  <a href="/lab"  data-astro-prefetch>实验</a>
-  <a href="/friend-links"  data-astro-prefetch>友链</a>
-  <a href="/about"  data-astro-prefetch>关于</a>
+  <a id="index" href="/" data-astro-prefetch>Ling的小窝</a>
+  <a id="blog" href="/blog" data-astro-prefetch>博客</a>
+  <a id="time-line" href="/time-line" data-astro-prefetch>时线</a>
+  <a id="lab" href="/lab" data-astro-prefetch>实验</a>
+  <a id="friend-links" href="/friend-links" data-astro-prefetch>友链</a>
+  <a id="about" href="/about" data-astro-prefetch>关于</a>
 </nav>
+
+<script>
+  const updateSelected = () => {
+    let pathname = window.location.pathname.substring(1);
+    pathname = pathname === "" ? "index" : pathname;
+    const e = document.getElementById(pathname);
+    if (!e) {
+      return;
+    }
+    e.classList.add("selected");
+  };
+  updateSelected();
+</script>
 
 <style>
   .menu {
@@ -18,23 +31,37 @@
     justify-content: space-around;
     width: 600px;
     height: 55px;
-    
-    background-color: white;
-    border: 2px solid black; /* 添加黑色的边框，宽度为 2px */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(0, 0, 0, 0.2); /* 添加黑色的边框，宽度为 2px */
     border-radius: 40px;
     padding: 0 25px; /* 给容器添加左右内边距 */
   }
 
   .menu > a {
-    color: black; /* 文字颜色 */
+    color: rgba(0, 0, 0, 0.7); /* 文字颜色 */
     padding: 7px 15px; /* 内边距 */
     text-decoration: none; /* 去除下划线 */
     border-radius: 18px; /* 圆角 */
     font-size: 19px; /* 字体大小 */
+    transition:
+      background-color 0.2s ease-in-out,
+      color 0.2s ease-in-out;
   }
 
   .menu > a:hover {
-    background-color: #dddddd;
-    transition: background-color 0.2s ease-in-out;
+    background-color: rgba(221, 221, 221, 0.4);
+  }
+
+  .menu > a.selected {
+    transition: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgba(247, 247, 249, 1);
+  }
+
+  .menu > a.selected:hover {
+    transition:none;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: rgba(247, 247, 249, 1);
   }
 </style>

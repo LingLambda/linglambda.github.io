@@ -1,8 +1,8 @@
 ---
-import BaseHead from "../components/HeadMenu.astro";
+import HeadMenu from "../components/HeadMenu.astro";
 import "../styles/global.css";
 
-const { description, keywords } = Astro.props;
+const { description, keywords ,selected} = Astro.props;
 ---
 
 <html lang="zh">
@@ -18,14 +18,14 @@ const { description, keywords } = Astro.props;
   <body>
     <div id="container">
       <header id="menu">
-        <BaseHead />
+        <HeadMenu/>
       </header>
       <main>
         <section>
           <slot />
         </section>
       </main>
-      <hr style="width:600px;color:#808080; margin-top: 1rem;" />
+      <!-- <hr style="width:600px;color:#808080; margin-top: 1rem;" /> -->
       <footer>
         <!-- <Image src={notByAi} alt="not-by-ai" /> -->
         <p>&copy; 2025</p>
@@ -56,7 +56,9 @@ const { description, keywords } = Astro.props;
     box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
   }
   html {
-    scrollbar-gutter: stable; /* 防止滚动条导致页面宽度不一致 */
+    background-color: rgb(250, 252, 254);
+    /* scrollbar-gutter: stable; */ /* 防止滚动条导致页面宽度不一致 */
+    overflow-y: scroll;  /*总是显示滚动条*/
   }
   html,
   body {
@@ -100,14 +102,16 @@ const { description, keywords } = Astro.props;
   }
 
   footer {
+    margin-top: 30px;
+    border-top: 1px solid rgb(227, 232, 247); 顶部边框线
     height: auto; /* 让 footer 根据内容自适应高度 */
     width: 100%;
-    background-color: white;
+    background-color: rgb(247, 247, 249);;
     color: #808080;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
   }
 
   footer > * {

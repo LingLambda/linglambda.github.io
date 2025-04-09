@@ -20,6 +20,7 @@ const { title, date, wordNum } = Astro.props;
   a {
     text-decoration: none; /* 去除下划线 */
     color: inherit; /* 继承父元素的颜色 */
+    background: rgba(255, 255, 255, 0.2);
   }
   .post-card {
     display: flex;
@@ -31,12 +32,11 @@ const { title, date, wordNum } = Astro.props;
     height: 130px;
     margin-top: 20px;
     margin-bottom: 10px;
-    border: 2px solid black; /* 添加黑色的边框，宽度为 2px */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* 添加黑色的边框，宽度为 2px */
     border-radius: 10px;
     padding: 10px 25px; /* 给容器添加左右内边距 */
     cursor: pointer; /* 悬浮时显示手指 */
-    transition: box-shadow 0.15s ease-out;
-    transition: background-color 0.15s ease-out;
+    transition: box-shadow 0.15s ease-out,background-color 0.15s ease-out;
   }
 
   .post-card > * {
@@ -50,7 +50,7 @@ const { title, date, wordNum } = Astro.props;
   .post-card:hover {
     /* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    background-color: #f4f3f6;
+    background: rgba(244, 243, 246, 0.4);
   }
 
   .card-top {
