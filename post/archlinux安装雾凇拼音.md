@@ -32,7 +32,7 @@ sitemap: true
 `mkdir ~/.local/share/fcitx5/rime/`  
 `cd ~/.local/share/fcitx5/rime/`  
 `touch default.custom.yaml`  
-编辑default.custom.yaml为如下内容
+编辑 default.custom.yaml 为如下内容
 
 ```yaml
 patch:
@@ -40,6 +40,18 @@ patch:
 __include: rime_ice_suggestion:/
 # 以下根据自己所需自行定义，仅做参考。
 # 针对对应处方的定制条目，请使用 <recipe>.custom.yaml 中配置，例如 rime_ice.custom.yaml
+```
+
+我的配置：
+
+```yaml
+patch:
+  schema_list:
+    - schema: double_pinyin_flypy # 只启用小鹤双拼方案
+ascii_composer:
+  switch_key:
+    Shift_L: noop # 禁用了shift，我不喜欢用shift切换中英文
+    Shift_R: noop
 ```
 
 ## 5. 重载配置
@@ -52,4 +64,4 @@ __include: rime_ice_suggestion:/
 
 ![完成](../public/assets/images/rime4.png)
 
-> 参考： [archlinux wiki上的rime页面](https://wiki.archlinuxcn.org/wiki/Rime)
+> 参考： [archlinux wiki 上的 rime 页面](https://wiki.archlinuxcn.org/wiki/Rime)

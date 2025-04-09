@@ -11,13 +11,13 @@ sitemap: true
 
 ## 1.起因
 
-arch可能有两个月没滚，今天突然想滚一下。于是......
+arch 可能有两个月没滚，今天突然想滚一下。于是......
 
 ![gungua1](../public/assets/images/gungua1.jpg)
 
 ![gungua2](../public/assets/images/gungua2.jpg)
 
-因为gem包滚失败了。我想着滚了一部分包了应该已经，所以重启了下，然后就这样了。
+因为 gem 包滚失败了。我想着滚了一部分包了应该已经，所以重启了下，然后就这样了。
 
 ![gungua3](../public/assets/images/gungua3.jpg)
 
