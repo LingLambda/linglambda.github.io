@@ -2,7 +2,7 @@
   "name": "lambda-blog",
   "type": "module",
   "version": "0.0.1",
-  "license":"GPL-3.0-only",
+  "license": "GPL-3.0-only",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.1",
     "astro": "^5.5.4",
+    "pinyin-pro": "^3.26.0",
     "tailwindcss": "^4.1.1"
   },
   "devDependencies": {
