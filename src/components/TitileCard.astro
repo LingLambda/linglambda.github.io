@@ -2,7 +2,7 @@
 const { title, date, wordNum } = Astro.props;
 ---
 
-<a class="post-card" href={title}  data-astro-prefetch>
+<a class="post-card" href={`/blog/${title}/`}  data-astro-prefetch>
   <div class="card-top">
     <div class="card-title">{title}</div>
     <div class="word-num">{wordNum}字</div>

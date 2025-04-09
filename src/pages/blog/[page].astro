@@ -1,8 +1,8 @@
 ---
 import { render } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Prose from "../components/Prose.astro";
-import { getCollectionOrderByDate, getWordCount } from "../utils/utils";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Prose from "../../components/Prose.astro";
+import { getCollectionOrderByDate, getWordCount } from "../../utils/utils";
 
 export const getStaticPaths = async () => {
   const blogs = await getCollectionOrderByDate("blog",({data})=>{
