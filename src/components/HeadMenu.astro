@@ -4,17 +4,19 @@
 
 <nav class="menu">
   <a id="index" href="/" data-astro-prefetch>Ling的小窝</a>
-  <a id="blog" href="/blog" data-astro-prefetch>博客</a>
-  <a id="time-line" href="/time-line" data-astro-prefetch>时线</a>
-  <a id="lab" href="/lab" data-astro-prefetch>实验</a>
-  <a id="friend-links" href="/friend-links" data-astro-prefetch>友链</a>
-  <a id="about" href="/about" data-astro-prefetch>关于</a>
+  <a id="blog" href="/blog/" data-astro-prefetch>博客</a>
+  <a id="time-line" href="/time-line/" data-astro-prefetch>时线</a>
+  <a id="lab" href="/lab/" data-astro-prefetch>实验</a>
+  <a id="friend-links" href="/friend-links/" data-astro-prefetch>友链</a>
+  <a id="about" href="/about/" data-astro-prefetch>关于</a>
 </nav>
 
 <script>
   const updateSelected = () => {
-    let pathname = window.location.pathname.substring(1);
-    pathname = pathname === "" ? "index" : pathname;
+    let rawPathname = window.location.pathname;
+    const regex = /^\/([^\/]+)(?:\/|$)/;
+    let pathname = rawPathname.match(regex)?.[1]; //获取第一个捕获组
+    pathname = !pathname ? "index" : pathname;
     const e = document.getElementById(pathname);
     if (!e) {
       return;
@@ -60,7 +62,7 @@
   }
 
   .menu > a.selected:hover {
-    transition:none;
+    transition: none;
     background-color: rgba(0, 0, 0, 0.6);
     color: rgba(247, 247, 249, 1);
   }
