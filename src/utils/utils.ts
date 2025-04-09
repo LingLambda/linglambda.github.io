@@ -2,7 +2,6 @@ import {
   getCollection,
   type AnyEntryMap,
   type CollectionEntry,
-  type RenderedContent,
 } from "astro:content";
 
 /**
@@ -21,7 +20,7 @@ export const getCollectionOrderByDate = async <C extends keyof AnyEntryMap>(
   collection: C,
   filter?: (entry: CollectionEntry<C>) => unknown
 ): Promise<CollectionEntry<C>[]> => {
-  const cs:CollectionEntry<C>[] = filter
+  const cs: CollectionEntry<C>[] = filter
     ? await getCollection(collection, filter)
     : await getCollection(collection);
   cs.sort((a, b) => {
@@ -29,3 +28,35 @@ export const getCollectionOrderByDate = async <C extends keyof AnyEntryMap>(
   });
   return cs;
 };
+
+import { pinyin } from "pinyin-pro";
+const module = import.meta.env.PATH_MODULE; //根据配置修改路径生成规则
+export let titleToPinyin = (title: string) =>
+  title.replaceAll(/\s+/g, "-").replaceAll(/-+/g, "-");
+switch (module) {
+  case "no_change": {
+    break;
+  }
+  case "pinyin": {
+    titleToPinyin = (title: string) =>
+      pinyin(title.replaceAll(/\s+/g, "-"), {
+        toneType: "none",
+        type: "array",
+        nonZh: "consecutive",
+      })
+        .join("-")
+        .replaceAll(/-+/g, "-");
+    break;
+  }
+  case "pinyin_with_tones": {
+    titleToPinyin = (title: string) =>
+      pinyin(title.replaceAll(/\s+/g, "-"), {
+        toneType: "num",
+        type: "array",
+        nonZh: "consecutive",
+      })
+        .join("-")
+        .replaceAll(/-+/g, "-");
+    break;
+  }
+}

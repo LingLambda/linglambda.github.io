@@ -2,7 +2,7 @@
 import { defineCollection, z } from "astro:content";
 
 // 2. 导入加载器
-import { glob, file } from "astro/loaders";
+import { glob } from "astro/loaders";
 
 // 3. 定义你的集合
 const blog = defineCollection({

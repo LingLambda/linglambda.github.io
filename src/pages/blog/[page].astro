@@ -2,32 +2,42 @@
 import { render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Prose from "../../components/Prose.astro";
-import { getCollectionOrderByDate, getWordCount } from "../../utils/utils";
+import {
+  getCollectionOrderByDate,
+  getWordCount,
+  titleToPinyin,
+} from "../../utils/utils";
 
 export const getStaticPaths = async () => {
-  const blogs = await getCollectionOrderByDate("blog",({data})=>{
+  const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
     return data.published === true;
   });
   return blogs.map((item) => ({
     params: {
-      page: item.data.title,
+      page: titleToPinyin(item.data.title),
     },
     props: {
       title: item.data.title,
       description: item.data.description,
       date: item.data.date,
-      tags:item.data.tags,
+      tags: item.data.tags,
       fontNum: getWordCount(item.body ? item.body : ""),
       Content: item,
     },
   }));
 };
 
-const { title, description, date, fontNum, Content: rawContent, tags} = Astro.props;
+const {
+  title,
+  description,
+  date,
+  fontNum,
+  Content: rawContent,
+  tags,
+} = Astro.props;
 const { Content } = await render(rawContent);
 const MIN_READ_COUNT = 350;
 const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
-console.log(fontNum);
 ---
 
 <BaseLayout description={description} keywords={tags}>
