@@ -49,19 +49,31 @@ const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
       <p class="read-time"><em>{readTimeMin}</em> 分钟 阅读</p>
     </div>
   </div>
-
-  <Prose>
-    <Content />
-  </Prose>
+  <article id="text">
+    <Prose>
+      <Content />
+    </Prose>
+  </article>
+    <script
+      src="https://giscus.app/client.js"
+      data-repo="LingLambda/linglambda.github.io"
+      data-repo-id="R_kgDOOOWNqQ"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOOOWNqc4Co3Ed"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async></script>
 </BaseLayout>
 
 <style>
   em {
     font-style: normal;
-  }
-
-  .blog-head {
-    padding-bottom: 50px;
   }
 
   .blog-head > * {
@@ -90,5 +102,9 @@ const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
 
   .blog-head .other-info p {
     color: #808080;
+  }
+
+  #text {
+    margin: 50px 0;
   }
 </style>
