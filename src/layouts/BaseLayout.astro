@@ -45,16 +45,15 @@ const { description, keywords ,selected} = Astro.props;
 </html>
 
 <script>
-  let lastScrollTop = 0;
-  window.addEventListener("scroll", () => {
-    const menu = document.getElementById("menu");
-    if (!menu || !(menu instanceof HTMLElement)) {
-      return;
-    }
-    const scrollTop = window.scrollY;
-    menu.style.top = scrollTop > lastScrollTop ? "-5.5rem" : "0.2rem";
-    lastScrollTop = scrollTop;
-  });
+  const menu = document.getElementById("menu");
+  if (menu instanceof HTMLElement) {
+    let lastScrollTop = 0;
+    addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      menu.style.top = scrollTop > lastScrollTop ? "-5.5rem" : "0.2rem";
+      lastScrollTop = scrollTop;
+    }, { passive: true });
+  }
 </script>
 
 <style>
