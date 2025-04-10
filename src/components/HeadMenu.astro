@@ -13,10 +13,8 @@
 
 <script is:inline>
   const updateSelected = () => {
-    let rawPathname = window.location.pathname;
-    const regex = /^\/([^\/]+)(?:\/|$)/;
-    let pathname = rawPathname.match(regex)?.[1]; //获取第一个捕获组
-    pathname = !pathname ? "index" : pathname;
+    let pathname = location.pathname.split("/")[1];
+    pathname ||= "index";
     const e = document.getElementById(pathname);
     if (!e) {
       return;
