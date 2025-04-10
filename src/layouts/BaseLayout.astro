@@ -60,11 +60,13 @@ const { description, keywords ,selected} = Astro.props;
   * {
     box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
   }
+
   html {
     background-color: rgb(250, 252, 254);
     /* scrollbar-gutter: stable; */ /* 防止滚动条导致页面宽度不一致 */
     overflow-y: scroll;  /*总是显示滚动条*/
   }
+
   html,
   body {
     margin: 0;
@@ -114,6 +116,7 @@ const { description, keywords ,selected} = Astro.props;
     flex-direction: row;
     justify-content: center;
     padding: 1rem;
+    flex-wrap: wrap;
   }
 
   footer > * {
@@ -123,6 +126,7 @@ const { description, keywords ,selected} = Astro.props;
   h1 {
     font-size: 2rem;
   }
+
   img {
     max-width: 36rem;
   }
