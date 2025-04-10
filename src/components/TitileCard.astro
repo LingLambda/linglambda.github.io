@@ -1,10 +1,14 @@
 ---
+//博客标题卡组件
 import { titleToPinyin } from "../utils/utils";
-
 const { title, date, wordNum } = Astro.props;
 ---
 
-<a class="post-card" href={`/blog/${titleToPinyin(title)}/`}  data-astro-prefetch>
+<a
+  class="post-card"
+  href={`/blog/${titleToPinyin(title)}/`}
+  data-astro-prefetch
+>
   <div class="card-top">
     <div class="card-title">{title}</div>
     <div class="word-num">{wordNum}字</div>
@@ -17,7 +21,6 @@ const { title, date, wordNum } = Astro.props;
   </div>
 </a>
 
-
 <style>
   a {
     text-decoration: none; /* 去除下划线 */
@@ -27,17 +30,19 @@ const { title, date, wordNum } = Astro.props;
   .post-card {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* 行间距 */
+    gap: 0.7rem; /* 行间距 */
     align-items: center;
     max-width: 90vw;
     min-width: 32vw;
-    height: 130px;
+    height: 8rem;
     margin: 20px 20px 10px 20px;
     border: 1px solid rgba(0, 0, 0, 0.2); /* 添加黑色的边框，宽度为 2px */
     border-radius: 10px;
-    padding: 10px 25px; /* 给容器添加左右内边距 */
+    padding: 10px 25px; /* 给容器添加内边距 */
     cursor: pointer; /* 悬浮时显示手指 */
-    transition: box-shadow 0.15s ease-out,background-color 0.15s ease-out;
+    transition:
+      box-shadow 0.15s ease-out,
+      background-color 0.15s ease-out;
   }
 
   .post-card > * {
@@ -50,7 +55,7 @@ const { title, date, wordNum } = Astro.props;
 
   .post-card:hover {
     /* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.1);
     background: rgba(244, 243, 246, 0.4);
   }
 
@@ -61,7 +66,7 @@ const { title, date, wordNum } = Astro.props;
   }
 
   .card-top > * {
-    margin-right: 8px;
+    margin-right: 0.6rem;
   }
 
   .card-title {

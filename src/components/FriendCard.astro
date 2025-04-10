@@ -1,4 +1,5 @@
 ---
+//友链卡片组件
 import { Image } from "astro:assets";
 
 const { name, url, description, icon } = Astro.props;
@@ -23,16 +24,16 @@ const { name, url, description, icon } = Astro.props;
   .main {
     text-decoration: none; /* 去除下划线 */
     color: inherit; /* 继承父元素的颜色 */
-    margin: 0 20px 20px 20px;
+    margin: 0 1rem 1.5rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 350px;
-    height: 160px;
+    width: 23rem;
+    height: 10rem;
 
     background-color: white;
     border: 1px solid black; /* 添加黑色的边框，宽度为 2px */
-    border-radius: 40px;
+    border-radius: 2.9rem;
   }
   .main:hover{
     background-color: #f4f3f6;

@@ -52,7 +52,7 @@ const { description, keywords ,selected} = Astro.props;
       return;
     }
     const scrollTop = window.scrollY;
-    menu.style.top = scrollTop > lastScrollTop ? "-85px" : "5px";
+    menu.style.top = scrollTop > lastScrollTop ? "-5.5rem" : "0.2rem";
     lastScrollTop = scrollTop;
   });
 </script>
@@ -75,9 +75,10 @@ const { description, keywords ,selected} = Astro.props;
   }
 
   #menu {
-    top: 5px;
+    top: 0.2rem;
     position: fixed;
     transition: top 0.2s ease-in-out;
+    padding: 2rem
   }
 
   #container {
@@ -98,17 +99,13 @@ const { description, keywords ,selected} = Astro.props;
     color: black;
   }
 
-  header {
-    padding: 30px 0;
-  }
-
   main {
     flex-grow: 1; /* 使 main 占据剩余空间 */
-    margin-top: 120px;
+    margin-top: 8rem;
   }
 
   footer {
-    margin-top: 30px;
+    margin-top: 2.1rem;
     border-top: 1px solid rgb(227, 232, 247); 顶部边框线
     height: auto; /* 让 footer 根据内容自适应高度 */
     width: 100%;
@@ -117,17 +114,17 @@ const { description, keywords ,selected} = Astro.props;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 15px;
+    padding: 1rem;
   }
 
   footer > * {
-    margin: 5px;
+    margin: 0.3rem;
   }
 
   h1 {
     font-size: 2rem;
   }
   img {
-    max-width: 500px;
+    max-width: 36rem;
   }
 </style>
