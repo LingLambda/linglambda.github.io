@@ -9,17 +9,7 @@ const { description, keywords ,selected} = Astro.props;
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.svg" type="image/svg" />
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(registrations => {
-          for (const registration of registrations) {
-            registration.unregister().then(() => {
-              console.log('sw unregistered');
-            });
-          }
-        });
-      }
-    </script>
+    <script src="../scripts/swUnregister.ts"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
