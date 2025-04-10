@@ -1,6 +1,7 @@
 ---
 import HeadMenu from "../components/HeadMenu.astro";
 import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 
 const { description, keywords ,selected} = Astro.props;
 ---
@@ -10,6 +11,7 @@ const { description, keywords ,selected} = Astro.props;
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.svg" type="image/svg" />
     <script src="../scripts/swUnregister.ts"/>
+    <ClientRouter />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
@@ -40,20 +42,20 @@ const { description, keywords ,selected} = Astro.props;
       </footer>
     </div>
   </body>
-
-  <script>
-    let lastScrollTop = 0;
-    window.addEventListener("scroll", () => {
-      const menu = document.getElementById("menu");
-      if (!menu || !(menu instanceof HTMLElement)) {
-        return;
-      }
-      const scrollTop = window.scrollY;
-      menu.style.top = scrollTop > lastScrollTop ? "-85px" : "5px";
-      lastScrollTop = scrollTop;
-    });
-  </script>
 </html>
+
+<script>
+  let lastScrollTop = 0;
+  window.addEventListener("scroll", () => {
+    const menu = document.getElementById("menu");
+    if (!menu || !(menu instanceof HTMLElement)) {
+      return;
+    }
+    const scrollTop = window.scrollY;
+    menu.style.top = scrollTop > lastScrollTop ? "-85px" : "5px";
+    lastScrollTop = scrollTop;
+  });
+</script>
 
 <style>
   * {

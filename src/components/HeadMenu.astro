@@ -11,7 +11,7 @@
   <a id="about" href="/about/" data-astro-prefetch>关于</a>
 </nav>
 
-<script>
+<script is:inline>
   const updateSelected = () => {
     let rawPathname = window.location.pathname;
     const regex = /^\/([^\/]+)(?:\/|$)/;
@@ -23,6 +23,7 @@
     }
     e.classList.add("selected");
   };
+  document.addEventListener("astro:after-swap", updateSelected); //视图过渡后的脚本执行
   updateSelected();
 </script>
 
