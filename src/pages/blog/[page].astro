@@ -1,12 +1,12 @@
 ---
 import { render } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
 import Prose from "../../components/Prose.astro";
 import {
   getCollectionOrderByDate,
   getWordCount,
   titleToPinyin,
 } from "../../utils/utils";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 export const getStaticPaths = async () => {
   const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
@@ -40,7 +40,7 @@ const MIN_READ_COUNT = 350;
 const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
 ---
 
-<BaseLayout description={description} keywords={tags}>
+<BlogLayout description={description} keywords={tags}>
   <div class="blog-head">
     <h1 class="title">{title}</h1>
     <p class="description">{description}</p>
@@ -69,7 +69,7 @@ const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
       data-lang="zh-CN"
       crossorigin="anonymous"
       async></script>
-</BaseLayout>
+</BlogLayout>
 
 <style>
   em {

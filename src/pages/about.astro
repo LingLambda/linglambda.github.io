@@ -1,11 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 import Prose from "../components/Prose.astro";
 import { Content } from "../posts/about.md";
 ---
 
-<BaseLayout description='本页面记录了关于我的信息' keywords="关于,Ling,LingLambda">
+<MainLayout description='本页面记录了关于我的信息' keywords="关于,Ling,LingLambda">
   <Prose>
     <Content />
   </Prose>
-</BaseLayout>
+</MainLayout>

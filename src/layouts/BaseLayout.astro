@@ -16,6 +16,7 @@ const { description, keywords ,selected} = Astro.props;
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content="LingLambda" />
+    <!-- 统一不同浏览器的默认样式 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Ling的小窝</title>
   </head>
@@ -25,9 +26,7 @@ const { description, keywords ,selected} = Astro.props;
         <HeadMenu/>
       </header>
       <main>
-        <section>
-          <slot />
-        </section>
+        <slot />
       </main>
       <!-- <hr style="width:600px;color:#808080; margin-top: 1rem;" /> -->
       <footer>
@@ -84,7 +83,7 @@ const { description, keywords ,selected} = Astro.props;
   }
 
   #container {
-    height: fit-content;
+    height: fit-content; /*限制最大高度不超过父容器*/
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -117,7 +116,7 @@ const { description, keywords ,selected} = Astro.props;
     flex-direction: row;
     justify-content: center;
     padding: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /*允许换行*/
   }
 
   footer > * {
@@ -132,7 +131,4 @@ const { description, keywords ,selected} = Astro.props;
     max-width: 36rem;
   }
   
-  section {
-    padding: 8%;
-  }
 </style>

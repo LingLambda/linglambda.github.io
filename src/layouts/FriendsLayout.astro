@@ -10,9 +10,15 @@ import BaseLayout from "./BaseLayout.astro";
 
 <style>
   #cards {
-    /* display: grid;
-    grid: auto-flow auto / repeat(2, auto); */
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 300px); /* 每张卡片固定宽度 */
+    justify-content: center; /* 整体网格居中 */
+    gap: 20px;
+  }
+  @media (max-width: 600px) {
+    #cards {
+      grid-template-columns: 1fr; /* 在小屏幕上改为单列 */
+      width: 90vw;
+    }
   }
 </style>
