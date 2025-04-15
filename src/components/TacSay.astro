@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+import tacImage from '../../public/assets/images/avatar.png';
+---
+
+<div id="tac-say">
+  <Image src={tacImage} alt="Ling avatar" width="128" height="128" />
+  <div class="chat-bubble">
+  </div>
+</div>
+
+<style>
+  .chat-bubble {
+  background: #f0f0f0;         /* 背景色 */
+  border-radius: 10px;         /* 圆角形成气泡 */
+  padding: 10px 15px;          /* 文字内边距 */
+  max-width: 300px;            /* 限制最大宽度 */
+  color: #333;                 /* 字体颜色 */
+}
+
+</style>

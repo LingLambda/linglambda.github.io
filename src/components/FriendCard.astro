@@ -7,7 +7,7 @@ const { name, url, description, icon } = Astro.props;
 
 <a class="main" href={url}>
   <div class="left">
-    <Image src={icon} alt="descriptive text" width="96" height="96" />
+    <Image src={icon} alt={name+" avatar"} width="96" height="96" />
   </div>
   <div class="right">
     <p class="name">{name}</p>
@@ -26,7 +26,7 @@ const { name, url, description, icon } = Astro.props;
     height: 8rem;
     width: auto;
     background-color: white;
-    border: 1px solid black; /* 添加黑色的边框，宽度为 2px */
+    border: 1px solid #f4f4f5; /* 添加黑色的边框，宽度为 2px */
     border-radius: 1rem;
     padding: 6%;
   }
@@ -37,8 +37,10 @@ const { name, url, description, icon } = Astro.props;
     }
   }
   .main:hover {
-    background-color: #f4f3f6;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #00d7c0; /* 添加黑色的边框，宽度为 2px */
+    /* background-color: #f4f3f6; */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+
   }
 
   .name {
