@@ -1,23 +1,27 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import { Image } from 'astro:assets';
-import tacImage from '../../public/assets/images/avatar.png';
----
+import { Image } from "astro:assets";
+import tacImage from "../../public/assets/images/avatar.png";
+import DropMenu from "../components/DropMenu.astro";
 
+const links = [
+  { url: "/blog", name: "blog" },
+  { url: "/time-line", name: "time line" },
+];
+---
 
 <MainLayout description="偶尔会在这乱写" keywords="lab,实验,前端">
   偶尔会在这乱写
 
-  
   <div id="tac-say">
     <Image src={tacImage} alt="Ling avatar" width="128" height="128" />
-    <div class="chat-bubble">
-    </div>
+    <div class="chat-bubble"></div>
   </div>
+  <DropMenu btnName="menu" links={links} />
 </MainLayout>
 
 <style>
-  .chat-bubble{
+  .chat-bubble {
     width: 30rem;
     height: 10rem;
     border: 1px solid #d4d4d4;
