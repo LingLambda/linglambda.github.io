@@ -1,13 +1,7 @@
 ---
-// markdown样式 使用Tailwind
+import "../styles/markdown.css";
 ---
 
-<div
-  class="prose dark:prose-invert
-  prose-h1:font-bold prose-h1:text-xl
-  prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
-  prose-headings:underline"
->
+<div class="prose">
   <slot />
 </div>
-<!-- 用法： prose-[element]:class-to-apply 给所有的 <h1> 标签添加 font-bold 的 Tailwind 类。 -->
