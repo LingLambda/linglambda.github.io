@@ -16,6 +16,9 @@ permissions:
 
 jobs:
   build:
+    env:
+      STEAM_ID: ${{ secrets.STEAM_ID }}
+      STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
@@ -38,6 +41,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        env:
-              STEAM_ID: ${{ secrets.STEAM_ID }}
-              STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
