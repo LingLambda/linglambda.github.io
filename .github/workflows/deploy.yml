@@ -38,3 +38,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        env:
+              STEAM_ID: ${{ secrets.STEAM_ID }}
+              STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
