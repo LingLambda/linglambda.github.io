@@ -47,7 +47,9 @@ export const appdetails = async (appid: string) => {
     l: "schinese",
     cc: "CN",
   });
-  return await res?.json();
+  
+
+  return await res?.json().catch(() => ({}));
 };
 
 //获取指定应用中文封面url

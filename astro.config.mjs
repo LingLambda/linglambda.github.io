@@ -19,6 +19,12 @@ export default defineConfig({
         context: "server",
         access: "secret",
       }),
+      ENABLE_REQUEST: envField.boolean({
+        default: false,
+        optional: false,
+        context: "server",
+        access: "secret",
+      }),
     },
   },
 });

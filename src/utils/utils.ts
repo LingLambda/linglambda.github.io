@@ -30,10 +30,11 @@ export const getCollectionOrderByDate = async <C extends keyof AnyEntryMap>(
 };
 
 import { pinyin } from "pinyin-pro";
-const module = import.meta.env.PATH_MODULE; //根据配置修改路径生成规则
+const { PATH_MODULE } = import.meta.env; //根据配置修改路径生成规则
+
 export let titleToPinyin = (title: string) =>
   title.replaceAll(/\s+/g, "-").replaceAll(/-+/g, "-");
-switch (module) {
+switch (PATH_MODULE) {
   case "no_change": {
     break;
   }
@@ -61,7 +62,9 @@ switch (module) {
   }
 }
 
-export const get = async (
+const ENABLE_REQUEST = import.meta.env.ENABLE_REQUEST || false; //频繁请求可能导致被api封禁，仅在调试完毕后开启
+
+export let get = async (
   url: string,
   params?:
     | string
@@ -83,3 +86,7 @@ export const get = async (
   }
   return response;
 };
+
+if (!ENABLE_REQUEST) {
+  get = async () => new Response("{}", { status: 200 }); // 模拟成功的空响应
+}

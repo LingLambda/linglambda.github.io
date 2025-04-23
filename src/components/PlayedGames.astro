@@ -18,7 +18,7 @@ let imageUrl = steamApi.chineseImageUrl("322330");
     playedGames.map((game) => {
       const { appid, playtime_forever, img_icon_url } = game;
       const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
-      delay(1100);
+      if(import.meta.env.ENABLE_REQUEST)delay(500);
       return (
         <GameCard
           img={img_icon_url}
