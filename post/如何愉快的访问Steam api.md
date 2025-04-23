@@ -17,8 +17,12 @@ V 社的官方 API 文档，文档的介绍比较详细，但 api 总量少，�
 
 ## Steam API list
 
-返回了几乎所有可用的 api 而且不需要使用 key ，任何人都可以访问，但是几乎没注释，很难看懂 [https://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v0001/](https://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v0001/)
+非常多 api 而且不需要使用 key ，任何人都可以访问，但是几乎没注释，很难看懂 [https://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v0001/](https://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v0001/)
 
 ## xpaw 大佬整理的 api 文档
 
-非常全，非常详细，伟大！[https://steamapi.xpaw.me/](https://steamapi.xpaw.me/)
+非常详细，伟大！[https://steamapi.xpaw.me/](https://steamapi.xpaw.me/)
+
+## steam 的语言代码
+
+[https://partner.steamgames.com/doc/store/localization/languages?l=schinese](https://partner.steamgames.com/doc/store/localization/languages?l=schinese)

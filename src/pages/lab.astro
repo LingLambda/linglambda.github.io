@@ -1,22 +1,21 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import { Image } from "astro:assets";
 import tacImage from "../../public/assets/images/avatar.png";
 import DropMenu from "../components/DropMenu.astro";
 import Prose from "../components/Prose.astro";
+import { Image } from "astro:assets";
 import { Content } from "../posts/myUtil.md";
-import * as steamApi from "../utils/steamApi.ts";
+import PlayedGames from "../components/PlayedGames.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const links = [
   { url: "/blog", name: "blog" },
   { url: "/time-line", name: "time line" },
 ];
-
-let steamInfo = await steamApi.playedGames();
-let imageUrl = await steamApi.chineseImageUrl("322330");
 ---
 
-<MainLayout description="偶尔会在这乱写" keywords="lab,实验,前端">
+<BaseLayout description="偶尔会在这乱写" keywords="lab,实验,前端">
+  <main>
   偶尔会在这乱写
   <div id="tac-say">
     <Image src={tacImage} alt="Ling avatar" width="128" height="128" />
@@ -26,11 +25,10 @@ let imageUrl = await steamApi.chineseImageUrl("322330");
   <Prose>
     <Content />
   </Prose>
-  <p>
-    {JSON.stringify(steamInfo)}
-  </p>
-  <Image src={imageUrl} alt="dst game header" width="512" height="512" />
-</MainLayout>
+
+  <PlayedGames/>
+</main>
+</BaseLayout>
 
 <style>
   .chat-bubble {
@@ -39,5 +37,12 @@ let imageUrl = await steamApi.chineseImageUrl("322330");
     border: 1px solid #d4d4d4;
     background-color: #f9f9f9;
     border-radius: 10px;
+  }
+
+  main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90rem;
   }
 </style>

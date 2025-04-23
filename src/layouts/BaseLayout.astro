@@ -25,9 +25,7 @@ const { description, keywords ,selected} = Astro.props;
       <header id="menu">
         <HeadMenu/>
       </header>
-      <main>
         <slot />
-      </main>
       <!-- <hr style="width:600px;color:#808080; margin-top: 1rem;" /> -->
       <footer>
         <!-- <Image src={notByAi} alt="not-by-ai" /> -->
@@ -99,13 +97,6 @@ const { description, keywords ,selected} = Astro.props;
   .footer-link:hover {
     border-bottom: 1px solid black;
     color: black;
-  }
-
-  main {
-    max-width: 65ch;
-    flex-grow: 1; /* 使 main 占据剩余空间 */
-    font-size: 1rem;
-    line-height: 1.75;
   }
 
   footer {

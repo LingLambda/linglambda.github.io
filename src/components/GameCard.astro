@@ -1,0 +1,54 @@
+---
+import * as steamApi from "../utils/steamApi.ts";
+
+const { img, appid, playtime } = Astro.props;
+const playtimeHours = Math.floor(playtime / 60);
+
+const appDetails = (await steamApi.appdetails(appid))?.[appid]?.data;
+const name = appDetails?.name|| '';
+---
+
+<div class="card">
+  <img src={img} alt={`${name} image`} />
+  <div class="card-content">
+    <h3>{name}</h3>{playtimeHours}
+    <p>这是一个极简风格的卡片，拥有圆角、阴影和左右结构。</p>
+  </div>
+</div>
+
+<style>
+  .card {
+    display: flex;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    max-width: 600px;
+    width: 90%;
+  }
+
+  .card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .card-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card-content h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+  }
+
+  .card-content p {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: #666;
+  }
+</style>

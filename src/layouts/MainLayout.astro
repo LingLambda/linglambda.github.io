@@ -3,8 +3,16 @@ import BaseLayout from "./BaseLayout.astro";
 ---
 
 <BaseLayout>
+  <main>
     <slot />
+  </main>
 </BaseLayout>
 
 <style>
+  main {
+    max-width: 65ch;
+    flex-grow: 1; /* 使 main 占据剩余空间 */
+    font-size: 1rem;
+    line-height: 1.75;
+  }
 </style>
