@@ -1,29 +1,47 @@
 ---
-import type { PlayedGame } from "../utils/steamApi.ts";
+import type { MyPlayedGame, PlayedGame } from "../utils/steamApi.ts";
 import * as steamApi from "../utils/steamApi.ts";
-import { Image } from "astro:assets";
-import GameCard from "./GameCard.astro";
+import GameCard from "../components//GameCard.astro";
 
-let playedGames: PlayedGame[] = await steamApi.playedGames();
-let imageUrl = steamApi.chineseImageUrl("322330");
+const appList: { applist: { apps: { appid: string; name: string }[] } } =
+  await steamApi.getAppList();
+  const apps = appList.applist.apps;
+
+let playedGames: MyPlayedGame[] = (await steamApi.playedGames()).map(game => ({
+  ...game,
+  name: apps.find((app) => app.appid == game.appid)?.name || '',
+  imgurl: steamApi.imageUrl(game.appid.toString())
+}));
+//TODO
+// const otherGames = [{
+//   name:'Escape from Tarkov',
+//   imgurl: 'https://cdn.cloudflare.steamstatic.com/steam/apps/255710/header.jpg',
+// }]
+// playedGames.push()
+
+
+playedGames = playedGames.filter((game) => game.playtime_forever > 1000);
+// const ENABLE_REQUEST = import.meta.env.ENABLE_REQUEST || false;
+// console.log(ENABLE_REQUEST);
+// if (ENABLE_REQUEST === true) {
+//   const appids = playedGames.map((game) => game.appid);
+//   const appdetails = await steamApi.appdetails(appids);
+//   appdetails.map();
+// }
+
+
 ---
 
 <div>
-  <p>
-    <!-- {JSON.stringify(steamInfo)} -->
-  </p>
-  <Image src={imageUrl} alt="dst game header" width="512" height="512" />
-
   {
     playedGames.map((game) => {
-      const { appid, playtime_forever, img_icon_url } = game;
-      const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
-      if(import.meta.env.ENABLE_REQUEST)delay(500);
+      const { appid, name, playtime_forever } = game;
       return (
         <GameCard
-          img={img_icon_url}
-          playtime={playtime_forever}
           appid={appid}
+          name={name}
+          playtime={playtime_forever}
+          imgurl={steamApi.imageUrl(game.appid.toString())}
         />
       );
     })

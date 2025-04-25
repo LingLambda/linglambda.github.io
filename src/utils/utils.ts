@@ -63,30 +63,3 @@ switch (PATH_MODULE) {
 }
 
 const ENABLE_REQUEST = import.meta.env.ENABLE_REQUEST || false; //频繁请求可能导致被api封禁，仅在调试完毕后开启
-
-export let get = async (
-  url: string,
-  params?:
-    | string
-    | string[][]
-    | Record<string, string>
-    | URLSearchParams
-    | undefined,
-  headers?: HeadersInit
-) => {
-  const queryString = new URLSearchParams(params).toString();
-  let response;
-  try {
-    response = await fetch(`${url}?${queryString}`, {
-      method: "GET",
-      headers: headers,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-  return response;
-};
-
-if (!ENABLE_REQUEST) {
-  get = async () => new Response("{}", { status: 200 }); // 模拟成功的空响应
-}
