@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@types/axios": "^0.14.4",
     "astro": "^5.5.4",
     "astro-seo": "^0.8.4",
     "axios": "^1.9.0",
