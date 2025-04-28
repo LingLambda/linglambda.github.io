@@ -76,19 +76,25 @@ const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
     font-style: normal;
   }
 
-  .blog-head > * {
-    line-height: 3.5rem;
+  .title{
+    white-space: nowrap; /* 不换行 */
+  }
+
+  .blog-head {
   }
 
   .other-info > * {
-    line-height: 1.5rem;
+    line-height: 2rem;
   }
 
   .title {
+    white-space: nowarp;
     font-size: 2rem;
   }
 
   .description {
+    margin: 2rem 0 ;
+    line-height: 1.5rem;
     font-weight: lighter;
     font-size: 1.3rem;
   }
