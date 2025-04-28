@@ -1,29 +1,29 @@
 .prose {
   line-height: 1.75;
-}
 
-.prose h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 1em;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 1em;
+  }
 
-.prose h2 {
-  line-height: 1.33333;
-}
+  h2 {
+    line-height: 1.33333;
+  }
 
-.prose p {
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
-}
+  p {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
 
-.prose p:first-of-type {
-  margin-top: 0;
-}
+  p:first-of-type {
+    margin-top: 0;
+  }
 
-.prose p:last-of-type {
-  margin-bottom: 0;
+  p:last-of-type {
+    margin-bottom: 0;
+  }
 }
