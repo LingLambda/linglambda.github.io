@@ -12,4 +12,4 @@ title: index
 
 累了吗，可以在下面的椅子上休息，坐多久都可以！
 
-![chair](../../public/assets/images/chair.webp)
+![chair](../../public/assets/images/chair.webp "看起来很结实的椅子")
