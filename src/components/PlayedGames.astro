@@ -2,23 +2,29 @@
 import type { MyPlayedGame, PlayedGame } from "../utils/steamApi.ts";
 import * as steamApi from "../utils/steamApi.ts";
 import GameCard from "../components//GameCard.astro";
+import apps from "../../public/assets/app.json";
 
-const appList: { applist: { apps: { appid: string; name: string }[] } } =
-  await steamApi.getAppList();
-  const apps = appList.applist.apps;
+// const appList: { applist: { apps: { appid: string; name: string }[] } } =
+//   await steamApi.getAppList();
+//   const apps = appList.applist.apps;
 
-let playedGames: MyPlayedGame[] = (await steamApi.playedGames()).map(game => ({
-  ...game,
-  name: apps.find((app) => app.appid == game.appid)?.name || '',
-  imgurl: steamApi.imageUrl(game.appid.toString())
-}));
+let playedGames: MyPlayedGame[] = (await steamApi.playedGames()).map(
+  (game) => ({
+    ...game,
+    name:
+      apps.find(
+        (app: { appid: number; name: string }) =>
+          app.appid.toString() == game.appid
+      )?.name || "",
+    imgurl: steamApi.imageUrl(game.appid.toString()),
+  })
+);
 //TODO
 // const otherGames = [{
 //   name:'Escape from Tarkov',
 //   imgurl: 'https://cdn.cloudflare.steamstatic.com/steam/apps/255710/header.jpg',
 // }]
 // playedGames.push()
-
 
 playedGames = playedGames.filter((game) => game.playtime_forever > 1000);
 // const ENABLE_REQUEST = import.meta.env.ENABLE_REQUEST || false;
@@ -28,8 +34,6 @@ playedGames = playedGames.filter((game) => game.playtime_forever > 1000);
 //   const appdetails = await steamApi.appdetails(appids);
 //   appdetails.map();
 // }
-
-
 ---
 
 <div>
