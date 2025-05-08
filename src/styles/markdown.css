@@ -26,4 +26,15 @@
   p:last-of-type {
     margin-bottom: 0;
   }
+
+  pre:has(code) {
+    padding: 0 2rem;
+  }
+
+  code {
+    font-family: "Maple Mono", sans-serif;
+    font-size: 0.9rem;
+  }
+
+
 }

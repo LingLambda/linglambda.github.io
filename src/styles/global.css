@@ -44,3 +44,11 @@ p {
 a {
   color: unset;
 }
+
+@font-face {
+  font-family: "Maple Mono";
+  src: url("../../public/fonts/MapleMono-Regular.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
