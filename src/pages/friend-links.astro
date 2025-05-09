@@ -1,23 +1,75 @@
 ---
-import FriendCard from "../components/FriendCard.astro";
+import { Image } from "astro:assets";
 import FriendsLayout from "../layouts/FriendsLayout.astro";
+import friends from "../../public/assets/friends.json";
+friends.sort(() => Math.random() - 0.5);
 ---
 
 <FriendsLayout
   description="本页面供奉着我的朋友们(不是"
   keywords="friends,links"
 >
-  <FriendCard
-    name="Keritial"
-    description="一个平淡的个体."
-    icon="https://avatars.githubusercontent.com/u/50075277?v=4"
-    url="https://krtl.top"
-  />
-  <FriendCard
-  name="Shikochin"
-  description="自愚可悖的庸人。"
-  icon="https://avatars.githubusercontent.com/u/60309542?v=4"
-  url="https://shikoch.in/"
-  >
-  </FriendCard>
+  {
+    friends.map(({ name, des, icon, url }) => (
+      <a class="main" href={url}>
+        <div class="left">
+          <Image src={icon} alt={name + " avatar"} width="96" height="96" />
+        </div>
+        <div class="right">
+          <p class="name">{name}</p>
+          <p class="description">{des}</p>
+        </div>
+      </a>
+    ))
+  }
 </FriendsLayout>
+
+<style>
+  .main {
+    text-decoration: none; /* 去除下划线 */
+    color: inherit; /* 继承父元素的颜色 */
+    margin: 0 1rem 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 8rem;
+    width: auto;
+    background-color: white;
+    border: 1px solid #f4f4f5; /* 添加黑色的边框，宽度为 2px */
+    border-radius: 1rem;
+    padding: 6%;
+  }
+
+  @media (max-width: 320px) {
+    .left {
+      display: none;
+    }
+  }
+  .main:hover {
+    border: 1px solid #00d7c0; /* 添加黑色的边框，宽度为 2px */
+    /* background-color: #f4f3f6; */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+  }
+
+  .name {
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden; /* 超出隐藏 */
+    text-overflow: ellipsis; /* 超出显示省略号 */
+    width: 100%; /* 超出显示省略必须有明确的宽度 */
+  }
+
+  .description {
+    font-weight: lighter;
+    font-size: 1rem;
+    color: #808080;
+    white-space: nowrap;
+    overflow: hidden; /* 超出隐藏 */
+    text-overflow: ellipsis; /* 超出显示省略号 */
+    width: 100%; /* 超出显示省略必须有明确的宽度 */
+  }
+
+  img {
+    border-radius: 90px;
+  }
+</style>
