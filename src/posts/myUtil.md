@@ -9,6 +9,7 @@ title: 我的工具
 | 代码编辑器 | Idea, VsCode, NeoVim        |
 | 字体       | FireCode, MapleMono         |
 | 截图       | Snipaste                    |
+| 空间管理   | Wiztree                     |
 | 浏览器     | FireFox                     |
 | 终端       | Zsh, PowerShell             |
 | 网络工具   | ClashVergeRev               |
