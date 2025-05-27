@@ -17,6 +17,7 @@ permissions:
 jobs:
   build:
     env:
+      PATH_MODULE: pinyin # 以拼音路径形式构建
       STEAM_ID: ${{ secrets.STEAM_ID }}
       STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
     runs-on: ubuntu-latest
