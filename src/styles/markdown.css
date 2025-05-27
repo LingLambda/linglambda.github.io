@@ -36,5 +36,9 @@
     font-size: 0.9rem;
   }
 
-
+  @media (max-width: 768px) {
+    code {
+      font-size: 0.7rem;
+    }
+  }
 }

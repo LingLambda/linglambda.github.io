@@ -1,5 +1,4 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
 import MainLayout from "./MainLayout.astro";
 ---
 
@@ -7,9 +6,28 @@ import MainLayout from "./MainLayout.astro";
   <div id="cards">
     <slot>暂时还没有内容哦</slot>
   </div>
+  
+  <div id="info">
+    <p>前辈！和我交换友链吧！</p>
+    <p>
+      提供你的 <strong>名字</strong>、<strong>描述</strong>、<strong
+        >头像</strong
+      >、<strong>地址</strong>， 或者按照如下格式发送到
+      <a href="mailto:abc1514671906@163.com" target="_blank">这里！</a>
+    </p>
+    <pre><code>
+  "name": "田所浩二",
+  "des": "逸一时误一世。",
+  "icon": "https://icon.shimo/114514",
+  "url": "https://tadokorokouji.homo"
+</code></pre>
+  </div>
 </MainLayout>
 
 <style>
+  #info{
+    padding: 20px 50px;
+  }
   #cards {
     display: grid;
     grid-template-columns: repeat(2, 300px); /* 每张卡片固定宽度 */

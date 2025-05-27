@@ -52,3 +52,8 @@ a {
   font-style: normal;
   font-display: swap;
 }
+
+code {
+  font-family: "Maple Mono", sans-serif;
+  font-size: 0.9rem;
+}
