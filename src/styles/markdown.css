@@ -37,8 +37,16 @@
   }
 
   @media (max-width: 768px) {
+    line-height: 1.4;
     code {
       font-size: 0.7rem;
+    }
+    h2 {
+      line-height: 1;
+    }
+    p {
+      margin-top: 1em;
+      margin-bottom: 1em;
     }
   }
 }
