@@ -46,7 +46,9 @@ switch (PATH_MODULE) {
         nonZh: "consecutive",
       })
         .join("-")
-        .replaceAll(/-+/g, "-");
+        .replaceAll(/-+/g, "-")
+        .toLocaleLowerCase()
+        .replaceAll("ü", "u");
     break;
   }
   case "pinyin_with_tones": {
@@ -57,7 +59,8 @@ switch (PATH_MODULE) {
         nonZh: "consecutive",
       })
         .join("-")
-        .replaceAll(/-+/g, "-");
+        .replaceAll(/-+/g, "-")
+        .toLocaleLowerCase();
     break;
   }
 }
