@@ -1,18 +1,167 @@
 ---
 //导航菜单组件
+const pathList = [
+  {
+    id: "index",
+    href: "/",
+    name: "Ling的小窝",
+  },
+  {
+    id: "blog",
+    href: "/blog/",
+    name: "博客",
+  },
+  {
+    id: "time-line",
+    href: "/time-line/",
+    name: "时线",
+  },
+  {
+    id: "lab",
+    href: "/lab/",
+    name: "实验",
+  },
+  {
+    id: "friend-links",
+    href: "/friend-links/",
+    name: "友链",
+  },
+  {
+    id: "about",
+    href: "/about/",
+    name: "关于",
+  },
+];
 ---
 
 <nav class="menu">
-  <a id="index" href="/" data-astro-prefetch>Ling的小窝</a>
-  <a id="blog" href="/blog/" data-astro-prefetch>博客</a>
-  <a id="time-line" href="/time-line/" data-astro-prefetch>时线</a>
-  <a id="lab" href="/lab/" data-astro-prefetch>实验</a>
-  <a id="friend-links" href="/friend-links/" data-astro-prefetch>友链</a>
-  <a id="about" href="/about/" data-astro-prefetch>关于</a>
+  {
+    pathList.map(({ id, href, name }) => (
+      <a id={id} href={href} data-astro-prefetch>
+        {name}
+      </a>
+    ))
+  }
 </nav>
 
+<div>
+  <!-- 圆形汉堡菜单按钮 -->
+  <button class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- 遮罩层 -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- 侧边菜单 -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title">这是一个憨包菜单</div>
+    </div>
+    <nav class="menu-items">
+      {
+        pathList.map(({ id, href, name }) => (
+          <a href={href} class="menu-item" data-astro-prefetch>
+            {name}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</div>
+
 <script is:inline>
+  // 将所有汉堡菜单相关的功能封装成函数
+  function initHamburgerMenu() {
+    // 获取DOM元素
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const body = document.body;
+
+    // 如果元素不存在，直接返回
+    if (!hamburger || !sidebar || !overlay) {
+      return;
+    }
+
+    // 移除已存在的事件监听器（防止重复绑定）
+    hamburger.replaceWith(hamburger.cloneNode(true));
+    const newHamburger = document.getElementById("hamburger");
+
+    overlay.replaceWith(overlay.cloneNode(true));
+    const newOverlay = document.getElementById("overlay");
+
+    // 打开菜单
+    function toggleMenu() {
+      newHamburger.classList.toggle("active");
+      sidebar.classList.toggle("active");
+      newOverlay.classList.toggle("active");
+      body.classList.toggle("no-scroll", sidebar.classList.contains("active"));
+    }
+    // 关闭菜单
+    function closeMenu() {
+      newHamburger.classList.remove("active");
+      sidebar.classList.remove("active");
+      newOverlay.classList.remove("active");
+      body.classList.remove("no-scroll");
+    }
+
+    // 重新绑定事件监听器
+    newHamburger.addEventListener("click", toggleMenu);
+    newOverlay.addEventListener("click", closeMenu);
+
+    // 菜单项点击事件
+    const menuItems = document.querySelectorAll(".menu-item");
+    menuItems.forEach((item) => {
+      // 先移除可能存在的旧监听器
+      const newItem = item.cloneNode(true);
+      item.parentNode.replaceChild(newItem, item);
+
+      newItem.addEventListener("click", (e) => {
+        // 添加点击动画效果
+        newItem.style.transform = "scale(0.95)";
+        setTimeout(() => {
+          newItem.style.transform = "";
+        }, 150);
+
+        // 延迟关闭菜单
+        setTimeout(() => {
+          closeMenu();
+        }, 200);
+      });
+    });
+
+    // 键盘事件支持
+    function handleKeydown(e) {
+      if (e.key === "Escape" && sidebar.classList.contains("active")) {
+        closeMenu();
+      }
+    }
+
+    // 窗口大小改变时的处理
+    function handleResize() {
+      if (window.innerWidth > 768 && sidebar.classList.contains("active")) {
+        closeMenu();
+      }
+    }
+
+    // 移除旧的事件监听器并添加新的
+    document.removeEventListener("keydown", handleKeydown);
+    window.removeEventListener("resize", handleResize);
+
+    document.addEventListener("keydown", handleKeydown);
+    window.addEventListener("resize", handleResize);
+  }
+
+  // 更新选中状态的函数
   const updateSelected = () => {
+    // 先清除所有选中状态
+    document.querySelectorAll(".selected").forEach((el) => {
+      el.classList.remove("selected");
+    });
+
     let pathname = location.pathname.split("/")[1];
     pathname ||= "index";
     const e = document.getElementById(pathname);
@@ -21,9 +170,34 @@
     }
     e.classList.add("selected");
   };
-  document.addEventListener("astro:after-swap", updateSelected); //视图过渡后的脚本执行
-  updateSelected();
+
+  // 页面加载完成后初始化
+  document.addEventListener("DOMContentLoaded", () => {
+    initHamburgerMenu();
+    updateSelected();
+  });
+
+  // 视图过渡后重新初始化
+  document.addEventListener("astro:after-swap", () => {
+    initHamburgerMenu();
+    updateSelected();
+  });
+
+  // 如果页面已经加载完成，立即执行
+  if (document.readyState === "loading") {
+    // 文档仍在加载
+  } else {
+    // 文档已经加载完成
+    initHamburgerMenu();
+    updateSelected();
+  }
 </script>
+
+<style is:inline>
+  .no-scroll {
+    overflow-y: hidden;
+  }
+</style>
 
 <style>
   .menu {
@@ -58,15 +232,180 @@
     background-color: rgba(221, 221, 221, 0.4);
   }
 
-  .menu > a.selected {
+  .menu > .selected {
     transition: none;
     background-color: rgba(0, 0, 0, 0.5);
     color: rgba(247, 247, 249, 1);
   }
 
-  .menu > a.selected:hover {
+  .menu > .selected:hover {
     transition: none;
     background-color: rgba(0, 0, 0, 0.6);
     color: rgba(247, 247, 249, 1);
+  }
+
+  /* 圆形汉堡菜单按钮 */
+  .hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    z-index: 1001;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .hamburger:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .hamburger span {
+    display: block;
+    height: 3px;
+    width: 18px;
+    background: #333;
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: center;
+    margin: 2px 0;
+  }
+
+  /* 汉堡菜单动画 */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .hamburger.active {
+    background: #7b7b7b;
+  }
+
+  .hamburger.active span {
+    background: white;
+  }
+
+  /* 侧边菜单 */
+  .sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 999;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .sidebar-header {
+    padding: 30px 20px 20px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .sidebar-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .menu-items {
+    padding: 20px 0;
+  }
+
+  .menu-item {
+    display: block;
+    padding: 15px 30px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    position: relative;
+  }
+
+  .menu-item:hover {
+    background: #f8f9fa;
+    transform: translateX(10px);
+  }
+
+  /* 遮罩层 */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 998;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .demo-text {
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+  }
+
+  /* 菜单项箭头 */
+  .menu-item::after {
+    content: "→";
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: #666;
+  }
+
+  .menu-item:hover::after {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .menu {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .sidebar {
+      display: block;
+      /* box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15); */
+    }
   }
 </style>
