@@ -4,7 +4,7 @@ import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import gopherImage from "../assets/pilot-bust.svg";
 import { Image } from "astro:assets";
-const { description, keywords ,selected} = Astro.props;
+const { description, keywords, selected } = Astro.props;
 ---
 
 <html lang="zh">
@@ -12,30 +12,47 @@ const { description, keywords ,selected} = Astro.props;
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.svg" type="image/svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <script src="../scripts/swUnregister.ts"/>
+    <script src="../scripts/swUnregister.ts"></script>
     <ClientRouter />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content="LingLambda" />
     <!-- 统一不同浏览器的默认样式 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Ling的小窝</title>
   </head>
   <body>
     <div id="container">
       <header id="menu">
-        <HeadMenu/>
+        <HeadMenu />
       </header>
-        <slot />
+      <slot>暂时还没有内容哦</slot>
       <!-- <hr style="width:600px;color:#808080; margin-top: 1rem;" /> -->
       <footer>
-        <Image class="gopher" src={gopherImage} height=32 alt="gopher" title="这个博客和 Golang 没有任何关系，但是土拨鼠很可爱" loading="eager"/>
+        <Image
+          class="gopher"
+          src={gopherImage}
+          height="32"
+          alt="gopher"
+          title="这个博客和 Golang 没有任何关系，但是土拨鼠很可爱"
+          loading="eager"
+        />
         <!-- <Image src={notByAi} alt="not-by-ai" /> -->
         <p>&copy; 2024-2025</p>
         <p>LingLambda</p>
         <p>
-          <a href="https://icp.gov.moe/?keyword=20251154" target="_blank" class="footer-link">萌ICP备20251154号</a>
+          <a
+            href="https://icp.gov.moe/?keyword=20251154"
+            target="_blank"
+            class="footer-link">萌ICP备20251154号</a
+          >
         </p>
         <p>
           本站使用 <a href="https://astro.build" class="footer-link">Astro</a> 编写
@@ -49,11 +66,15 @@ const { description, keywords ,selected} = Astro.props;
   const menu = document.getElementById("menu");
   if (menu instanceof HTMLElement) {
     let lastScrollTop = 0;
-    addEventListener("scroll", () => {
-      const scrollTop = window.scrollY;
-      menu.style.top = scrollTop > lastScrollTop ? "-5.5rem" : "0.2rem";
-      lastScrollTop = scrollTop;
-    }, { passive: true });
+    addEventListener(
+      "scroll",
+      () => {
+        const scrollTop = window.scrollY;
+        menu.style.top = scrollTop > lastScrollTop ? "-5.5rem" : "0.2rem";
+        lastScrollTop = scrollTop;
+      },
+      { passive: true }
+    );
   }
 </script>
 
@@ -65,7 +86,7 @@ const { description, keywords ,selected} = Astro.props;
   html {
     background-color: rgb(250, 252, 254);
     /* scrollbar-gutter: stable; */ /* 防止滚动条导致页面宽度不一致 */
-    overflow-y: scroll;  /*总是显示滚动条*/
+    overflow-y: scroll; /*总是显示滚动条*/
   }
 
   html,
@@ -127,8 +148,8 @@ const { description, keywords ,selected} = Astro.props;
   img {
     max-width: 36rem;
   }
-  
-  .gopher{
+
+  .gopher {
     align-self: flex-end;
   }
 </style>

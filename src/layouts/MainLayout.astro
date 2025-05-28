@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+const { description, keywords } = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout description={description} keywords={keywords}>
   <main>
     <slot />
   </main>
@@ -14,6 +15,6 @@ import BaseLayout from "./BaseLayout.astro";
     flex-grow: 1; /* 使 main 占据剩余空间 */
     font-size: 1rem;
     line-height: 1.75;
-    width: 85%
+    width: 85%;
   }
 </style>

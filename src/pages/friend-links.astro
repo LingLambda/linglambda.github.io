@@ -5,10 +5,7 @@ import friends from "../../public/assets/friends.json";
 friends.sort(() => Math.random() - 0.5);
 ---
 
-<FriendsLayout
-  description="本页面供奉着我的朋友们(不是"
-  keywords="friends,links"
->
+<FriendsLayout>
   {
     friends.map(({ name, des, icon, url }) => (
       <a class="main" href={url}>

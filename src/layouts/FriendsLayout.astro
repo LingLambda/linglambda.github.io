@@ -2,11 +2,11 @@
 import MainLayout from "./MainLayout.astro";
 ---
 
-<MainLayout>
+<MainLayout description="本页面供奉着我的朋友们(不是" keywords="friends,links">
   <div id="cards">
     <slot>暂时还没有内容哦</slot>
   </div>
-  
+
   <div id="info">
     <p>前辈！和我交换友链吧！</p>
     <p>
@@ -25,7 +25,7 @@ import MainLayout from "./MainLayout.astro";
 </MainLayout>
 
 <style>
-  #info{
+  #info {
     padding: 20px 50px;
   }
   #cards {
