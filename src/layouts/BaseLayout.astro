@@ -11,6 +11,7 @@ const { description, keywords ,selected} = Astro.props;
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.svg" type="image/svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <script src="../scripts/swUnregister.ts"/>
     <ClientRouter />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -103,7 +104,7 @@ const { description, keywords ,selected} = Astro.props;
 
   footer {
     margin-top: 2.1rem;
-    border-top: 1px solid rgb(227, 232, 247); 顶部边框线
+    border-top: 1px solid rgb(227, 232, 247); /* 顶部边框线 */
     height: auto; /* 让 footer 根据内容自适应高度 */
     width: 100%;
     background-color: rgb(247, 247, 249);
