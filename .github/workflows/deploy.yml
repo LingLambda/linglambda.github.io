@@ -5,6 +5,8 @@ on:
   # 如果你使用了别的分支名，请按需将 `master` 替换成你的分支名
   push:
     branches: [ master ]
+  schedule:
+    - cron: '0 20 * * *' # 每天凌晨 4 点 (北京时间)执行
   # 允许你在 GitHub 上的 Actions 标签中手动触发此“工作流程”
   workflow_dispatch:
 
