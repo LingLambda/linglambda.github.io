@@ -7,7 +7,7 @@ const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
 });
 ---
 
-<MainLayout description='本页面列出了所有blog页面' keywords="blog">
+<MainLayout description='本页面列出了所有blog页面' keywords="blog" title="文章">
   {
     blogs.map(async (blog) => {
       const { title, date, description } = blog.data;

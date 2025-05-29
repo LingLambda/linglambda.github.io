@@ -4,7 +4,7 @@ import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import gopherImage from "../assets/pilot-bust.svg";
 import { Image } from "astro:assets";
-const { description, keywords, selected } = Astro.props;
+const { description, keywords, title } = Astro.props;
 ---
 
 <html lang="zh">
@@ -26,7 +26,7 @@ const { description, keywords, selected } = Astro.props;
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Ling的小窝</title>
+    <title>Ling的小窝{title ? ` - ${title}` : ""}</title>
   </head>
   <body>
     <div id="container">
