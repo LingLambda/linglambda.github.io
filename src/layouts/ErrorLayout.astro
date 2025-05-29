@@ -1,0 +1,64 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+const { title } = Astro.props;
+---
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.svg" type="image/svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script src="../scripts/swUnregister.ts"></script>
+    <ClientRouter />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="这是一个错误页面" />
+    <meta name="keywords" content="错误,error" />
+    <meta name="author" content="LingLambda" />
+    <!-- 统一不同浏览器的默认样式 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Ling的小窝{title ? ` - ${title}` : ""}</title>
+  </head>
+  <body>
+    <div id="container">
+      <slot>出错了！</slot>
+      <!-- <hr style="width:600px;color:#808080; margin-top: 1rem;" /> -->
+    </div>
+  </body>
+</html>
+
+<style>
+  * {
+    box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
+  }
+
+  html {
+    background-color: rgb(250, 252, 254);
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* 确保body和html占满全屏 */
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  img {
+    max-width: 36rem;
+  }
+
+  .gopher {
+    align-self: flex-end;
+  }
+</style>
