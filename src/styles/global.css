@@ -47,7 +47,7 @@ a {
 
 @font-face {
   font-family: "Maple Mono";
-  src: url("../../public/fonts/MapleMono-Regular.woff2") format("woff");
+  src: url("/fonts/MapleMono-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

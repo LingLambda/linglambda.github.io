@@ -36,6 +36,19 @@
     font-size: 0.9rem;
   }
 
+  img,
+  video {
+    width: 100%;
+    object-fit: cover;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  video {
+    outline: none; /* 移除焦点时的边框 */
+    cursor: pointer; /* 鼠标悬停时显示手型 */
+  }
+
   @media (max-width: 768px) {
     line-height: 1.4;
     code {
