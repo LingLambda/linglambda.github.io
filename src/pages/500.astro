@@ -3,7 +3,30 @@ import ErrorLayout from "../layouts/ErrorLayout.astro";
 ---
 
 <ErrorLayout title="500">
-  <h1>爆炸了！ - 500</h1>
+  <div class="main">
+    <h1>爆炸了！- 500</h1>
+    <p>
+      一般情况你不会看到这个页面，如果你看到了，拜托<a
+        href="mailto:abc1514671906@163.com"
+        target="_blank"
+        class="info"><h3>联系我</h3></a
+      >吧，我什么都会做的！
+    </p>
+  </div>
 </ErrorLayout>
 
-<style></style>
+<style>
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+  }
+  .info {
+    color: red;
+    text-decoration: none;
+  }
+  .info:hover {
+    text-decoration: underline;
+  }
+</style>
