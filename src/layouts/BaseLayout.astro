@@ -76,6 +76,53 @@ const { description, keywords, title } = Astro.props;
       { passive: true }
     );
   }
+
+  const title = document.title;
+
+  let seconds = 10;
+  let timer: NodeJS.Timer | null;
+  let isPaused = true;
+  let countdown = `${seconds}`;
+  const boom = Math.random() < 0.8 ? "爆炸了！！！" : "熄火了...";
+
+  const start = () => {
+    timer = setInterval(() => {
+      if (!isPaused && seconds > 0) {
+        seconds--;
+        countdown = `${seconds}`;
+        document.title = "还有" + countdown + "秒爆炸！！";
+      }
+      if (seconds === 0 && timer) {
+        clearInterval(timer);
+        timer = null;
+        document.title = boom;
+      }
+    }, 1000);
+  };
+  const pause = () => {
+    isPaused = true;
+  };
+  const resume = () => {
+    if (seconds > 0 && isPaused) {
+      isPaused = false;
+    }
+  };
+
+  start();
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      if (timer) {
+        resume();
+      } else {
+        document.title = boom;
+      }
+    } else {
+      if (timer) {
+        pause();
+      }
+      document.title = title;
+    }
+  });
 </script>
 
 <style>
