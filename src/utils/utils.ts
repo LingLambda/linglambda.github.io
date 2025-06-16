@@ -5,6 +5,13 @@ import {
 } from "astro:content";
 
 /**
+ * 延时
+ */
+export const delay = (ms: number): Promise<void> => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+/**
  * 计算字符串中单词个数与汉字个数之和
  */
 export const getWordCount = (text: string) => {

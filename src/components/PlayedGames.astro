@@ -3,13 +3,19 @@ import type { MyPlayedGame, PlayedGame } from "../utils/steamApi.ts";
 import * as steamApi from "../utils/steamApi.ts";
 import GameCard from "../components//GameCard.astro";
 import apps from "../../public/assets/app.json";
+import { delay } from "../utils/utils";
 
 // const appList: { applist: { apps: { appid: string; name: string }[] } } =
 //   await steamApi.getAppList();
 //   const apps = appList.applist.apps;
 
-let playedGames: MyPlayedGame[] = (await steamApi.playedGames()).map(
-  (game) => ({
+const appidList = await steamApi.playedGames();
+let debugNum = 0;
+let playedGames: MyPlayedGame[] = [];
+for (const game of appidList) {
+  console.log(debugNum++);
+  await delay(500);
+  playedGames.push({
     ...game,
     name:
       apps.find(
@@ -17,8 +23,9 @@ let playedGames: MyPlayedGame[] = (await steamApi.playedGames()).map(
           app.appid.toString() == game.appid
       )?.name || "",
     imgurl: steamApi.imageUrl(game.appid.toString()),
-  })
-);
+  });
+}
+
 //TODO
 // const otherGames = [{
 //   name:'Escape from Tarkov',
