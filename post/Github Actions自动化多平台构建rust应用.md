@@ -5,9 +5,9 @@ description: 本文是我使用Github Action自动化多平台构建rust应用�
 # image: "../public/assets/images/arch1.jpg"
 category: 记录
 tags:
-  - github action
-  - rust
-  - devops
+  - GithubAction
+  - Rust
+  - DevOps
 published: true
 sitemap: true
 ---

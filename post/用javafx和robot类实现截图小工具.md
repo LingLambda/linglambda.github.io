@@ -4,8 +4,7 @@ date: 2024-6-3 22:31
 description: 用javafx和robot类实现截图小工具
 category: 编程
 tags:
-  - java
-  - javafx
+  - Java
 published: true
 sitemap: true
 ---

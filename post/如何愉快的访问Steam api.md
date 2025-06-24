@@ -5,7 +5,7 @@ description: 本文描述了如何通过Steam接口获取相关信息
 # image: "../public/assets/images/arch1.jpg"
 category: 记录
 tags:
-  - tag1
+  - Api
 published: false
 sitemap: false
 ---

@@ -5,7 +5,7 @@ description: redis简略概述
 image: "../public/assets/images/redis.webp"
 category: 记录
 tags:
-  - redis
+  - Redis
 published: true
 sitemap: true
 ---

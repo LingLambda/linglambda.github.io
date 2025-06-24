@@ -6,7 +6,7 @@ image: "../public/assets/images/rime3.png"
 category: 记录
 tags:
   - 输入法
-  - rime
+  - Rime
   - 雾凇拼音
 published: true
 sitemap: true

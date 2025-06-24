@@ -5,7 +5,7 @@ description: 关于JVM内存模型的简要记录
 image: "../public/assets/images/mark-compact.jpg"
 category: 记录
 tags:
-  - java
+  - Java
   - 编程
 published: true
 sitemap: true
