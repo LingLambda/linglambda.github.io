@@ -8,13 +8,12 @@ import { delay } from "../utils/utils";
 // const appList: { applist: { apps: { appid: string; name: string }[] } } =
 //   await steamApi.getAppList();
 //   const apps = appList.applist.apps;
-
+const DELAY_MS = 1000;
 const appidList = await steamApi.playedGames();
 let debugNum = 0;
 let playedGames: MyPlayedGame[] = [];
 for (const game of appidList) {
-  console.log(debugNum++);
-  await delay(500);
+  await delay(DELAY_MS);
   playedGames.push({
     ...game,
     name:
