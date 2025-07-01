@@ -85,3 +85,141 @@ sitemap: true
 | 是否可以定义静态方法 | 可以                             | Java 8+ 可以                        |
 | 继承方式             | `extends`                        | `implements`                        |
 | 适合描述             | **“是什么”**（比如父类）         | **“能做什么”**（比如能力/规范）     |
+
+## 7.Vue 有哪些钩子函数
+
+| Vue2          | Vue3            | 调用时机                                     |
+| ------------- | --------------- | -------------------------------------------- |
+| beforeCreate  | (setup 前)      | 实例刚创建，data 和 methods 还未初始化       |
+| created       | (setup 中)      | 实例已创建，data 可访问，适合发起初始请求    |
+| beforeMount   | onBeforeMount   | 模板编译完成还未挂载，$el 不可操作           |
+| mounted       | onMounted       | DOM 挂载完成，适合操作 DOM、调用第三方库     |
+| beforeUpdate  | onBeforeUpdate  | 响应式数据变更后、DOM 更新前触发             |
+| updated       | onUpdated       | DOM 更新后；注意避免死循环（不建议修改数据） |
+| beforeDestroy | onBeforeDestroy | 组件销毁前，适合清理定时器、事件等资源       |
+| destroyed     | onDestroyed     | 组件已完全销毁，所有绑定解绑                 |
+| errorCaptured | onErrorCaptured | 子组件出错时                                 |
+| activated     | onActivated     | keep-alive 组件重新激活时                    |
+| deactivated   | onDeactivated   | keep-alive 组件被挂起时                      |
+
+## 8.MySQL的case when函数用法
+
+```sql
+# 简单 CASE 表达式
+CASE 表达式
+    WHEN 值1 THEN 结果1
+    WHEN 值2 THEN 结果2
+    ...
+    ELSE 默认结果
+END
+
+SELECT name,
+    CASE gender
+        WHEN 'M' THEN '男'
+        WHEN 'F' THEN '女'
+        ELSE '未知'
+    END AS gender_text
+FROM users;
+
+# 搜索型 CASE WHEN
+CASE
+    WHEN 条件1 THEN 结果1
+    WHEN 条件2 THEN 结果2
+    ...
+    ELSE 默认结果
+END
+
+SELECT name,
+    CASE
+        WHEN score >= 90 THEN '优秀'
+        WHEN score >= 60 THEN '及格'
+        ELSE '不及格'
+        END AS grade
+FROM student
+```
+
+## 9.SQL中的事务隔离级别
+
+READ_UNCOMMITTED：读未提交，可能出现脏读。
+READ_COMMITTED：读提交，解决了脏读，可能出现不可重复读。
+REPEATABLE_READ：可重复读，解决不可重复读，可能出现幻读。
+SERIALIZABLE：串行化，解决了可重复读，但效率很低。
+
+脏读：A事务修改了数据，还没提交，此时B事务去读取数据，读到了A还没提交的数据，然后A回滚了，此时B读取的数据是错误的(脏读)。
+不可重复读：A事务查询了一次数据，中途B事务修改了A查询后的数据，A事务在此之后又读取了一次，发现两次查询的结果不一样(不可重复读)。
+幻读：A事务查询了一次数据，中途B事务在A查询后的数据中新增了数据，A事务在此之后又读取了一次，发现多了数据（幻读）。
+
+## 10.Spring中的事务
+
+### 事物的隔离级别
+
+Spring的事务隔离机制相比SQL的隔离级别多了一个Default，即使用数据库默认的隔离级别
+
+### 事务的传播机制
+
+事务的传播机制即包含多个事务的方法在相互调用时，事务是如何在这些方法之间传播的。
+
+事务传播机制使用@Transactional(propagation.REQUIRED)来设置。
+
+传播机制有以下几种枚举：
+
+REQUIRED：事务的默认传播级别，表示如果当前存在事务，则加入该事务；如果没有事务，则创建一个新的事务。
+SUPPORTS：如果当前存在事务，则加入该事务；如果没有事务则以非事务方式运行。
+TODO:。。。
+
+## 11.SQL中的索引
+
+### 索引的作用
+
+索引可以显著提升大数据量下的查找速度。
+
+### 如何建立索引
+
+单列索引
+
+```sql
+ALTER TABLE students
+ADD INDEX idx_score(score);
+```
+
+多列索引
+
+```sql
+ALTER TABLE students
+ADD INDEX idx_name_score (name, score);
+```
+
+### 什么情况下不应建立索引
+
+索引基于Hash，如果一个列存在大量相同的值（如性别枚举），索引无法起到有效的效率优化作用。
+
+### 创建多个索引
+
+创建多个索引可以有效提高查询效率，但对于经常需要修改的列来说，每次新增修改删除时都需要同步修改索引，反而会拖慢速度。
+
+### 如何检查索引是否生效
+
+在查询语句前使用`EXPLAIN`语句
+
+```sql
+EXPLAIN SELECT * FROM your_table WHERE some_column = 'xxx';
+
+```
+
+可能会有以下输出
+
+| key        | type | rows | Extra       |
+| ---------- | ---- | ---- | ----------- |
+| `idx_name` | ref  | 10   | Using index |
+
+其中，主要看Extra和type列。Extra显示索引的使用情况，type列表示索引的使用效率。其次，当key为NULL，type为ALL，Extra含Using file sort时，表示未使用索引，rows很大时，表示扫描行数过多，效率较差。
+
+| type 值   | 含义                     |
+| -------- | ---------------------- |
+| `system` | 表只有一行（常数）              |
+| `const`  | 使用主键或唯一索引查询单行          |
+| `eq_ref` | 使用主键/唯一索引做 join 查询     |
+| `ref`    | 使用普通索引等值匹配             |
+| `range`  | 范围查询，如 `BETWEEN` / `<` |
+| `index`  | 全索引扫描（没过滤，但没走全表）       |
+| `ALL`    | **全表扫描（索引无效）**         |
