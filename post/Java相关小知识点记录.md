@@ -140,14 +140,18 @@ FROM student
 
 ## 9.SQL中的事务隔离级别
 
-READ_UNCOMMITTED：读未提交，可能出现脏读。
-READ_COMMITTED：读提交，解决了脏读，可能出现不可重复读。
-REPEATABLE_READ：可重复读，解决不可重复读，可能出现幻读。
-SERIALIZABLE：串行化，解决了可重复读，但效率很低。
+### 隔离级别
 
-脏读：A事务修改了数据，还没提交，此时B事务去读取数据，读到了A还没提交的数据，然后A回滚了，此时B读取的数据是错误的(脏读)。
-不可重复读：A事务查询了一次数据，中途B事务修改了A查询后的数据，A事务在此之后又读取了一次，发现两次查询的结果不一样(不可重复读)。
-幻读：A事务查询了一次数据，中途B事务在A查询后的数据中新增了数据，A事务在此之后又读取了一次，发现多了数据（幻读）。
+- READ_UNCOMMITTED：读未提交，可能出现脏读。
+- READ_COMMITTED：读提交，解决了脏读，可能出现不可重复读。
+- REPEATABLE_READ：可重复读，解决不可重复读，可能出现幻读。
+- SERIALIZABLE：串行化，解决了可重复读，但效率很低。
+
+### 可能的异常读取
+
+- 脏读：A事务修改了数据，还没提交，此时B事务去读取数据，读到了A还没提交的数据，然后A回滚了，此时B读取的数据是错误的(脏读)。
+- 不可重复读：A事务查询了一次数据，中途B事务修改了A查询后的数据，A事务在此之后又读取了一次，发现两次查询的结果不一样(不可重复读)。
+- 幻读：A事务查询了一次数据，中途B事务在A查询后的数据中新增了数据，A事务在此之后又读取了一次，发现多了数据（幻读）。
 
 ## 10.Spring中的事务
 
@@ -163,9 +167,21 @@ Spring的事务隔离机制相比SQL的隔离级别多了一个Default，即使�
 
 传播机制有以下几种枚举：
 
-REQUIRED：事务的默认传播级别，表示如果当前存在事务，则加入该事务；如果没有事务，则创建一个新的事务。
-SUPPORTS：如果当前存在事务，则加入该事务；如果没有事务则以非事务方式运行。
-TODO:。。。
+#### 支持当前事务
+
+- REQUIRED：事务的默认传播级别，表示如果当前存在事务，则加入该事务；如果没有事务，则创建一个新的事务。
+- SUPPORTS：如果当前存在事务，则加入该事务；如果没有事务则以非事务方式运行。
+- MANDATORY：使用当前的事务，如果当前没有事务，就抛出异常。
+
+#### 不支持当前事务
+
+- REQUIRES_NEW：新建事务执行，如果当前存在事务，把当前事务挂起。
+- NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。
+- NEVER：以非事务方式执行，如果存在当前事务，则抛出异常。
+
+#### 嵌套事务
+
+- NESTED：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与REQUIRED类似的操作。
 
 ## 11.SQL中的索引
 
@@ -223,3 +239,153 @@ EXPLAIN SELECT * FROM your_table WHERE some_column = 'xxx';
 | `range`  | 范围查询，如 `BETWEEN` / `<` |
 | `index`  | 全索引扫描（没过滤，但没走全表）       |
 | `ALL`    | **全表扫描（索引无效）**         |
+
+## 12.卡夫卡相关
+
+## 13.多线程如何实现同步
+
+### synchronized 实现同步
+
+多线程运行状态下，要保证逻辑正确，对共享变量进行读写时，必须保证一组指令以原子方式执行。
+
+保证一段代码的原子性可通过加锁和解锁实现，在Java程序中使用`synchronized`关键字对对象进行加锁：
+
+```java
+synchronized(lock) {
+    n = n + 1;
+}
+```
+
+`synchronized`保证了在任意时刻最多只有一个线程能执行。
+
+一个基本的多线程执行例子
+
+```java
+public class Main {
+    public static void main(String[] args) throws Exception {
+        var add = new AddThread();
+        var dec = new DecThread();
+        add.start();
+        dec.start();
+        add.join();
+        dec.join();
+        System.out.println(Counter.count);
+    }
+}
+
+class Counter {
+    public static final Object lock = new Object();
+    public static int count = 0;
+}
+
+class AddThread extends Thread {
+    public void run() {
+        for (int i = 0; i<10000; i++) {
+            synchronized(Counter.lock) {
+                Counter.count += 1;
+            }
+        }
+    }
+}
+
+class DecThread extends Thread {
+    public void run() {
+        for (int i=0; i<10000; i++){
+            synchronized(Counter.lock) {
+                Counter.count +=1;
+            }
+        }
+    }
+}
+```
+
+在组之间不存在竞争时，应当使用两个不同的锁以提升效率。
+
+### 不需要synchronized的操作
+
+JVM规范定义了几种原子操作：
+
+- 基本类型赋值（除了`long`和`double`），如`int n = m`
+- 引用类型赋值，例如`List<String> List = anotherList`
+
+为什么唯独是`long`和`double`不算？因为`long`和`double`是64位数据类型，现代cpu大多数可以对32位数据类型进行原子读写操作，但对于64位变量，在32位JVM上可能需要分两次进行（高32位和低32位）。所以其他线程可能会看到“写了一半”的值。
+
+想要让`long`和`double`拥有原子性操作，可以使用`volatile`保证改变量的读写是原子性操作：
+
+```java
+volatile long counter;
+```
+
+或者在另一种情况，即64位JVM（现在大多都是）上，`long`和`double`属于原子操作，不需要额外加上`volatile`关键字。
+
+如果操作属于上述基本的原子操作，就不需要使用`synchronized`来实现同步了。
+
+如果操作的对象属于不可变对象，同样也不用担心同步问题。
+
+## 16.上线的项目出现oom之后，如何仅使用命令行诊断
+
+### 1.通过JVM日志判断OOM类型
+
+### 2.查看当前Java进程信息 `jps`
+
+```bash
+jps -l
+```
+
+会输出类似于 `<pid> [类名]`:
+
+```bash
+123321 com.example.MyApp
+```
+
+### 3.获取内存快照（Heap Dump）
+
+在Java启动时加上`-XX:+HeapDumpOnOutOfMemoryError`和`-XX:HeapDumpPath`，JVM会自动在OOM时生成`.hprof`文件。
+
+或是手动生成：
+
+```bash
+jmap -dump:format=b,file=heapdump.hprof <pid>
+```
+
+### 4.检查堆内存调用情况
+
+```bash
+jstat -gc <pid> 1000 5
+```
+
+### 5.查看对象占用情况
+
+```bash
+jmap -histo:live <pid> | head -n 50
+```
+
+输出类似：
+
+```bash
+num     #instances         #bytes  class name
+----------------------------------------------
+1:      102400             8192000 java.lang.String
+2:      10240              4096000 [I
+3:      2048               2048000 java.util.HashMap
+```
+
+可观察是否有对象存在异常占用。
+
+### 6.查看线程是否正常
+
+```bash
+top -H -p <pid>
+```
+
+或者
+
+```bash
+ps -eLf | grep <pid> | wc -l
+```
+
+查看线程数是否异常
+
+### 7.使用可视化监控
+
+在有图形界面时可使用`jconsole`查看堆内存使用情况和Full GC情况
