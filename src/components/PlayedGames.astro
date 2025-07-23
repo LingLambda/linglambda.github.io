@@ -1,17 +1,18 @@
 ---
-import type { MyPlayedGame, PlayedGame } from "../utils/steamApi.ts";
+import type { MyPlayedGame } from "../utils/steamApi.ts";
 import * as steamApi from "../utils/steamApi.ts";
 import GameCard from "../components//GameCard.astro";
 import apps from "../../public/assets/app.json";
 import { delay } from "../utils/utils";
 
-// const appList: { applist: { apps: { appid: string; name: string }[] } } =
-//   await steamApi.getAppList();
-//   const apps = appList.applist.apps;
+let playedGames: MyPlayedGame[] = [];
+const ENABLE_REQUEST = import.meta.env.ENABLE_REQUEST || "false"; //频繁请求可能导致被api封禁，仅在调试完毕后开启
+
+if (ENABLE_REQUEST != "true") {
+  return;
+}
 const DELAY_MS = 1000;
 const appidList = await steamApi.playedGames();
-let debugNum = 0;
-let playedGames: MyPlayedGame[] = [];
 for (const game of appidList) {
   await delay(DELAY_MS);
   playedGames.push({
@@ -33,25 +34,18 @@ for (const game of appidList) {
 // playedGames.push()
 
 playedGames = playedGames.filter((game) => game.playtime_forever > 1000);
-// const ENABLE_REQUEST = import.meta.env.ENABLE_REQUEST || false;
-// console.log(ENABLE_REQUEST);
-// if (ENABLE_REQUEST === true) {
-//   const appids = playedGames.map((game) => game.appid);
-//   const appdetails = await steamApi.appdetails(appids);
-//   appdetails.map();
-// }
 ---
 
 <div>
   {
     playedGames.map((game) => {
-      const { appid, name, playtime_forever } = game;
+      const { appid, name, playtime_forever, imgurl } = game;
       return (
         <GameCard
           appid={appid}
           name={name}
           playtime={playtime_forever}
-          imgurl={steamApi.imageUrl(game.appid.toString())}
+          imgurl={imgurl}
         />
       );
     })

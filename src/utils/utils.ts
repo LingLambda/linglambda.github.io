@@ -71,5 +71,3 @@ switch (PATH_MODULE) {
     break;
   }
 }
-
-const ENABLE_REQUEST = import.meta.env.ENABLE_REQUEST || false; //频繁请求可能导致被api封禁，仅在调试完毕后开启
