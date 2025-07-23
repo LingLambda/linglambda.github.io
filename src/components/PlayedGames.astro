@@ -4,11 +4,11 @@ import * as steamApi from "../utils/steamApi.ts";
 import GameCard from "../components//GameCard.astro";
 import apps from "../../public/assets/app.json";
 import { delay } from "../utils/utils";
+import { ENABLE_REQUEST } from "astro:env/server";
 
 let playedGames: MyPlayedGame[] = [];
-const ENABLE_REQUEST = import.meta.env.ENABLE_REQUEST || "false"; //频繁请求可能导致被api封禁，仅在调试完毕后开启
 
-if (ENABLE_REQUEST != "true") {
+if (!ENABLE_REQUEST) {
   return;
 }
 const DELAY_MS = 1000;
