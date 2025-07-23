@@ -6,8 +6,8 @@ description: Java 知识点太多太多了，手写记录理解一下印象更�
 category: 记录
 tags:
   - Java
-published: true
-sitemap: true
+published: false
+sitemap: false
 ---
 
 ## 1.重写 equals 时为什么一定要重写 hashCode
@@ -54,7 +54,7 @@ sitemap: true
 
 - 使用 or 连接词连接了非索引列。
 - 在 where 中使用了函数或算术运算，表达式。
-- 使用了模糊查询。
+- 使用了模糊查询，除了 like% 值 , 百分号在右边时可以命中索引
 - 使用了 NULL 值比较。
 - 索引字段重复值过多，查询优化器可能选择全表扫描。
 - 数据类型转换，查询条件与索引数据类型不一致时会发生强制类型转换导致索引失效。

@@ -6,8 +6,8 @@ image: "../public/assets/images/arch1.jpg"
 category: 记录
 tags:
   - Java
-published: true
-sitemap: true
+published: false
+sitemap: false
 ---
 
 ```java
