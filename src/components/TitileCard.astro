@@ -1,7 +1,7 @@
 ---
 //博客标题卡组件
 import { titleToPinyin } from "../utils/utils";
-const { title, date, wordNum } = Astro.props;
+const { title, date, wordNum, description } = Astro.props;
 ---
 
 <a
@@ -10,11 +10,11 @@ const { title, date, wordNum } = Astro.props;
   data-astro-prefetch
 >
   <div class="card-top">
-    <div class="card-title">{title}</div>
+    <div class="card-title" title={title}>{title}</div>
     <div class="word-num">{wordNum}字</div>
   </div>
-  <div class="card-center">
-    <slot />
+  <div class="card-center" title={description}>
+    {description}
   </div>
   <div class="card-bottom">
     <div class="card-date">{date}</div>
@@ -69,6 +69,13 @@ const { title, date, wordNum } = Astro.props;
   }
 
   .card-title {
+    flex: 0 1 auto; /* 只缩不伸，宽度自动 */
     font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .word-num {
+    flex: 0; /* 保持宽度 */
   }
 </style>
