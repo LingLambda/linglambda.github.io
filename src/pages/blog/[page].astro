@@ -76,10 +76,6 @@ const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
     font-style: normal;
   }
 
-  .title {
-    white-space: nowrap; /* 不换行 */
-  }
-
   .blog-head {
   }
 
@@ -112,5 +108,16 @@ const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
 
   #text {
     margin: 3.5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .title {
+      font-size: 1.5rem;
+    }
+    .description {
+      font-size: 1rem;
+      line-height: 0.8rem;
+      margin: 1rem 0;
+    }
   }
 </style>
