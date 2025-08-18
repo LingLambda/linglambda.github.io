@@ -6,6 +6,7 @@ import { Image } from "astro:assets";
 import { Content } from "../posts/myUtil.md";
 import PlayedGames from "../components/PlayedGames.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Message from "../components/Message.astro";
 
 const links = [
   { url: "/blog", name: "blog" },
@@ -24,7 +25,9 @@ const links = [
   <Prose>
     <Content />
   </Prose>
-
+  <Message index="toast1" btnName = "点我显示通知" content="我是通知文本"/>
+  <Message index="toast2" btnName = "点我显示通知2" content="我是通知文本2"/>
+  <Message index = "6" btnName = "点我显示通知3" content="我是通知文本3"/>
   <PlayedGames/>
 </main>
 </BaseLayout>

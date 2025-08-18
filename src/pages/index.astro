@@ -4,8 +4,24 @@ import Prose from "../components/Prose.astro";
 import { Content } from "../posts/index.md";
 ---
 
-<MainLayout description="本页面是站点主页" keywords="主页,main,Ling,LingLambda" title="主页">
+<MainLayout
+  description="本页面是站点主页"
+  keywords="主页,main,Ling,LingLambda"
+  title="主页"
+>
   <Prose>
     <Content />
   </Prose>
 </MainLayout>
+
+<!-- <script>
+  window.onload = () => {
+    // 获取完整的来源 URL
+    let referrer = document.referrer;
+    if (!referrer) {
+      return;
+    }
+    let url = new URL(referrer);
+    console.log("来源域名：", url.hostname);
+  };
+</script> -->

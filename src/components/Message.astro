@@ -1,0 +1,87 @@
+---
+interface Message {
+  index: string;
+  btnName: string;
+  content: string;
+}
+
+const { index, btnName, content } = Astro.props as Message;
+if (!index) {
+  throw Error(btnName + " " + content + " 未定义index！");
+}
+---
+
+<div class:list={["toast", index]}>
+  {content}
+</div>
+<button class:list={["toastBtn", index]}>{btnName}</button>
+
+<script>
+  const msgBoxs: boolean[] = [true, true, true, true, true];
+  /**
+   * 将toastBtn绑定到对应的toast上
+   * @param event
+   */
+  function showToast(event: Event) {
+    // 获取到toast元素
+    const target = event.target as HTMLElement;
+    const classList = target.classList
+      .toString()
+      .replaceAll("toastBtn", "toast");
+    const toast = document
+      .getElementsByClassName(classList)
+      .item(0) as HTMLElement;
+
+    // 判断toast情况
+    if (toast.style.top != "-50px" && toast.style.top != "") {
+      console.debug("通知已存在，忽略");
+      return;
+    }
+    if (!toast) {
+      console.error("toast元素未找到");
+      return;
+    }
+
+    // 获取msgBox中的空位
+    let i = -1;
+    for (const [index, value] of msgBoxs.entries()) {
+      if (value === true) {
+        msgBoxs[index] = false;
+        i = index;
+        break;
+      }
+    }
+    if (i === -1) {
+      console.debug("消息盒无空位，忽略");
+      return;
+    }
+
+    // 操作toast
+    toast.style.top = 50 * (i + 1) + "px";
+    setTimeout(() => {
+      msgBoxs[i] = true;
+      toast.style.top = "-50px";
+    }, 3000);
+  }
+
+  const buttons = document.querySelectorAll(".toastBtn");
+  buttons.forEach((button) => {
+    button.addEventListener("click", showToast);
+  });
+</script>
+
+<style>
+  .toast {
+    min-width: 200px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: top 0.5s;
+  }
+</style>
