@@ -71,3 +71,17 @@ switch (PATH_MODULE) {
     break;
   }
 }
+
+/**
+ * 彩笔监视器：
+ * 以一种难绷的方式打印元素
+ * @param item 需要打印的对象
+ */
+export const noobMonitor = (item: any) => {
+  const logggggggg = () => {
+    console.log(item);
+  };
+
+  // 每 200ms 执行一次
+  setInterval(logggggggg, 200);
+};
