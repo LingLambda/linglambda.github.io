@@ -1,4 +1,11 @@
 import get from "axios";
+import { ENABLE_REQUEST } from "astro:env/server";
+
+const { STEAM_API_KEY, STEAM_ID } = import.meta.env;
+if (ENABLE_REQUEST) {
+  if (!STEAM_API_KEY) throw Error("STEAM_API_KEY not configured!");
+  if (!STEAM_ID) throw Error("STEAM_ID not configured!");
+}
 
 // 定义表示 Steam 游戏数据的接口
 export interface PlayedGame {
@@ -16,10 +23,6 @@ export interface MyPlayedGame extends PlayedGame {
   name: string;
   imgurl: string;
 }
-
-const { STEAM_API_KEY, STEAM_ID } = import.meta.env;
-if (!STEAM_API_KEY) throw Error("STEAM_API_KEY not configured!");
-if (!STEAM_ID) throw Error("STEAM_ID not configured!");
 
 const API_URL = "https://api.steampowered.com";
 const API_HTTP_URL = "http://api.steampowered.com";
