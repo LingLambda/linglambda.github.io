@@ -200,5 +200,10 @@ const { description, keywords, title } = Astro.props;
 
   .gopher {
     align-self: flex-end;
+    transition: transform 10s;
+  }
+
+  .gopher:hover {
+    transform: rotate(36000deg);
   }
 </style>
