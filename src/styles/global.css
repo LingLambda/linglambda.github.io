@@ -9,6 +9,7 @@
 }
 html {
   color: #374151;
+  font-size: 18px;
   font-family: var(
     --default-font-family,
     ui-sans-serif,
