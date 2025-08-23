@@ -1,0 +1,52 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { getCollectionOrderByDate, getTagDict } from "../utils/utils";
+
+const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
+  return data.published === true;
+});
+export const tagsDict = await getTagDict();
+---
+
+<MainLayout description="本页面是文章标签页" keywords="tags" title="标签">
+  <div class="tags-container">
+    {
+      Object.entries(tagsDict).map(([name, count]) => (
+        <a href=`/tags/${name}` class="tag">
+          {name} <span class="count">{count}</span>
+        </a>
+      ))
+    }
+  </div>
+</MainLayout>
+
+<style>
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .tags-container > a {
+    text-decoration: none; /* 去除下划线 */
+  }
+
+  .tag {
+    padding: 6px 12px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: 0.2s;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .tag:hover {
+    background: #d6d6d6;
+  }
+
+  .count {
+    font-size: 12px;
+    color: #888;
+  }
+</style>

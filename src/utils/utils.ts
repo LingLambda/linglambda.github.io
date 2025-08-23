@@ -36,6 +36,27 @@ export const getCollectionOrderByDate = async <C extends keyof AnyEntryMap>(
   return cs;
 };
 
+let cachedTagsDict: Record<string, number> | null = null;
+
+export const getTagDict = async () => {
+  if (cachedTagsDict) return cachedTagsDict; // 直接返回缓存
+
+  const blogs = await getCollectionOrderByDate(
+    "blog",
+    ({ data }) => data.published === true
+  );
+
+  const tagsDict: Record<string, number> = {};
+  blogs.forEach(({ data: { tags } }) => {
+    tags?.forEach((tag: string) => {
+      tagsDict[tag] = (tagsDict[tag] || 0) + 1;
+    });
+  });
+
+  cachedTagsDict = tagsDict; // 保存到缓存
+  return tagsDict;
+};
+
 import { pinyin } from "pinyin-pro";
 const { PATH_MODULE } = import.meta.env; //根据配置修改路径生成规则
 

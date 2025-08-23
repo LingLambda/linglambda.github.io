@@ -1,0 +1,55 @@
+---
+import TitileCard from "../../components/TitileCard.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+import {
+  getCollectionOrderByDate,
+  getTagDict,
+  getWordCount,
+} from "../../utils/utils";
+
+export const getStaticPaths = async () => {
+  return Object.keys(await getTagDict()).map((name) => ({
+    params: {
+      tag: name,
+    },
+    props: {
+      tag: name,
+    },
+  }));
+};
+
+const { tag } = Astro.props;
+const getBlogsByTag = async (tag: string) =>
+  await getCollectionOrderByDate("blog", ({ data }) => {
+    if (!data.tags) return null;
+    return data.published === true && data.tags?.includes(tag);
+  });
+
+const blogs = await getBlogsByTag(tag);
+const des = `本页面列出了标签为${tag}的页面`;
+const keyword = `标签-${tag}`;
+---
+
+<MainLayout description={des} keywords={tag} title={keyword}>
+  <h2 class="title">{`标签——${tag}`}</h2>
+  {
+    blogs.map(async (blog) => {
+      const { title, date, description } = blog.data;
+      const wordNum = getWordCount(blog.body ? blog.body : "");
+      return (
+        <TitileCard
+          title={title}
+          wordNum={wordNum}
+          date={date}
+          description={description}
+        />
+      );
+    })
+  }
+</MainLayout>
+
+<style>
+  .title {
+    margin-left: 2rem;
+  }
+</style>
