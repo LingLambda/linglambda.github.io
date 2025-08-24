@@ -19,11 +19,6 @@ export interface PlayedGame {
   playtime_deck_forever: number;
 }
 
-export interface MyPlayedGame extends PlayedGame {
-  name: string;
-  imgurl: string;
-}
-
 const API_URL = "https://api.steampowered.com";
 const API_HTTP_URL = "http://api.steampowered.com";
 const WEB_URL = "https://store.steampowered.com";

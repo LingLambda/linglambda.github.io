@@ -1,12 +1,20 @@
 ---
-import type { MyPlayedGame } from "../utils/steamApi.ts";
 import * as steamApi from "../utils/steamApi.ts";
 import GameCard from "../components//GameCard.astro";
 import apps from "../../public/assets/app.json";
+import orderGames from "../../public/assets/orderGames.json";
 import { delay } from "../utils/utils";
 import { ENABLE_REQUEST } from "astro:env/server";
+import type { PlayedGame } from "../utils/steamApi.ts";
 
-let playedGames: MyPlayedGame[] = [];
+export interface MyPlayedGame extends PlayedGame {
+  name: string;
+  imgurl: string;
+}
+
+type SimpleGame = Pick<MyPlayedGame, "name" | "playtime_forever" | "imgurl">;
+
+let playedGames: SimpleGame[] = [];
 
 if (!ENABLE_REQUEST) {
   return;
@@ -16,7 +24,7 @@ const appidList = await steamApi.playedGames();
 for (const game of appidList) {
   await delay(DELAY_MS);
   playedGames.push({
-    ...game,
+    playtime_forever: game.playtime_forever,
     name:
       apps.find(
         (app: { appid: number; name: string }) =>
@@ -26,27 +34,15 @@ for (const game of appidList) {
   });
 }
 
-//TODO
-// const otherGames = [{
-//   name:'Escape from Tarkov',
-//   imgurl: 'https://cdn.cloudflare.steamstatic.com/steam/apps/255710/header.jpg',
-// }]
-// playedGames.push()
-
-playedGames = playedGames.filter((game) => game.playtime_forever > 1000);
+playedGames = playedGames.concat(orderGames).filter((game) => game.playtime_forever > 1000)
 ---
 
 <div>
   {
     playedGames.map((game) => {
-      const { appid, name, playtime_forever, imgurl } = game;
+      const { name, playtime_forever, imgurl } = game;
       return (
-        <GameCard
-          appid={appid}
-          name={name}
-          playtime={playtime_forever}
-          imgurl={imgurl}
-        />
+        <GameCard name={name} playtime={playtime_forever} imgurl={imgurl} />
       );
     })
   }
