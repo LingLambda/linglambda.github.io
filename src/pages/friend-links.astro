@@ -31,10 +31,10 @@ friends.sort(() => Math.random() - 0.5);
       <a href="mailto:abc1514671906@163.com" target="_blank">这里！</a>
     </p>
     <pre><code>
-  "name": "田所浩二",
-  "des": "逸一时误一世。",
-  "icon": "https://icon.shimo/114514",
-  "url": "https://tadokorokouji.homo"
+    "name": "田所浩二",
+    "des": "逸一时误一世。",
+    "icon": "https://icon.shimo/114514",
+    "url": "https://tadokorokouji.homo"
 </code></pre>
   </div>
 </MainLayout>
@@ -69,6 +69,10 @@ friends.sort(() => Math.random() - 0.5);
     border: 1px solid #f4f4f5; /* 添加黑色的边框，宽度为 2px */
     border-radius: 1rem;
     padding: 6%;
+    cursor: pointer; /* 悬浮时显示手指 */
+    transition:
+      box-shadow 0.15s ease-out,
+      background-color 0.15s ease-out;
   }
 
   @media (max-width: 320px) {
@@ -76,10 +80,11 @@ friends.sort(() => Math.random() - 0.5);
       display: none;
     }
   }
+
   .main:hover {
-    border: 1px solid #00d7c0; /* 添加黑色的边框，宽度为 2px */
-    /* background-color: #f4f3f6; */
-    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+    /* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+    box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.1);
+    /* background: rgba(244, 243, 246, 0.4); */
   }
 
   .name {
