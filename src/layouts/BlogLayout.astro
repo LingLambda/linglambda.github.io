@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-const { description, keywords, title } = Astro.props;
+const { description, keywords, title, canonical } = Astro.props;
 ---
 
-<BaseLayout description={description} keywords={keywords} title={title}>
+<BaseLayout description={description} keywords={keywords} title={title} canonical={canonical} ogType="article">
   <section>
     <slot>暂时还没有内容哦</slot>
   </section>

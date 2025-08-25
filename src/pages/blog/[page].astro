@@ -40,7 +40,7 @@ const MIN_READ_COUNT = 350;
 const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
 ---
 
-<BlogLayout description={description} keywords={tags} title={title}>
+<BlogLayout description={description} keywords={tags} title={title} canonical=`"https://blog.llma.top/blog/${titleToPinyin(title)}/`>
   <div class="blog-head">
     <h1 class="title">{title}</h1>
     <p class="description">{description}</p>

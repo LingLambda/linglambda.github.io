@@ -4,7 +4,7 @@ import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import gopherImage from "../assets/pilot-bust.svg";
 import { Image } from "astro:assets";
-const { description, keywords, title } = Astro.props;
+const { description, keywords, title, canonical, ogType } = Astro.props;
 ---
 
 <html lang="zh">
@@ -14,12 +14,26 @@ const { description, keywords, title } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preload" href="/fonts/MapleMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/images/chair.webp" as="image" type="image/webp" crossorigin>
+    {canonical?<link rel="canonical" href={canonical}>:""}
     <script src="../scripts/swUnregister.ts"></script>
     <ClientRouter />
+    <!-- base meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content="LingLambda" />
+    <!-- og -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/icon/favicon.svg" />
+    {canonical?<meta property="og:url" content={canonical} />:""}
+    <meta property="og:type" content={ogType?ogType:"website"} />
+    <!-- twitter cards -->
+    <meta name="twitter:card" content=`Ling的小窝 - ${title}` />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/icon/favicon.svg" />
+
     <!-- 统一不同浏览器的默认样式 -->
     <link
       rel="stylesheet"

@@ -30,7 +30,7 @@ const des = `本页面列出了标签为${tag}的页面`;
 const keyword = `标签-${tag}`;
 ---
 
-<MainLayout description={des} keywords={tag} title={keyword}>
+<MainLayout description={des} keywords={tag} title={keyword} canonical=`"https://blog.llma.top/tags/${tag}/`>
   <h2 class="title">{`标签——${tag}`}</h2>
   {
     blogs.map(async (blog) => {
