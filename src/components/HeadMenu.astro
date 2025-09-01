@@ -77,19 +77,13 @@ const pathList = [
   </div>
 </div>
 
-<script is:inline>
+<script>
   // 将所有汉堡菜单相关的功能封装成函数
-  function initHamburgerMenu() {
-    // 获取DOM元素
-    const hamburger = document.getElementById("hamburger");
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
+  const initHamburgerMenu = () => {
+    const hamburger = document.getElementById("hamburger")!;
+    const sidebar = document.getElementById("sidebar")!;
+    const overlay = document.getElementById("overlay")!;
     const body = document.body;
-
-    // 如果元素不存在，直接返回
-    if (!hamburger || !sidebar || !overlay) {
-      return;
-    }
 
     // 移除已存在的事件监听器（防止重复绑定）
     hamburger.replaceWith(hamburger.cloneNode(true));
@@ -98,20 +92,25 @@ const pathList = [
     overlay.replaceWith(overlay.cloneNode(true));
     const newOverlay = document.getElementById("overlay");
 
+    if (!sidebar || !newHamburger || !newOverlay) {
+      console.error("hamburger menu init error");
+      return;
+    }
+
     // 打开菜单
-    function toggleMenu() {
+    const toggleMenu = () => {
       newHamburger.classList.toggle("active");
       sidebar.classList.toggle("active");
       newOverlay.classList.toggle("active");
       body.classList.toggle("no-scroll", sidebar.classList.contains("active"));
-    }
+    };
     // 关闭菜单
-    function closeMenu() {
+    const closeMenu = () => {
       newHamburger.classList.remove("active");
       sidebar.classList.remove("active");
       newOverlay.classList.remove("active");
       body.classList.remove("no-scroll");
-    }
+    };
 
     // 重新绑定事件监听器
     newHamburger.addEventListener("click", toggleMenu);
@@ -121,10 +120,10 @@ const pathList = [
     const menuItems = document.querySelectorAll(".menu-item");
     menuItems.forEach((item) => {
       // 先移除可能存在的旧监听器
-      const newItem = item.cloneNode(true);
-      item.parentNode.replaceChild(newItem, item);
+      const newItem = item.cloneNode(true) as HTMLAnchorElement;
+      item.parentNode?.replaceChild(newItem, item);
 
-      newItem.addEventListener("click", (e) => {
+      newItem.addEventListener("click", () => {
         // 添加点击动画效果
         newItem.style.transform = "scale(0.95)";
         setTimeout(() => {
@@ -139,18 +138,18 @@ const pathList = [
     });
 
     // 键盘事件支持
-    function handleKeydown(e) {
+    const handleKeydown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && sidebar.classList.contains("active")) {
         closeMenu();
       }
-    }
+    };
 
     // 窗口大小改变时的处理
-    function handleResize() {
+    const handleResize = () => {
       if (window.innerWidth > 768 && sidebar.classList.contains("active")) {
         closeMenu();
       }
-    }
+    };
 
     // 移除旧的事件监听器并添加新的
     document.removeEventListener("keydown", handleKeydown);
@@ -158,7 +157,7 @@ const pathList = [
 
     document.addEventListener("keydown", handleKeydown);
     window.addEventListener("resize", handleResize);
-  }
+  };
 
   // 更新选中状态的函数
   const updateSelected = () => {
@@ -189,10 +188,7 @@ const pathList = [
   });
 
   // 如果页面已经加载完成，立即执行
-  if (document.readyState === "loading") {
-    // 文档仍在加载
-  } else {
-    // 文档已经加载完成
+  if (document.readyState === "complete") {
     initHamburgerMenu();
     updateSelected();
   }
