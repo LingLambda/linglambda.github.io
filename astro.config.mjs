@@ -41,7 +41,7 @@ export default defineConfig({
 
   integrations: [
     sitemap({
-      // sitemap配置
+      filter: (page) => page !== 'https://blog.llma.top/xi-wang-neng-bei-gai-bian-de-xian-zhuang/'
     }),
   ],
 });
