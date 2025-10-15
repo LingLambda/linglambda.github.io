@@ -1,6 +1,6 @@
 ---
 import TitileCard from "../../components/TitileCard.astro";
-import MainLayout from "../../layouts/MainLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   getCollectionOrderByDate,
   getTagDict,
@@ -30,7 +30,12 @@ const des = `本页面列出了标签为${tag}的页面`;
 const keyword = `标签-${tag}`;
 ---
 
-<MainLayout description={des} keywords={tag} title={keyword} canonical=`"https://blog.llma.top/tags/${tag}/`>
+<BaseLayout
+  description={des}
+  keywords={tag}
+  title={keyword}
+  canonical=`${import.meta.env.SITE}/tags/${tag}/`
+>
   <h2 class="title">{`标签——${tag}`}</h2>
   {
     blogs.map(async (blog) => {
@@ -46,7 +51,7 @@ const keyword = `标签-${tag}`;
       );
     })
   }
-</MainLayout>
+</BaseLayout>
 
 <style>
   .title {

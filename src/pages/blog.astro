@@ -1,27 +1,40 @@
 ---
 import TitleCard from "../components/TitileCard.astro";
 import { getCollectionOrderByDate, getWordCount } from "../utils/utils.ts";
-import MainLayout from "../layouts/MainLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
   return data.published === true;
 });
 ---
 
-<MainLayout description="本页面列出了所有blog页面" keywords="blog" title="文章" canonical="https://blog.llma.top/blog/">
-  {
-    blogs.map(async (blog) => {
-      const { title, date, description } = blog.data;
-      const wordNum = getWordCount(blog.body ? blog.body : "");
-      return (
-        <TitleCard
-          title={title}
-          wordNum={wordNum}
-          date={date}
-          description={description}
-        ></TitleCard>
-      );
-    })
-  }
-</MainLayout>
+<BaseLayout
+  description="本页面列出了所有blog页面"
+  keywords="blog"
+  title="文章"
+  canonical=`${import.meta.env.SITE}/blog/`
+>
+  <div class="content-wrapper">
+    {
+      blogs.map(async (blog) => {
+        const { title, date, description } = blog.data;
+        const wordNum = getWordCount(blog.body ? blog.body : "");
+        return (
+          <TitleCard
+            title={title}
+            wordNum={wordNum}
+            date={date}
+            description={description}
+          />
+        );
+      })
+    }
+  </div>
+</BaseLayout>
 
-<style></style>
+<style>
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.5rem;
+  }
+</style>

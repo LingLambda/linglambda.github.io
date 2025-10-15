@@ -12,9 +12,21 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
     <meta charset="utf-8" />
     <link rel="icon" href="/icon/favicon.svg" type="image/svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="preload" href="/fonts/MapleMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/assets/images/chair.webp" as="image" type="image/webp" crossorigin>
-    {canonical?<link rel="canonical" href={canonical}>:""}
+    <link
+      rel="preload"
+      href="/fonts/MapleMono-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/assets/images/chair.webp"
+      as="image"
+      type="image/webp"
+      crossorigin
+    />
+    {canonical ? <link rel="canonical" href={canonical} /> : ""}
     <script src="../scripts/swUnregister.ts"></script>
     <ClientRouter />
     <!-- base meta -->
@@ -26,8 +38,8 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="/icon/favicon.svg" />
-    {canonical?<meta property="og:url" content={canonical} />:""}
-    <meta property="og:type" content={ogType?ogType:"website"} />
+    {canonical ? <meta property="og:url" content={canonical} /> : ""}
+    <meta property="og:type" content={ogType ? ogType : "website"} />
     <!-- twitter cards -->
     <meta name="twitter:card" content=`Ling的小窝 - ${title}` />
     <meta name="twitter:title" content={title} />
@@ -49,7 +61,9 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
       <header id="menu">
         <HeadMenu />
       </header>
-      <slot>暂时还没有内容哦</slot>
+      <main>
+        <slot>暂时还没有内容哦</slot>
+      </main>
       <!-- <hr style="width:600px;color:#808080; margin-top: 1rem;" /> -->
       <footer>
         <Image
@@ -146,6 +160,16 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
     box-sizing: border-box; /* 确保所有元素的宽高包含 padding 和 border */
   }
 
+  main {
+    width: 100%;
+    max-width: 43rem;
+    flex-grow: 1; /* 使 main 占据剩余空间 */
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-left: auto;
+    margin-right: auto;
+    padding: .25rem 2rem;
+  }
   html {
     background-color: rgb(250, 252, 254);
     /* scrollbar-gutter: stable; */ /* 防止滚动条导致页面宽度不一致 */
@@ -219,5 +243,11 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
 
   .gopher:hover {
     transform: rotate(36000deg);
+  }
+
+    @media (max-width: 768px) {
+  main {
+    padding: .25rem 0;
+  }
   }
 </style>

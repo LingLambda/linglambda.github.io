@@ -1,5 +1,5 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollectionOrderByDate, getTagDict } from "../utils/utils";
 
 const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
@@ -8,8 +8,8 @@ const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
 export const tagsDict = await getTagDict();
 ---
 
-<MainLayout description="本页面是文章标签页" keywords="tags" title="标签" canonical="https://blog.llma.top/tags/">
-  <div class="tags-container">
+<BaseLayout description="本页面是文章标签页" keywords="tags" title="标签" canonical=`${import.meta.env.SITE}/tags/`>
+  <div class="content-wrapper">
     {
       Object.entries(tagsDict).map(([name, count]) => (
         <a href=`/tags/${name}` class="tag">
@@ -18,17 +18,18 @@ export const tagsDict = await getTagDict();
       ))
     }
   </div>
-</MainLayout>
+</BaseLayout>
 
 <style>
-  .tags-container {
+  .content-wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 20px;
+    padding: 0 1.5rem;
   }
 
-  .tags-container > a {
+  .content-wrapper > a {
     text-decoration: none; /* 去除下划线 */
   }
 

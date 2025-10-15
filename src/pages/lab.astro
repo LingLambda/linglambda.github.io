@@ -14,37 +14,46 @@ const links = [
 ];
 ---
 
-<BaseLayout description="我的前端实验室，偶尔会在这乱写" keywords="lab,实验,前端" title="实验室" canonical="https://blog.llma.top/lab/">
-  <main>
-  偶尔会在这乱写
-  <div id="tac-say">
-    <Image src={tacImage} alt="Ling avatar" width="128" height="128" loading="eager"/>
-    <div class="chat-bubble"></div>
+<BaseLayout
+  description="我的前端实验室，偶尔会在这乱写"
+  keywords="lab,实验,前端"
+  title="实验室"
+  canonical=`${import.meta.env.SITE}/lab/`
+>
+  <div class="content-wrapper">
+    偶尔会在这乱写
+    <div id="tac-say">
+      <Image
+        src={tacImage}
+        alt="Ling avatar"
+        width="128"
+        height="128"
+        loading="eager"
+      />
+      <div class="chat-bubble"></div>
+    </div>
+    <DropMenu btnName="menu" links={links} />
+    <Prose>
+      <Content />
+    </Prose>
+    <Message index="toast1" btnName="点我显示通知" content="我是通知文本" />
+    <Message index="toast2" btnName="点我显示通知2" content="我是通知文本2" />
+    <Message index="6" btnName="点我显示通知3" content="我是通知文本3" />
+    <PlayedGames />
   </div>
-  <DropMenu btnName="menu" links={links} />
-  <Prose>
-    <Content />
-  </Prose>
-  <Message index="toast1" btnName = "点我显示通知" content="我是通知文本"/>
-  <Message index="toast2" btnName = "点我显示通知2" content="我是通知文本2"/>
-  <Message index = "6" btnName = "点我显示通知3" content="我是通知文本3"/>
-  <PlayedGames/>
-</main>
 </BaseLayout>
 
 <style>
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .chat-bubble {
     width: 30rem;
     height: 10rem;
     border: 1px solid #d4d4d4;
     background-color: #f9f9f9;
     border-radius: 10px;
-  }
-
-  main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90rem;
   }
 </style>

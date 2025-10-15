@@ -3,7 +3,13 @@ import BaseLayout from "./BaseLayout.astro";
 const { description, keywords, title, canonical } = Astro.props;
 ---
 
-<BaseLayout description={description} keywords={keywords} title={title} canonical={canonical} ogType="article">
+<BaseLayout
+  description={description}
+  keywords={keywords}
+  title={title}
+  canonical={canonical}
+  ogType="article"
+>
   <section>
     <slot>暂时还没有内容哦</slot>
   </section>
@@ -11,9 +17,6 @@ const { description, keywords, title, canonical } = Astro.props;
 
 <style>
   section {
-    max-width: 65ch;
-    padding: 0;
-    /* padding:8% */
-    width: 85%;
+    padding: 0 1.5rem;
   }
 </style>

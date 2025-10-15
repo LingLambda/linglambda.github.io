@@ -1,15 +1,20 @@
 ---
 import { Image } from "astro:assets";
 import friends from "../../public/assets/friends.json";
-import MainLayout from "../layouts/MainLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 friends.sort(() => Math.random() - 0.5);
 ---
 
-<MainLayout description="本页面供奉着我的朋友们(不是" keywords="friends,links" title="友链" canonical="https://blog.llma.top/friend-links/">
+<BaseLayout
+  description="本页面供奉着我的朋友们(不是"
+  keywords="friends,links"
+  title="友链"
+  canonical=`${import.meta.env.SITE}friend-links/`
+>
   <div id="cards">
     {
       friends.map(({ name, des, icon, url }) => (
-        <a class="main" href={url}>
+        <a class="card" href={url}>
           <div class="left">
             <Image src={icon} alt={name + " avatar"} width="96" height="96" />
           </div>
@@ -30,14 +35,16 @@ friends.sort(() => Math.random() - 0.5);
       >、<strong>地址</strong>， 或者按照如下格式发送到
       <a href="mailto:abc1514671906@163.com" target="_blank">这里！</a>
     </p>
-    <pre><code>
-    "name": "田所浩二",
-    "des": "逸一时误一世。",
-    "icon": "https://icon.shimo/114514",
-    "url": "https://tadokorokouji.homo"
-</code></pre>
+    <pre>
+<code>
+"name": "田所浩二",
+"des": "逸一时误一世。",
+"icon": "https://icon.shimo/114514",
+"url": "https://tadokorokouji.homo"
+</code>
+    </pre>
   </div>
-</MainLayout>
+</BaseLayout>
 
 <style>
   #info {
@@ -52,11 +59,11 @@ friends.sort(() => Math.random() - 0.5);
   @media (max-width: 600px) {
     #cards {
       grid-template-columns: 1fr; /* 在小屏幕上改为单列 */
-      width: 90vw;
+      width: 100%;
     }
   }
 
-  .main {
+  .card {
     text-decoration: none; /* 去除下划线 */
     color: inherit; /* 继承父元素的颜色 */
     margin: 0 1rem 1.5rem 1rem;

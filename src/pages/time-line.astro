@@ -1,8 +1,12 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<MainLayout description='本页面是我的文章发布时间线' keywords="lifeline" title="时间线" canonical="https://blog.llma.top/time-line/">
+
+<BaseLayout
+  description="本页面是我的文章发布时间线"
+  keywords="lifeline"
+  title="时间线"
+  canonical=`${import.meta.env.SITE}/time-line/`
+>
   施工中...
-</MainLayout>
+</BaseLayout>

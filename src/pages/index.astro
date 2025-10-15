@@ -1,20 +1,22 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
 import Prose from "../components/Prose.astro";
 import { Content } from "../posts/index.md";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<MainLayout
+<BaseLayout
   description="欢迎来到我的小窝！我会在这里放一些编程学习记录和生活随笔，欢迎留下你的评论和友链！"
   keywords="主页,main,Ling,LingLambda"
   title="技术博客与生活分享"
-  canonical="https://blog.llma.top"
+  canonical={import.meta.env.SITE}
 >
-  <h1 style="margin: 0 0 1.5rem 0;">LingLambda的温馨小站</h1>
-  <Prose>
-    <Content />
-  </Prose>
-</MainLayout>
+  <div class="content-wrapper">
+    <h1 style="margin: 0 0 1.5rem 0;">LingLambda的温馨小站</h1>
+    <Prose>
+      <Content />
+    </Prose>
+  </div>
+</BaseLayout>
 
 <!-- <script>
   window.onload = () => {
@@ -27,3 +29,9 @@ import { Content } from "../posts/index.md";
     console.log("来源域名：", url.hostname);
   };
 </script> -->
+
+<style>
+  .content-wrapper {
+    padding: 0 1.5rem;
+  }
+</style>

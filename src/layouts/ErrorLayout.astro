@@ -9,7 +9,7 @@ const { title, canonical } = Astro.props;
     <meta charset="utf-8" />
     <link rel="icon" href="/icon/favicon.svg" type="image/svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    {canonical?<link rel="canonical" href={canonical}>:""}
+    {canonical ? <link rel="canonical" href={canonical} /> : ""}
     <script src="../scripts/swUnregister.ts"></script>
     <ClientRouter />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,7 +27,7 @@ const { title, canonical } = Astro.props;
     <title>Ling的小窝{title ? ` - ${title}` : ""}</title>
   </head>
   <body>
-    <div id="container">
+    <div class="content-wrapper">
       <slot>出错了！</slot>
       <!-- <hr style="width:600px;color:#808080; margin-top: 1rem;" /> -->
     </div>
