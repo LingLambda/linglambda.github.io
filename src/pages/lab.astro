@@ -22,7 +22,7 @@ const links = [
 >
   <div class="content-wrapper">
     偶尔会在这乱写
-    <div id="tac-say">
+    <div class="tac-say">
       <Image
         src={tacImage}
         alt="Ling avatar"
@@ -30,7 +30,7 @@ const links = [
         height="128"
         loading="eager"
       />
-      <div class="chat-bubble"></div>
+      <div class="chat-bubble">你好我是tac</div>
     </div>
     <DropMenu btnName="menu" links={links} />
     <Prose>
@@ -48,9 +48,16 @@ const links = [
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 1.5rem;
+  }
+  .tac-say {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 1rem;
   }
   .chat-bubble {
-    width: 30rem;
     height: 10rem;
     border: 1px solid #d4d4d4;
     background-color: #f9f9f9;

@@ -10,7 +10,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="关于"
   canonical=`${import.meta.env.SITE}/about/`
 >
-  <Prose>
-    <Content />
-  </Prose>
+  <div class="content-wrapper">
+    <Prose>
+      <Content />
+    </Prose>
+  </div>
 </BaseLayout>
+
+<style>
+  .content-wrapper {
+    padding: 0 1.5rem;
+  }
+</style>
