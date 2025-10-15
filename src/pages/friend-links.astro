@@ -52,15 +52,22 @@ friends.sort(() => Math.random() - 0.5);
   }
   #cards {
     display: grid;
-    grid-template-columns: repeat(2, 300px); /* 每张卡片固定宽度 */
+    grid-template-columns: repeat(2, 350px); /* 每张卡片固定宽度 */
     justify-content: center; /* 整体网格居中 */
-    gap: 20px;
+    gap: 10px;
   }
   @media (max-width: 600px) {
     #cards {
       grid-template-columns: 1fr; /* 在小屏幕上改为单列 */
       width: 100%;
     }
+  }
+  .card .left img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .card {
@@ -94,6 +101,13 @@ friends.sort(() => Math.random() - 0.5);
     /* background: rgba(244, 243, 246, 0.4); */
   }
 
+  .left {
+    flex: 0 0 100px
+  }
+  .right {
+    flex: 1;
+  }
+
   .name {
     font-size: 1.2rem;
     white-space: nowrap;
@@ -111,8 +125,5 @@ friends.sort(() => Math.random() - 0.5);
     text-overflow: ellipsis; /* 超出显示省略号 */
     width: 100%; /* 超出显示省略必须有明确的宽度 */
   }
-
-  img {
-    border-radius: 90px;
-  }
+  
 </style>
