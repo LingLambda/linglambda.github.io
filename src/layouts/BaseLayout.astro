@@ -1,6 +1,7 @@
 ---
 import HeadMenu from "../components/HeadMenu.astro";
 import "../styles/global.css";
+import "../styles/theme.css";
 import { ClientRouter } from "astro:transitions";
 import gopherImage from "../assets/pilot-bust.svg";
 import { Image } from "astro:assets";
@@ -171,7 +172,7 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
     padding: .25rem 2rem;
   }
   html {
-    background-color: rgb(250, 252, 254);
+    background-color: var(--bg-color);
     /* scrollbar-gutter: stable; */ /* 防止滚动条导致页面宽度不一致 */
     overflow-y: scroll; /*总是显示滚动条*/
   }
@@ -202,7 +203,7 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
 
   .footer-link {
     text-decoration: none;
-    color: 808080;
+    color: var(--footer-text-color);
   }
 
   .footer-link:hover {
@@ -212,11 +213,11 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
 
   footer {
     margin-top: 2.1rem;
-    border-top: 1px solid rgb(227, 232, 247); /* 顶部边框线 */
+    border-top: 1px solid var(--footer-border-top-color); /* 顶部边框线 */
     height: auto; /* 让 footer 根据内容自适应高度 */
     width: 100%;
-    background-color: rgb(247, 247, 249);
-    color: #808080;
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
     display: flex;
     flex-direction: row;
     justify-content: center;

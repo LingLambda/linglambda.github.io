@@ -32,6 +32,7 @@ const links = [
       />
       <div class="chat-bubble">你好我是tac</div>
     </div>
+    <button id="themeToggle">切换主题</button>
     <DropMenu btnName="menu" links={links} />
     <Prose>
       <Content />
@@ -59,8 +60,8 @@ const links = [
   }
   .chat-bubble {
     height: 10rem;
-    border: 1px solid #d4d4d4;
-    background-color: #f9f9f9;
+    border: 1px solid var(--tag-border-color);
+    background-color: var(--tag-bg-color);
     border-radius: 10px;
   }
 </style>

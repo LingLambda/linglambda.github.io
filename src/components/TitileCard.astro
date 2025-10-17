@@ -1,5 +1,4 @@
 ---
-//博客标题卡组件
 import { titleToPinyin } from "../utils/utils";
 const { title, date, wordNum, description } = Astro.props;
 ---
@@ -55,7 +54,7 @@ const { title, date, wordNum, description } = Astro.props;
   .post-card:hover {
     /* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
     box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.1);
-    background: rgba(244, 243, 246, 0.4);
+    background: var(--post-card-h-color);
   }
 
   .card-top {

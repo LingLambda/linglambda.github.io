@@ -210,15 +210,15 @@ const pathList = [
     /* max-width: 100dvw;
     overflow-x: auto;
     overflow-y: hidden; */
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--menu-bg-color);
     backdrop-filter: blur(4px);
-    border: 1px solid rgba(0, 0, 0, 0.2); /* 添加黑色的边框，宽度为 2px */
+    border: 1px solid var(--menu-border-color); /* 边框，宽度为 2px */
     border-radius: 40px;
     padding: 0 25px; /* 给容器添加左右内边距 */
   }
 
   .menu > a {
-    color: rgba(0, 0, 0, 0.7); /* 文字颜色 */
+    color: var(--menu-text-color); /* 文字颜色 */
     padding: 0.5rem 1rem; /* 内边距 */
     text-decoration: none; /* 去除下划线 */
     border-radius: 18px; /* 圆角 */
@@ -230,19 +230,19 @@ const pathList = [
   }
 
   .menu > a:hover {
-    background-color: rgba(221, 221, 221, 0.4);
+    background-color: var(--menu-text-h-color);
   }
 
   .menu > .selected {
     transition: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: rgba(247, 247, 249, 1);
+    background-color: var(--menu-selected-bg-color);
+    color: var(--menu-selected-text-color);
   }
 
   .menu > .selected:hover {
     transition: none;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: rgba(247, 247, 249, 1);
+    background-color: var(--menu-selected-bg-h-color);
+    color: var(--menu-selected-text-color);
   }
 
   /* 圆形汉堡菜单按钮 */
@@ -261,20 +261,20 @@ const pathList = [
     border: none;
     border-radius: 50%;
     z-index: 1001;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px var(--hamburger-shadow-color);
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .hamburger:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 25px var(--hamburger-shadow-h-color);
   }
 
   .hamburger span {
     display: block;
     height: 3px;
     width: 18px;
-    background: #333;
+    background: var(--card-title-color);
     border-radius: 3px;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     transform-origin: center;
@@ -296,11 +296,11 @@ const pathList = [
   }
 
   .hamburger.active {
-    background: #7b7b7b;
+    background: var(--hamburger-active-bg-color);
   }
 
   .hamburger.active span {
-    background: white;
+    background: var(--hamburger-active-span-bg-color);
   }
 
   /* 侧边菜单 */
@@ -311,7 +311,7 @@ const pathList = [
     right: -280px;
     width: 280px;
     height: 100vh;
-    background: white;
+    background: var(--bg-color);
     transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     z-index: 999;
   }
@@ -322,12 +322,12 @@ const pathList = [
 
   .sidebar-header {
     padding: 30px 20px 20px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--hamburger-sidebar-head-color);
   }
   .sidebar-title {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: var(--card-title-color);
     margin-bottom: 10px;
   }
 
@@ -338,7 +338,7 @@ const pathList = [
   .menu-item {
     display: block;
     padding: 15px 30px;
-    color: #333;
+    color: var(--card-title-color);
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
@@ -348,7 +348,7 @@ const pathList = [
   }
 
   .menu-item:hover {
-    background: #f8f9fa;
+    background: var(--media-bg-color);
     transform: translateX(10px);
   }
 
@@ -359,7 +359,7 @@ const pathList = [
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--overlay-color);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -373,7 +373,7 @@ const pathList = [
 
   .demo-text {
     font-size: 18px;
-    color: #666;
+    color: var(--card-text-color);
     text-align: center;
   }
 
@@ -386,7 +386,7 @@ const pathList = [
     transform: translateY(-50%) translateX(10px);
     opacity: 0;
     transition: all 0.3s ease;
-    color: #666;
+    color: var(--card-text-color);
   }
 
   .menu-item:hover::after {

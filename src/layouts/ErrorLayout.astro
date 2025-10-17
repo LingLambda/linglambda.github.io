@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import "../styles/theme.css";
 import { ClientRouter } from "astro:transitions";
 const { title, canonical } = Astro.props;
 ---
@@ -40,7 +40,7 @@ const { title, canonical } = Astro.props;
   }
 
   html {
-    background-color: rgb(250, 252, 254);
+    background-color: var(--bg-color);
   }
 
   html,
