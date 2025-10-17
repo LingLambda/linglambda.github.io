@@ -44,6 +44,25 @@ const links = [
   </div>
 </BaseLayout>
 
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle?.addEventListener("click", () => {
+      console.log("主题按钮点击");
+      const theme = document.documentElement.getAttribute("data-theme");
+      console.log("当前主题为", theme);
+
+      if (theme === "dark") {
+        localStorage.removeItem("data-theme");
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        localStorage.setItem("data-theme", "dark");
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    });
+  });
+</script>
+
 <style>
   .content-wrapper {
     display: flex;

@@ -64,9 +64,11 @@ if (!index) {
     }, 3000);
   }
 
-  const buttons = document.querySelectorAll(".toastBtn");
-  buttons.forEach((button) => {
-    button.addEventListener("click", showToast);
+  document.addEventListener("astro:page-load", () => {
+    const buttons = document.querySelectorAll(".toastBtn");
+    buttons.forEach((button) => {
+      button.addEventListener("click", showToast);
+    });
   });
 </script>
 
