@@ -14,13 +14,15 @@ friends.sort(() => Math.random() - 0.5);
   <div id="cards">
     {
       friends.map(({ name, des, icon, url }) => (
-        <a class="card" href={url}>
+        <a class="card" title={name} href={url}>
           <div class="left">
             <Image src={icon} alt={name + " avatar"} width="96" height="96" />
           </div>
           <div class="right">
             <p class="name">{name}</p>
-            <p class="description">{des}</p>
+            <p class="description" title={des}>
+              {des}
+            </p>
           </div>
         </a>
       ))
