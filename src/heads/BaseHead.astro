@@ -1,0 +1,49 @@
+---
+
+const { description, keywords } = Astro.props;
+---
+
+<meta charset="utf-8" />
+<!-- base meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content="LingLambda" />
+<link rel="icon" href="/icon/favicon.svg" type="image/svg" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+  rel="preload"
+  href="/fonts/MapleMono-Regular.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/assets/images/chair.webp"
+  as="image"
+  type="image/webp"
+  crossorigin
+/>
+<!-- 统一不同浏览器的默认样式 -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+  integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<script src="../scripts/swUnregister.ts"></script>
+<script is:inline>
+  const themeInit = () => {
+    const dataTheme = localStorage.getItem("data-theme");
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    if (dataTheme !== null && currentTheme !== dataTheme) {
+      document.documentElement.setAttribute("data-theme", dataTheme);
+    }
+  };
+  // 放在head加载防止闪烁
+  themeInit();
+  // 用于视图过渡时加载主题
+  document.addEventListener("astro:after-swap", themeInit);
+</script>

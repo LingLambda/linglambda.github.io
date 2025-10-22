@@ -47,6 +47,71 @@
   --tag-count-color: #888888;
 }
 
+:root[data-theme="wilderness"] {
+  /* 
+  漫野来信 主色调
+  #829A8A
+  rgba(130, 154, 138, 1)
+
+  #FEF5EE
+  rgba(254, 245, 238, 1)
+
+  #D4E4BF
+  rgba(212, 228, 191, 1)
+
+  #ADC8A7
+  rgba(173, 200, 167, 1)
+  */
+
+  --bg-color: #FEF5EE;
+  --reverse-bg-color: #333333;
+
+  --overlay-color: rgba(0, 0, 0, 0.5);
+
+  --desc-color: #808080;
+
+  --tag-bg-color: #D4E4BF;
+  --tag-border-color:  #ADC8A7;
+
+  --hover-menu-color: #829A8A;
+
+  --text-color: #374151;
+
+  --menu-text-color: rgba(0, 0, 0, 0.7);
+  --menu-text-h-color: rgba(221, 221, 221, 0.4);
+  --menu-bg-color: rgba(212, 228, 191, 0.1);
+  --menu-border-color: rgba(173, 200, 167, 0.2);
+
+  --menu-selected-bg-color: rgba(130, 154, 138, 0.5);
+  --menu-selected-bg-h-color: rgba(130, 154, 138, 0.6);
+  --menu-selected-text-color: rgba(247, 247, 249, 1);
+
+  --hamburger-shadow-color: rgba(130, 154, 138, 0.3);
+  --hamburger-shadow-h-color: rgba(130, 154, 138, 0.5);
+
+  --hamburger-active-bg-color: #7b7b7b;
+  --hamburger-active-span-bg-color: #ffffff;
+
+  --hamburger-sidebar-head-color: #e0e0e0;
+
+  --card-title-color: #D4E4BF;
+  --card-text-color: #666666;
+
+  --th-bg-color: #fafafa;
+  --media-bg-color: #f8f9fa;
+
+  --post-card-color: rgba(212, 228, 191, 0.2);
+  --post-card-h-color: rgba(173, 200, 167, 0.2);
+
+  --footer-bg-color: #FEF5EA;
+  --footer-text-color: #808080;
+  --footer-border-top-color: rgba(173, 200, 167, 0.2);;
+
+  --tag-bg-color: rgba(212, 228, 191, 0.2);
+  --tag-bg-h-color:  rgba(173, 200, 167, 0.2);
+  --tag-count-color: #888888;
+}
+
 :root[data-theme="dark"] {
   --bg-color: #333333;
   --reverse-bg-color: #f0f0f0;

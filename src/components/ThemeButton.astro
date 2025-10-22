@@ -1,0 +1,47 @@
+---
+import { ThemeMode } from "../utils/constant";
+
+ThemeMode;
+---
+
+<select class="dropdown-content">
+  {
+    ThemeMode.map(({ code, name }) => {
+      return (
+        <option class="theme-button" value={code}>
+          {name}
+        </option>
+      );
+    })
+  }
+</select>
+<script>
+  import { ThemeMode } from "../utils/constant";
+
+  const themeButtonInit = () => {
+    const themeButtons = document.getElementsByClassName("theme-button");
+
+    for (const element of themeButtons) {
+      const button = element as HTMLOptionElement;
+
+      button.addEventListener("click", () => {
+        const themeCode = button.value;
+        console.log(`主题按钮 ${button.value} 点击`);
+
+        if (
+          !themeCode ||
+          !ThemeMode.map(({ code }) => code).includes(themeCode)
+        ) {
+          console.log(`未匹配到主题 ${themeCode}`);
+          return;
+        }
+        localStorage.setItem("data-theme", themeCode);
+        document.documentElement.setAttribute("data-theme", themeCode);
+      });
+    }
+  };
+
+  document.addEventListener("astro:page-load", () => {
+    themeButtonInit();
+  });
+</script>

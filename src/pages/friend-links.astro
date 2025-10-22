@@ -81,7 +81,7 @@ friends.sort(() => Math.random() - 0.5);
     justify-content: space-around;
     height: 8rem;
     width: auto;
-    background-color: white;
+    background-color: var(--post-card-color);
     border: 1px solid #f4f4f5; /* 添加黑色的边框，宽度为 2px */
     border-radius: 1rem;
     padding: 6%;
@@ -89,6 +89,10 @@ friends.sort(() => Math.random() - 0.5);
     transition:
       box-shadow 0.15s ease-out,
       background-color 0.15s ease-out;
+  }
+
+  .card:hover {
+    background-color: var(--post-card-h-color);
   }
 
   @media (max-width: 320px) {

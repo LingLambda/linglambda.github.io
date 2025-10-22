@@ -176,16 +176,16 @@ const pathList = [
   };
 
   // 页面加载完成后初始化
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     initHamburgerMenu();
     updateSelected();
   });
 
-  // 视图过渡后重新初始化
-  document.addEventListener("astro:after-swap", () => {
-    initHamburgerMenu();
-    updateSelected();
-  });
+  // // 视图过渡后重新初始化
+  // document.addEventListener("astro:after-swap", () => {
+  //   initHamburgerMenu();
+  //   updateSelected();
+  // });
 
   // 如果页面已经加载完成，立即执行
   if (document.readyState === "complete") {
@@ -334,7 +334,7 @@ const pathList = [
   .menu-item {
     display: block;
     padding: 15px 30px;
-    color: var(--card-title-color);
+    color: var(--text-color);
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;

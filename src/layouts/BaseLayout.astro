@@ -4,36 +4,15 @@ import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import gopherImage from "../assets/pilot-bust.svg";
 import { Image } from "astro:assets";
+import BaseHead from "../heads/BaseHead.astro";
 const { description, keywords, title, canonical, ogType } = Astro.props;
 ---
 
 <html lang="zh">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/icon/favicon.svg" type="image/svg" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link
-      rel="preload"
-      href="/fonts/MapleMono-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/assets/images/chair.webp"
-      as="image"
-      type="image/webp"
-      crossorigin
-    />
-    {canonical ? <link rel="canonical" href={canonical} /> : ""}
-    <script src="../scripts/swUnregister.ts"></script>
+    <BaseHead description={description} keywords={keywords} />
     <ClientRouter />
-    <!-- base meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
-    <meta name="author" content="LingLambda" />
+    {canonical ? <link rel="canonical" href={canonical} /> : ""}
     <!-- og -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -45,15 +24,6 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="/icon/favicon.svg" />
-
-    <!-- 统一不同浏览器的默认样式 -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
     <title>Ling的小窝{title ? ` - ${title}` : ""}</title>
   </head>
   <body>
@@ -168,7 +138,7 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
     line-height: 1.6;
     margin-left: auto;
     margin-right: auto;
-    padding: .25rem 2rem;
+    padding: 0.25rem 2rem;
   }
   html {
     background-color: var(--bg-color);
@@ -245,9 +215,9 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
     transform: rotate(36000deg);
   }
 
-    @media (max-width: 768px) {
-  main {
-    padding: .25rem 0;
-  }
+  @media (max-width: 768px) {
+    main {
+      padding: 0.25rem 0;
+    }
   }
 </style>

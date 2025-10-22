@@ -1,12 +1,12 @@
 ---
 import tacImage from "../../public/assets/images/avatar.png";
-import DropMenu from "../components/DropMenu.astro";
 import Prose from "../components/Prose.astro";
 import { Image } from "astro:assets";
 import { Content } from "../posts/myUtil.md";
 import PlayedGames from "../components/PlayedGames.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Message from "../components/Message.astro";
+import ThemeButton from "../components/ThemeButton.astro";
 
 const links = [
   { url: "/blog", name: "blog" },
@@ -33,7 +33,9 @@ const links = [
       <div class="chat-bubble">你好我是tac</div>
     </div>
     <button id="themeToggle">切换主题</button>
-    <DropMenu btnName="menu" links={links} />
+    <div class="theme-button-wrapper">
+      <ThemeButton />
+    </div>
     <Prose>
       <Content />
     </Prose>
@@ -52,12 +54,12 @@ const links = [
       const theme = document.documentElement.getAttribute("data-theme");
       console.log("当前主题为", theme);
 
-      if (theme === "dark") {
+      if (theme === "wilderness") {
         localStorage.removeItem("data-theme");
         document.documentElement.removeAttribute("data-theme");
       } else {
-        localStorage.setItem("data-theme", "dark");
-        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("data-theme", "wilderness");
+        document.documentElement.setAttribute("data-theme", "wilderness");
       }
     });
   });
@@ -82,5 +84,11 @@ const links = [
     border: 1px solid var(--tag-border-color);
     background-color: var(--tag-bg-color);
     border-radius: 10px;
+  }
+
+  .theme-button-wrapper {
+    position: fixed;
+    right: 3rem;
+    top:5rem;
   }
 </style>
