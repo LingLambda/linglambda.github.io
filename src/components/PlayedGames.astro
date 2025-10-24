@@ -20,8 +20,10 @@ if (!ENABLE_REQUEST) {
   return;
 }
 const DELAY_MS = 1000;
-const appidList = await steamApi.playedGames();
+const appidList = (await steamApi.playedGames()).filter((game) => game.playtime_forever > 200);;
+let count = 1;
 for (const game of appidList) {
+  console.log(`请求 ${game.appid} 中  ${count++}/${appidList.length}`);
   await delay(DELAY_MS);
   const gameDetail = await steamApi.appdetails(game.appid);
   playedGames.push({
@@ -32,15 +34,14 @@ for (const game of appidList) {
           app.appid.toString() == game.appid
       )?.name || "",
     // imgurl: steamApi.imageUrl(game.appid.toString()),
-    imgurl: gameDetail[game.appid].data.header_image,
+    imgurl: gameDetail[game.appid]?.data?.header_image,
   });
 }
 
-orderGames.forEach((game) => `${import.meta.env.SITE}${game.imgurl}`);
+orderGames.forEach((game) => `${import.meta.env.SITE}${import.meta.env.BASE_URL}${game.imgurl}`);
 
 playedGames = playedGames
   .concat(orderGames)
-  .filter((game) => game.playtime_forever > 200)
   .sort((a, b) => b.playtime_forever - a.playtime_forever);
 ---
 
