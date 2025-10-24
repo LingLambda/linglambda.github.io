@@ -7,18 +7,6 @@ if (ENABLE_REQUEST) {
   if (!STEAM_ID) throw Error("STEAM_ID not configured!");
 }
 
-// 定义表示 Steam 游戏数据的接口
-export interface PlayedGame {
-  appid: string;
-  playtime_2weeks: number;
-  playtime_forever: number;
-  img_icon_url: string;
-  playtime_windows_forever: number;
-  playtime_mac_forever: number;
-  playtime_linux_forever: number;
-  playtime_deck_forever: number;
-}
-
 const API_URL = "https://api.steampowered.com";
 const API_HTTP_URL = "http://api.steampowered.com";
 const WEB_URL = "https://store.steampowered.com";

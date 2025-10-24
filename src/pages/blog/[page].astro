@@ -7,6 +7,7 @@ import {
   titleToPinyin,
 } from "../../utils/utils";
 import BlogLayout from "../../layouts/BlogLayout.astro";
+import OnThisPage from "../../components/OnThisPage.astro";
 
 export const getStaticPaths = async () => {
   const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
@@ -22,6 +23,7 @@ export const getStaticPaths = async () => {
       date: item.data.date,
       tags: item.data.tags,
       fontNum: getWordCount(item.body ? item.body : ""),
+      headings: item?.rendered?.metadata?.headings,
       Content: item,
     },
   }));
@@ -34,8 +36,12 @@ const {
   fontNum,
   Content: rawContent,
   tags,
+  headings,
 } = Astro.props;
 const { Content } = await render(rawContent);
+
+const articleHeadings = headings as Headings
+
 const MIN_READ_COUNT = 350;
 const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
 ---
@@ -59,6 +65,7 @@ const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
       <Content />
     </Prose>
   </article>
+  <OnThisPage headings={articleHeadings} />
   <script
     src="https://giscus.app/client.js"
     data-repo="LingLambda/linglambda.github.io"
