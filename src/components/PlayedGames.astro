@@ -34,7 +34,10 @@ for (const game of appidList) {
   });
 }
 
-playedGames = playedGames.concat(orderGames).filter((game) => game.playtime_forever > 1000)
+playedGames = playedGames
+  .concat(orderGames)
+  .filter((game) => game.playtime_forever > 1000)
+  .sort((a, b) => b.playtime_forever - a.playtime_forever);
 ---
 
 <div>
