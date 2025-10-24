@@ -40,7 +40,7 @@ const {
 } = Astro.props;
 const { Content } = await render(rawContent);
 
-const articleHeadings = headings as Headings
+const articleHeadings = headings as Heading[]
 
 const MIN_READ_COUNT = 350;
 const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);

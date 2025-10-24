@@ -1,4 +1,4 @@
-type Headings = {
+type Heading = {
   depth: number;
   slug: string;
   text: string;
