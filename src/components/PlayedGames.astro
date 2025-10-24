@@ -23,6 +23,7 @@ const DELAY_MS = 1000;
 const appidList = await steamApi.playedGames();
 for (const game of appidList) {
   await delay(DELAY_MS);
+  const gameDetail = await steamApi.appdetails(game.appid);
   playedGames.push({
     playtime_forever: game.playtime_forever,
     name:
@@ -30,15 +31,16 @@ for (const game of appidList) {
         (app: { appid: number; name: string }) =>
           app.appid.toString() == game.appid
       )?.name || "",
-    imgurl: steamApi.imageUrl(game.appid.toString()),
+    // imgurl: steamApi.imageUrl(game.appid.toString()),
+    imgurl: gameDetail[game.appid].data.header_image,
   });
 }
 
-orderGames.forEach((game) => `${import.meta.env.SITE}${game.imgurl}`)
+orderGames.forEach((game) => `${import.meta.env.SITE}${game.imgurl}`);
 
 playedGames = playedGames
   .concat(orderGames)
-  .filter((game) => game.playtime_forever > 1000)
+  .filter((game) => game.playtime_forever > 200)
   .sort((a, b) => b.playtime_forever - a.playtime_forever);
 ---
 
