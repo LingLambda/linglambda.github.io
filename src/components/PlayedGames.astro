@@ -34,6 +34,8 @@ for (const game of appidList) {
   });
 }
 
+orderGames.forEach((game) => `${import.meta.env.SITE}${game.imgurl}`)
+
 playedGames = playedGames
   .concat(orderGames)
   .filter((game) => game.playtime_forever > 1000)
