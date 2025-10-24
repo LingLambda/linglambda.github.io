@@ -1,0 +1,11 @@
+---
+const { heading } = Astro.props;
+const { depth, slug, text } = heading as Heading;
+---
+
+<li class="nested" style=`--depth: ${depth};`>
+  <a href=`#${slug}` style=`--depth: ${depth};`>
+    <span class="nested-text" style=`--depth: ${depth};`>{text}</span>
+  </a>
+  <slot />
+</li>
