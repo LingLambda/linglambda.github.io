@@ -7,7 +7,7 @@ import {
   titleToPinyin,
 } from "../../utils/utils";
 import BlogLayout from "../../layouts/BlogLayout.astro";
-import OnThisPage from "../../components/OnThisPage.astro";
+import OnThisPages from "../../components/OnThisPages.astro";
 
 export const getStaticPaths = async () => {
   const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
@@ -65,7 +65,7 @@ const readTimeMin = Math.ceil(fontNum / MIN_READ_COUNT);
       <Content />
     </Prose>
   </article>
-  <OnThisPage headings={articleHeadings} />
+  <OnThisPages headings={articleHeadings} />
   <script
     src="https://giscus.app/client.js"
     data-repo="LingLambda/linglambda.github.io"
