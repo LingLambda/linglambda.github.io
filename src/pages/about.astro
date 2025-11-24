@@ -14,11 +14,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <Prose>
       <Content />
     </Prose>
+    <div class="contact-row">
+      <span>联系我：</span>
+      <a href="https://github.com/LingLambda" target="_blank">
+        <img src="/icon/github.svg" alt="github" />
+      </a>
+      <a href="mailto:abc1514671906@163.com" target="_blank">
+        <img src="/icon/youjian.svg" alt="email" />
+      </a>
+    </div>
   </div>
 </BaseLayout>
 
 <style>
   .content-wrapper {
     padding: 0 1.5rem;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .contact-row img {
+    height: 32px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .contact-row img:hover {
+    opacity: 0.7;
   }
 </style>
