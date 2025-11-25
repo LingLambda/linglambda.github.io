@@ -37,7 +37,7 @@ for (const game of appidList) {
   });
 }
 
-orderGames.forEach((game) => `${import.meta.env.SITE}${import.meta.env.BASE_URL}${game.imgurl}`);
+orderGames.forEach((game) => `${import.meta.env.SITE}${game.imgurl}`);
 
 playedGames = playedGames
   .concat(orderGames)

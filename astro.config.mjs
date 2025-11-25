@@ -5,8 +5,9 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://blog.llma.top",
+  site: "https://blog.llma.dev",
   base: "/",
+  trailingSlash: "ignore",
 
   //悬停预加载
   prefetch: true,
