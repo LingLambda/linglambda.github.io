@@ -2,6 +2,11 @@
   {
     "name": "Escape from Tarkov",
     "playtime_forever": 66000,
-    "imgurl": "assets/images/tarkov.webp"
+    "imgurl": "assets/gameImages/tarkov.webp"
+  },
+  {
+    "name": "Final Fantasy XIV",
+    "playtime_forever": 13140,
+    "imgurl": "assets/gameImages/ff14.webp"
   }
 ]
