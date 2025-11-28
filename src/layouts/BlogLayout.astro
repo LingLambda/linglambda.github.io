@@ -1,7 +1,8 @@
 ---
+import OnThisPages from "../components/OnThisPages.astro";
 import "../styles/global.css";
 import BaseLayout from "./BaseLayout.astro";
-const { description, keywords, title, canonical } = Astro.props;
+const { description, keywords, title, canonical, headings } = Astro.props;
 ---
 
 <BaseLayout
@@ -9,15 +10,48 @@ const { description, keywords, title, canonical } = Astro.props;
   keywords={keywords}
   title={title}
   canonical={canonical}
+  headings={headings}
   ogType="article"
 >
-  <section>
-    <slot>暂时还没有内容哦</slot>
-  </section>
+  <div class="container">
+    <section>
+      <slot>暂时还没有内容哦</slot>
+    </section>
+
+    <div class="toc-wrapper">
+      <div class="toc">
+        <OnThisPages headings={headings} />
+      </div>
+    </div>
+  </div>
 </BaseLayout>
 
 <style>
   section {
     padding: 0 1.5rem;
+  }
+  .container {
+    position: relative;
+  }
+
+  .toc-wrapper {
+    margin-left: 55px;
+    width: 208px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+  .toc {
+    position: sticky;
+    top: 80px; 
+    max-height: 70vh; 
+    overflow: auto; 
+  }
+
+  @media (max-width: 1280px) {
+    .toc-wrapper {
+      opacity: 0;
+    }
   }
 </style>

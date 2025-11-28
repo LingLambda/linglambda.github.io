@@ -2,182 +2,69 @@
 import type { JSX } from "astro/jsx-runtime";
 
 const { headings } = Astro.props as { headings: Heading[] };
+
+// [
+//   { depth: 2, slug: '1jvm-的结构', text: '1.JVM 的结构' },
+//   { depth: 4, slug: '1方法区', text: '(1)方法区：' },
+//   { depth: 4, slug: '2虚拟机栈', text: '(2)虚拟机栈：' },
+//   { depth: 4, slug: '3本地方法栈', text: '(3)本地方法栈：' },
+//   { depth: 4, slug: '4堆', text: '(4)堆：' },
+//   { depth: 4, slug: '5程序计数器', text: '(5)程序计数器：' },
+// ]
+
+// 此页面存在缺陷，有空请务必修改，使用嵌套的方式展示
 ---
 
-<nav aria-labelledby="starlight__on-this-page">
-  <h2 id="starlight__on-this-page">本页内容</h2>
+<nav class="on-this-pages" aria-labelledby="starlight__on-this-page">
   {
     () => {
       let stack: JSX.Element[] = [];
-
-      let prevDepth = 0;
-      for (const i in headings) {
-        const heading = headings[i]
-        if (heading.depth > prevDepth) {
-          prevDepth = heading.depth;
-          stack.push();
-        }
+      if (headings && headings.length > 0) {
+        stack.push(<h2 id="starlight__on-this-page">本页内容</h2>);
       }
+      for (const i in headings) {
+        const heading = headings[i];
+        stack.push(
+          <a href={`#${heading.slug}`} class={`depth-${heading.depth}`}>
+            {heading.text}
+          </a>
+        );
+      }
+      return stack;
     }
   }
-
 </nav>
 
-<nav aria-labelledby="starlight__on-this-page">
-  <h2 id="starlight__on-this-page">本页内容</h2>
-  <ul class="astro-oitnbpw7" style="--depth: 0;">
-    <li class="astro-oitnbpw7" style="--depth: 0;">
-      <a href="#_top" class="astro-oitnbpw7" style="--depth: 0;">
-        <span class="astro-oitnbpw7" style="--depth: 0;">概述</span>
-      </a>
-    </li>
-    <li class="astro-oitnbpw7" style="--depth: 0;">
-      <a href="#context-files" class="astro-oitnbpw7" style="--depth: 0;">
-        <span class="astro-oitnbpw7" style="--depth: 0;">Context files</span>
-      </a>
-    </li>
-    <li class="astro-oitnbpw7" style="--depth: 0;">
-      <a
-        href="#astro-docs-mcp-server"
-        class="astro-oitnbpw7"
-        style="--depth: 0;"
-      >
-        <span class="astro-oitnbpw7" style="--depth: 0;"
-          >Astro Docs MCP Server</span
-        >
-      </a>
-      <ul class="astro-oitnbpw7" style="--depth: 1;">
-        <li class="astro-oitnbpw7" style="--depth: 1;">
-          <a href="#server-details" class="astro-oitnbpw7" style="--depth: 1;">
-            <span class="astro-oitnbpw7" style="--depth: 1;"
-              >Server Details</span
-            >
-          </a>
-        </li>
-        <li class="astro-oitnbpw7" style="--depth: 1;">
-          <a href="#installation" class="astro-oitnbpw7" style="--depth: 1;">
-            <span class="astro-oitnbpw7" style="--depth: 1;">Installation</span>
-          </a>
-          <ul class="astro-oitnbpw7" style="--depth: 2;">
-            <li class="astro-oitnbpw7" style="--depth: 2;">
-              <a
-                href="#manual-setup"
-                class="astro-oitnbpw7"
-                style="--depth: 2;"
-              >
-                <span class="astro-oitnbpw7" style="--depth: 2;"
-                  >Manual setup</span
-                >
-              </a>
-            </li><li class="astro-oitnbpw7" style="--depth: 2;">
-              <a
-                href="#claude-code-cli"
-                class="astro-oitnbpw7"
-                style="--depth: 2;"
-              >
-                <span class="astro-oitnbpw7" style="--depth: 2;"
-                  >Claude Code CLI</span
-                >
-              </a>
-            </li><li class="astro-oitnbpw7" style="--depth: 2;">
-              <a
-                href="#claude-code-github-action"
-                class="astro-oitnbpw7"
-                style="--depth: 2;"
-              >
-                <span class="astro-oitnbpw7" style="--depth: 2;"
-                  >Claude Code GitHub Action</span
-                >
-              </a>
-            </li><li class="astro-oitnbpw7" style="--depth: 2;">
-              <a
-                href="#cursor"
-                class="astro-oitnbpw7"
-                style="--depth: 2;"
-                aria-current="true"
-              >
-                <span class="astro-oitnbpw7" style="--depth: 2;">Cursor</span>
-              </a>
-            </li><li class="astro-oitnbpw7" style="--depth: 2;">
-              <a
-                href="#visual-studio-code"
-                class="astro-oitnbpw7"
-                style="--depth: 2;"
-              >
-                <span class="astro-oitnbpw7" style="--depth: 2;"
-                  >Visual Studio Code</span
-                >
-              </a>
-            </li><li class="astro-oitnbpw7" style="--depth: 2;">
-              <a href="#warp" class="astro-oitnbpw7" style="--depth: 2;">
-                <span class="astro-oitnbpw7" style="--depth: 2;">Warp</span>
-              </a>
-            </li><li class="astro-oitnbpw7" style="--depth: 2;">
-              <a
-                href="#claudeai--claude-desktop"
-                class="astro-oitnbpw7"
-                style="--depth: 2;"
-              >
-                <span class="astro-oitnbpw7" style="--depth: 2;"
-                  >Claude.ai / Claude Desktop</span
-                >
-              </a>
-            </li><li class="astro-oitnbpw7" style="--depth: 2;">
-              <a href="#windsurf" class="astro-oitnbpw7" style="--depth: 2;">
-                <span class="astro-oitnbpw7" style="--depth: 2;">Windsurf</span>
-              </a>
-            </li><li class="astro-oitnbpw7" style="--depth: 2;">
-              <a href="#gemini-cli" class="astro-oitnbpw7" style="--depth: 2;">
-                <span class="astro-oitnbpw7" style="--depth: 2;"
-                  >Gemini CLI</span
-                >
-              </a>
-            </li><li class="astro-oitnbpw7" style="--depth: 2;">
-              <a href="#zed" class="astro-oitnbpw7" style="--depth: 2;">
-                <span class="astro-oitnbpw7" style="--depth: 2;">Zed</span>
-              </a>
-            </li><li class="astro-oitnbpw7" style="--depth: 2;">
-              <a href="#chatgpt" class="astro-oitnbpw7" style="--depth: 2;">
-                <span class="astro-oitnbpw7" style="--depth: 2;">ChatGPT</span>
-              </a>
-            </li><li class="astro-oitnbpw7" style="--depth: 2;">
-              <a href="#raycast" class="astro-oitnbpw7" style="--depth: 2;">
-                <span class="astro-oitnbpw7" style="--depth: 2;">Raycast</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="astro-oitnbpw7" style="--depth: 1;">
-          <a href="#usage" class="astro-oitnbpw7" style="--depth: 1;">
-            <span class="astro-oitnbpw7" style="--depth: 1;">Usage</span>
-          </a>
-        </li>
-        <li class="astro-oitnbpw7" style="--depth: 1;">
-          <a href="#troubleshooting" class="astro-oitnbpw7" style="--depth: 1;">
-            <span class="astro-oitnbpw7" style="--depth: 1;"
-              >Troubleshooting</span
-            >
-          </a>
-        </li>
-      </ul>
-    </li>
-    <li class="astro-oitnbpw7" style="--depth: 0;">
-      <a href="#discord-ai-support" class="astro-oitnbpw7" style="--depth: 0;">
-        <span class="astro-oitnbpw7" style="--depth: 0;"
-          >Discord AI Support</span
-        >
-      </a>
-    </li>
-    <li class="astro-oitnbpw7" style="--depth: 0;">
-      <a
-        href="#tips-for-ai-powered-astro-development"
-        class="astro-oitnbpw7"
-        style="--depth: 0;"
-      >
-        <span class="astro-oitnbpw7" style="--depth: 0;"
-          >Tips for AI-Powered Astro Development</span
-        >
-      </a>
-    </li>
-  </ul>
-</nav>
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--text-color);
+  }
+
+  .on-this-pages {
+    color: var(--desc-color);
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .depth-1 {
+    padding-left: 0px;
+  }
+  .depth-2 {
+    padding-left: 10px;
+  }
+  .depth-3 {
+    padding-left: 20px;
+  }
+  .depth-4 {
+    padding-left: 30px;
+  }
+  .depth-5 {
+    padding-left: 40px;
+  }
+</style>
