@@ -80,7 +80,7 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
   const title = document.title;
 
   let seconds = 10;
-  let timer: NodeJS.Timer | null;
+  let timer: NodeJS.Timeout | null;
   let isPaused = true;
   let countdown = `${seconds}`;
   const boom = Math.random() < 0.8 ? "爆炸了！！！" : "熄火了...";
