@@ -16,7 +16,7 @@
   --menu-text-color: rgba(0, 0, 0, 0.7);
   --menu-text-h-color: rgba(221, 221, 221, 0.4);
   --menu-bg-color: rgba(255, 255, 255, 0.1);
-  --menu-border-color: rgba(0, 0, 0, 0.5);
+  --menu-border-color: rgba(0, 0, 0, 0.2);
 
   --menu-selected-bg-color: rgba(0, 0, 0, 0.5);
   --menu-selected-bg-h-color: rgba(0, 0, 0, 0.6);
@@ -80,7 +80,7 @@
   --menu-text-color: rgba(0, 0, 0, 0.7);
   --menu-text-h-color: rgba(221, 221, 221, 0.4);
   --menu-bg-color: rgba(212, 228, 191, 0.1);
-  --menu-border-color: rgba(173, 200, 167, 0.5);
+  --menu-border-color: rgba(173, 200, 167, 0.3);
 
   --menu-selected-bg-color: rgba(130, 154, 138, 0.5);
   --menu-selected-bg-h-color: rgba(130, 154, 138, 0.6);
@@ -124,7 +124,7 @@
   --menu-text-color: rgba(240, 240, 240, 0.7);
   --menu-text-h-color: rgba(240, 240, 240, 0.9);
   --menu-bg-color: rgba(40, 40, 40, 0.8);
-  --menu-border-color: rgba(240, 240, 240, 0.5);
+  --menu-border-color: rgba(240, 240, 240, 0.2);
   --menu-selected-bg-color: rgba(240, 240, 240, 0.15);
   --menu-selected-bg-h-color: rgba(240, 240, 240, 0.2);
   --menu-selected-text-color: rgba(240, 240, 240, 1);
