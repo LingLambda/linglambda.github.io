@@ -47,7 +47,7 @@
   --tag-count-color: #888888;
 }
 
-:root[data-theme="wilderness"] {
+:root[prefers-color-scheme="wilderness"] {
   /* 
   漫野来信 主色调
   #829A8A
@@ -63,17 +63,17 @@
   rgba(173, 200, 167, 1)
   */
 
-  --bg-color: #FEF5EE;
+  --bg-color: #fef5ee;
   --reverse-bg-color: #333333;
 
   --overlay-color: rgba(0, 0, 0, 0.5);
 
   --desc-color: #808080;
 
-  --tag-bg-color: #D4E4BF;
-  --tag-border-color:  #ADC8A7;
+  --tag-bg-color: #d4e4bf;
+  --tag-border-color: #adc8a7;
 
-  --hover-menu-color: #829A8A;
+  --hover-menu-color: #829a8a;
 
   --text-color: #374151;
 
@@ -94,7 +94,7 @@
 
   --hamburger-sidebar-head-color: #e0e0e0;
 
-  --card-title-color: #D4E4BF;
+  --card-title-color: #d4e4bf;
   --card-text-color: #666666;
 
   --th-bg-color: #fafafa;
@@ -103,16 +103,16 @@
   --post-card-color: rgba(212, 228, 191, 0.2);
   --post-card-h-color: rgba(173, 200, 167, 0.2);
 
-  --footer-bg-color: #FEF5EA;
+  --footer-bg-color: #fef5ea;
   --footer-text-color: #808080;
-  --footer-border-top-color: rgba(173, 200, 167, 0.2);;
+  --footer-border-top-color: rgba(173, 200, 167, 0.2);
 
   --tag-bg-color: rgba(212, 228, 191, 0.2);
-  --tag-bg-h-color:  rgba(173, 200, 167, 0.2);
+  --tag-bg-h-color: rgba(173, 200, 167, 0.2);
   --tag-count-color: #888888;
 }
 
-:root[data-theme="dark"] {
+:root[prefers-color-scheme="dark"] {
   --bg-color: #333333;
   --reverse-bg-color: #f0f0f0;
   --overlay-color: rgba(0, 0, 0, 0.7);
@@ -144,4 +144,16 @@
   --tag-bg-color: #2a2a2a;
   --tag-bg-h-color: #3a3a3a;
   --tag-count-color: #999999;
+}
+
+:root[prefers-color-scheme="dark"] {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    /* 可选，如果你还需要字体样式 */
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
 }

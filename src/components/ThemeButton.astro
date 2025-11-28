@@ -16,7 +16,11 @@ ThemeMode;
   }
 </select>
 <script>
-  import { ThemeMode } from "../utils/constant";
+  import {
+    THEME_LOCAL_STORAGE,
+    THEME_VARIABLE,
+    ThemeMode,
+  } from "../utils/constant";
 
   const themeButtonInit = () => {
     const themeButtons = document.getElementsByClassName("theme-button");
@@ -35,8 +39,8 @@ ThemeMode;
           console.log(`未匹配到主题 ${themeCode}`);
           return;
         }
-        localStorage.setItem("data-theme", themeCode);
-        document.documentElement.setAttribute("data-theme", themeCode);
+        localStorage.setItem(THEME_LOCAL_STORAGE, themeCode);
+        document.documentElement.setAttribute(THEME_VARIABLE, themeCode);
       });
     }
   };

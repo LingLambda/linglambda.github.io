@@ -34,23 +34,28 @@ const { description, keywords } = Astro.props;
 />
 <script src="../scripts/swUnregister.ts"></script>
 <script is:inline>
+const THEME_DARK = "dark"
+const THEME_VARIABLE = "prefers-color-scheme";
+const THEME_LOCAL_STORAGE = "data-theme";
+
   const getMediaColorIsDark = () => {
     const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    console.log(isDark ? "深色模式" : "浅色模式");
+    console.log(`初始化主题：监测到系统为 ${isDark ? "深色模式" : "浅色模式"}`);
     return isDark;
   };
 
   const themeInit = () => {
-    let dataTheme = localStorage.getItem("data-theme");
+    let dataTheme = localStorage.getItem(THEME_LOCAL_STORAGE);
     if (!dataTheme && getMediaColorIsDark()) {
-      dataTheme = "dark";
+      dataTheme = THEME_DARK;
     }
 
-    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const currentTheme = document.documentElement.getAttribute(THEME_VARIABLE);
     if (dataTheme !== null && currentTheme !== dataTheme) {
-      document.documentElement.setAttribute("data-theme", dataTheme);
+      document.documentElement.setAttribute(THEME_VARIABLE, dataTheme);
     }
   };
+
   // 放在head加载防止闪烁
   themeInit();
   // 用于视图过渡时加载主题

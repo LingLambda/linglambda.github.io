@@ -32,7 +32,6 @@ const links = [
       />
       <div class="chat-bubble">你好我是tac</div>
     </div>
-    <button id="themeToggle">切换主题</button>
     <div class="theme-button-wrapper">
       <ThemeButton />
     </div>
@@ -45,25 +44,6 @@ const links = [
     <PlayedGames />
   </div>
 </BaseLayout>
-
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const themeToggle = document.getElementById("themeToggle");
-    themeToggle?.addEventListener("click", () => {
-      console.log("主题按钮点击");
-      const theme = document.documentElement.getAttribute("data-theme");
-      console.log("当前主题为", theme);
-
-      if (theme === "wilderness") {
-        localStorage.removeItem("data-theme");
-        document.documentElement.removeAttribute("data-theme");
-      } else {
-        localStorage.setItem("data-theme", "wilderness");
-        document.documentElement.setAttribute("data-theme", "wilderness");
-      }
-    });
-  });
-</script>
 
 <style>
   .content-wrapper {
@@ -89,6 +69,6 @@ const links = [
   .theme-button-wrapper {
     position: fixed;
     right: 3rem;
-    top:5rem;
+    top: 5rem;
   }
 </style>
