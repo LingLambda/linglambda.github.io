@@ -143,7 +143,6 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
   html {
     background-color: var(--bg-color);
     /* scrollbar-gutter: stable; */ /* 防止滚动条导致页面宽度不一致 */
-    overflow-y: scroll; /*总是显示滚动条*/
   }
 
   html,
@@ -152,6 +151,7 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
     padding: 0;
     height: 100%; /* 确保body和html占满全屏 */
     margin: 0;
+    overflow: scroll;
   }
 
   #menu {
@@ -169,6 +169,7 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    overflow: scroll;
   }
 
   .footer-link {

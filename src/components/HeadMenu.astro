@@ -83,7 +83,7 @@ const pathList = [
     const hamburger = document.getElementById("hamburger")!;
     const sidebar = document.getElementById("sidebar")!;
     const overlay = document.getElementById("overlay")!;
-    const body = document.body;
+    const container = document.getElementById("container")!;
 
     // 移除已存在的事件监听器（防止重复绑定）
     hamburger.replaceWith(hamburger.cloneNode(true));
@@ -102,14 +102,14 @@ const pathList = [
       newHamburger.classList.toggle("active");
       sidebar.classList.toggle("active");
       newOverlay.classList.toggle("active");
-      body.classList.toggle("no-scroll", sidebar.classList.contains("active"));
+      container.classList.toggle("no-scroll", sidebar.classList.contains("active"));
     };
     // 关闭菜单
     const closeMenu = () => {
       newHamburger.classList.remove("active");
       sidebar.classList.remove("active");
       newOverlay.classList.remove("active");
-      body.classList.remove("no-scroll");
+      container.classList.remove("no-scroll");
     };
 
     // 重新绑定事件监听器
@@ -196,7 +196,7 @@ const pathList = [
 
 <style is:inline>
   .no-scroll {
-    overflow-y: hidden;
+    overflow: hidden;
   }
 </style>
 
@@ -207,9 +207,6 @@ const pathList = [
     justify-content: space-around;
     height: 3.5rem;
     width: 38rem;
-    /* max-width: 100dvw;
-    overflow-x: auto;
-    overflow-y: hidden; */
     background-color: var(--menu-bg-color);
     backdrop-filter: blur(4px);
     border: 1px solid var(--menu-border-color); /* 边框，宽度为 2px */
