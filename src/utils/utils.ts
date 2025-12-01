@@ -94,6 +94,13 @@ switch (PATH_MODULE) {
   }
 }
 
+export const getBeijingDateTime = () => {
+  const beijingTime = new Date().toLocaleString("zh-CN", {
+    timeZone: "Asia/Shanghai",
+  });
+  return beijingTime;
+};
+
 /**
  * 彩笔监视器：
  * 以一种难绷的方式打印元素

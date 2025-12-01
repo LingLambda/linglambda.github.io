@@ -1,7 +1,9 @@
 ---
 import * as steamApi from "../utils/steamApi.ts";
+import * as myApi from "../utils/myApi.ts";
+import * as utils from "../utils/utils.ts";
 import GameCard from "../components//GameCard.astro";
-import apps from "../../public/assets/app.json";
+// import apps from "../../public/assets/app.json";
 import orderGames from "../../public/assets/orderGames.json";
 import { delay } from "../utils/utils";
 import { ENABLE_REQUEST } from "astro:env/server";
@@ -47,12 +49,23 @@ orderGames.forEach(({ imgurl }) => {
   }
 });
 
+orderGames.forEach(async (game) => {
+  if (game.name === "Final Fantasy XIV") {
+    game.playtime_forever = await myApi.getFfPlayTime();
+  }
+});
+
 playedGames = playedGames
   .concat(orderGames)
   .sort((a, b) => b.playtime_forever - a.playtime_forever);
+
+const updateTime = utils.getBeijingDateTime();
 ---
 
 <div>
+  <div>
+    <span>上次更新(北京时间)：{updateTime}</span>
+  </div>
   {
     playedGames.map((game) => {
       const { name, playtime_forever, imgurl } = game;
