@@ -26,7 +26,9 @@ const appidList = (await steamApi.playedGames()).filter(
 );
 let count = 1;
 for (const game of appidList) {
-  console.log(`请求 ${game.appid} 中  ${count++}/${appidList.length}`);
+  console.log(
+    `steam列表：请求 ${game.appid} 中  ${count++}/${appidList.length}`
+  );
   await delay(DELAY_MS);
   const gameDetail = await steamApi.appdetails(game.appid);
   playedGames.push({
@@ -49,9 +51,11 @@ orderGames.forEach(({ imgurl }) => {
   }
 });
 
-orderGames.forEach(async (game) => {
-  if (game.name === "Final Fantasy XIV") {
-    game.playtime_forever = await myApi.getFfPlayTime();
+const ffptime = await myApi.getFfPlayTime();
+console.log("狒狒游戏时长：", ffptime);
+orderGames.forEach((g) => {
+  if (g.name === "Final Fantasy XIV") {
+    g.playtime_forever = ffptime;
   }
 });
 
