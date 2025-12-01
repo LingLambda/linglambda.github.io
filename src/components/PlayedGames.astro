@@ -3,7 +3,7 @@ import * as steamApi from "../utils/steamApi.ts";
 import * as myApi from "../utils/myApi.ts";
 import * as utils from "../utils/utils.ts";
 import GameCard from "../components//GameCard.astro";
-const { default: apps } = await import("../../public/assets/app.json");
+import apps from "../../public/assets/app.json";
 import orderGames from "../../public/assets/orderGames.json";
 import { delay } from "../utils/utils";
 import { ENABLE_REQUEST } from "astro:env/server";
