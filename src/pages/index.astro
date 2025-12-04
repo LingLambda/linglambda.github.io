@@ -6,7 +6,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout
   description="欢迎来到我的小窝！我会在这里放一些编程学习记录和生活随笔，欢迎留下你的评论和友链！"
-  keywords="主页,main,Ling,LingLambda"
+  keywords="主页,main,LingLambda,博客,个人博客,blog"
   title="技术博客与生活分享"
   canonical={import.meta.env.SITE}
 >
@@ -17,18 +17,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </Prose>
   </div>
 </BaseLayout>
-
-<!-- <script>
-  window.onload = () => {
-    // 获取完整的来源 URL
-    let referrer = document.referrer;
-    if (!referrer) {
-      return;
-    }
-    let url = new URL(referrer);
-    console.log("来源域名：", url.hostname);
-  };
-</script> -->
 
 <style>
   .content-wrapper {

@@ -1,31 +1,37 @@
 ---
-
-const { index, btnName, content } = Astro.props as Message;
+const { index } = Astro.props;
 if (!index) {
-  throw Error(btnName + " " + content + " 未定义index！");
+  throw Error(" 未定义index！");
 }
+// 有空时候请完善此组件，应当考虑多通知框情况
 ---
 
-<div class:list={["toast", index]}>
-  {content}
-</div>
-<button class:list={["toastBtn", index]}>{btnName}</button>
-
+<div class:list={["toast", index]} data-index={index}></div>
 <script>
+import type { ToastMessageEvent } from "../utils/types";
+
   const msgBoxs: boolean[] = [true, true, true, true, true];
   /**
    * 将toastBtn绑定到对应的toast上
    * @param event
    */
-  function showToast(event: Event) {
-    // 获取到toast元素
-    const target = event.target as HTMLElement;
-    const classList = target.classList
-      .toString()
-      .replaceAll("toastBtn", "toast");
-    const toast = document
-      .getElementsByClassName(classList)
-      .item(0) as HTMLElement;
+  function showToast(event: ToastMessageEvent) {
+    const toasts = document.getElementsByClassName("toast");
+
+    let toast;
+
+    for (const t of toasts) {
+      const t1 = t as HTMLElement;
+      if (t1.dataset.index && t1.dataset.index === event.index) {
+        toast = t1 as HTMLDivElement;
+      }
+    }
+    if (!toast) {
+      console.log("无法找到指定toast");
+      return;
+    }
+
+    toast.textContent = event.text;
 
     // 判断toast情况
     if (toast.style.top != "-50px" && toast.style.top != "") {
@@ -59,11 +65,9 @@ if (!index) {
     }, 3000);
   }
 
+  document.addEventListener("welcomeEvent", showToast as any);
   document.addEventListener("astro:page-load", () => {
-    const buttons = document.querySelectorAll(".toastBtn");
-    buttons.forEach((button) => {
-      button.addEventListener("click", showToast);
-    });
+    document.addEventListener("welcomeEvent", showToast as any);
   });
 </script>
 

@@ -14,10 +14,21 @@ type PlayedGame = {
   playtime_mac_forever: number;
   playtime_linux_forever: number;
   playtime_deck_forever: number;
-}
+};
 
 type Message = {
   index: string;
   btnName: string;
   content: string;
+};
+
+export class ToastMessageEvent extends Event {
+  constructor(
+    type: string,
+    public index: string,
+    public text: string,
+    eventInitDict?: EventInit
+  ) {
+    super(type, eventInitDict);
+  }
 }

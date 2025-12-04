@@ -5,6 +5,7 @@ import { ClientRouter } from "astro:transitions";
 import gopherImage from "../assets/pilot-bust.svg";
 import { Image } from "astro:assets";
 import BaseHead from "../heads/BaseHead.astro";
+import Message from "../components/Message.astro";
 const { description, keywords, title, canonical, ogType } = Astro.props;
 ---
 
@@ -27,6 +28,7 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
     <title>Ling的小窝{title ? ` - ${title}` : ""}</title>
   </head>
   <body>
+    <Message index="welcome" />
     <div id="container">
       <header id="menu">
         <HeadMenu />
@@ -123,6 +125,31 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
       document.title = title;
     }
   });
+</script>
+
+<script>
+  import { ToastMessageEvent } from "../utils/types";
+
+  const welcome = () => {
+    console.log("欢迎");
+    // 获取完整的来源 URL
+    let referrer = document.referrer;
+    if (!referrer) {
+      return;
+    }
+    let url = new URL(referrer);
+    console.log("来源域名：", url.hostname);
+    document.dispatchEvent(
+      new ToastMessageEvent(
+        "welcomeEvent",
+        "welcome",
+        `欢迎来自${url.hostname}的访客`
+      )
+    );
+  };
+  window.onload = welcome;
+  const btn = document.getElementById("test") as HTMLButtonElement;
+  btn.addEventListener("click", welcome);
 </script>
 
 <style>
