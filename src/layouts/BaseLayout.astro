@@ -131,9 +131,9 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
   import { ToastMessageEvent } from "../utils/types";
 
   const welcome = () => {
-    console.log("欢迎");
     // 获取完整的来源 URL
     let referrer = document.referrer;
+    console.log("欢迎,referrer：", referrer);
     if (!referrer) {
       return;
     }
@@ -147,9 +147,7 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
       )
     );
   };
-  window.onload = welcome;
-  const btn = document.getElementById("test") as HTMLButtonElement;
-  btn.addEventListener("click", welcome);
+  window.addEventListener("load", welcome);
 </script>
 
 <style>
