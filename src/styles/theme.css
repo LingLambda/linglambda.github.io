@@ -47,7 +47,7 @@
   --tag-count-color: #888888;
 }
 
-:root[prefers-color-scheme="wilderness"] {
+:root[data-color-scheme="wilderness"] {
   /* 
   漫野来信 主色调
   #829A8A
@@ -112,7 +112,7 @@
   --tag-count-color: #888888;
 }
 
-:root[prefers-color-scheme="dark"] {
+:root[data-color-scheme="dark"] {
   --bg-color: #333333;
   --reverse-bg-color: #f0f0f0;
   --overlay-color: rgba(0, 0, 0, 0.7);
@@ -146,7 +146,7 @@
   --tag-count-color: #999999;
 }
 
-:root[prefers-color-scheme="dark"] {
+:root[data-color-scheme="dark"] {
   .astro-code,
   .astro-code span {
     color: var(--shiki-dark) !important;

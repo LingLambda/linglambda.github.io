@@ -1,7 +1,7 @@
 export const THEME_DARK = "dark";
 export const THEME_LIGHT = "light";
 export const THEME_WILDERNESS = "wilderness";
-export const THEME_VARIABLE = "prefers-color-scheme";
+export const THEME_VARIABLE = "data-color-scheme";
 export const THEME_LOCAL_STORAGE = "data-theme";
 
 export const ThemeMode = [
