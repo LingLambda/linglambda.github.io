@@ -1,11 +1,11 @@
-type Heading = {
+export type Heading = {
   depth: number;
   slug: string;
   text: string;
 };
 
 // 定义表示 Steam 游戏数据的接口
-type PlayedGame = {
+export type PlayedGame = {
   appid: string;
   playtime_2weeks: number;
   playtime_forever: number;
@@ -16,7 +16,7 @@ type PlayedGame = {
   playtime_deck_forever: number;
 };
 
-type Message = {
+export type Message = {
   index: string;
   btnName: string;
   content: string;

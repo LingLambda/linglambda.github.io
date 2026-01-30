@@ -1,5 +1,6 @@
 import get from "axios";
 import { ENABLE_REQUEST } from "astro:env/server";
+import type { PlayedGame } from "./types";
 
 const { STEAM_API_KEY, STEAM_ID } = import.meta.env;
 if (ENABLE_REQUEST) {

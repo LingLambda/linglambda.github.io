@@ -7,6 +7,7 @@ import apps from "../../public/assets/app.json";
 import orderGames from "../../public/assets/orderGames.json";
 import { delay } from "../utils/utils";
 import { ENABLE_REQUEST } from "astro:env/server";
+import type { PlayedGame } from "../utils/types";
 
 export interface MyPlayedGame extends PlayedGame {
   name: string;
