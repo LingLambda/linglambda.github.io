@@ -6,8 +6,8 @@ description: 本文描述了如何通过Steam接口获取相关信息
 category: 记录
 tags:
   - Api
-published: false
-sitemap: false
+published: true
+sitemap: true
 ---
 
 ## 官方 API 文档

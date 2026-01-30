@@ -6,8 +6,8 @@ description: Java 知识点太多太多了，手写记录理解一下印象更�
 category: 记录
 tags:
   - Java
-published: false
-sitemap: false
+published: true
+sitemap: true
 ---
 
 ## 1.重写 equals 时为什么一定要重写 hashCode
