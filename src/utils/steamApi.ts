@@ -38,15 +38,17 @@ const sortPlayedGame = async (games: PlayedGame[]): Promise<PlayedGame[]> => {
 //获取指定应用详情
 export const appdetails = async (
   appids: string | string[],
-  filters?: string | string[]
+  filters?: string | string[],
+  cc?: string,
 ) => {
   const path = "/api/appdetails";
+  cc = cc? cc : "CN"
   const res = await get(`${WEB_URL}${path}`, {
     params: {
       appids,
       filters,
       l: "schinese",
-      cc: "CN",
+      cc,
     },
   });
   return await res.data;

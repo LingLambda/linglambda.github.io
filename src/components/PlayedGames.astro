@@ -23,24 +23,30 @@ if (!ENABLE_REQUEST) {
 }
 const DELAY_MS = 1000;
 const appidList = (await steamApi.playedGames()).filter(
-  (game) => game.playtime_forever > 200
+  (game) => game.playtime_forever > 200,
 );
 let count = 1;
 for (const game of appidList) {
   console.log(
-    `steam列表：请求 ${game.appid} 中  ${count++}/${appidList.length}`
+    `steam列表：请求 ${game.appid} 中  ${count++}/${appidList.length}`,
   );
   await delay(DELAY_MS);
-  const gameDetail = await steamApi.appdetails(game.appid);
+  const gameRes = await steamApi.appdetails(game.appid);
+  let gameData = gameRes[game.appid];
+  if (gameData?.success === false) {
+    const retryRes = await steamApi.appdetails(game.appid, undefined, "EN");
+    gameData = retryRes[game.appid];
+  }
+
   playedGames.push({
     playtime_forever: game.playtime_forever,
     name:
       apps.find(
         (app: { appid: number; name: string }) =>
-          app.appid.toString() == game.appid
+          app.appid.toString() == game.appid,
       )?.name || "",
     // imgurl: steamApi.imageUrl(game.appid.toString()),
-    imgurl: gameDetail[game.appid]?.data?.header_image,
+    imgurl: gameData?.data?.header_image,
   });
 }
 
