@@ -34,6 +34,7 @@ for (const game of appidList) {
   const gameRes = await steamApi.appdetails(game.appid);
   let gameData = gameRes[game.appid];
   if (gameData?.success === false) {
+    await delay(DELAY_MS);
     const retryRes = await steamApi.appdetails(game.appid, undefined, "EN");
     gameData = retryRes[game.appid];
   }
