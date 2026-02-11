@@ -1,6 +1,5 @@
 ---
 import tacImage from "../../public/assets/images/avatar.png";
-import hdrImage from "../../public/assets/images/hdr.png";
 import Prose from "../components/Prose.astro";
 import { Image } from "astro:assets";
 import { Content } from "../posts/myUtil.md";
@@ -33,7 +32,7 @@ const links = [
       />
       <div class="chat-bubble">你好我是tac</div>
     </div>
-    <Image src={hdrImage} alt="HDR Image">
+    <img src="/assets/images/hdr.png" alt="HDR Image"/>
     <div class="theme-button-wrapper">
       <ThemeButton />
     </div>
