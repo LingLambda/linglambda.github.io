@@ -32,7 +32,7 @@ done
 
 read -erp "文件名 (不含扩展名) [${title}]: " filename
 filename="${filename:-$title}"
-filename=$(echo "$filename" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+filename=$(echo "$filename" | tr ' ' '-')
 
 filepath="${POST_DIR}/${filename}.md"
 
