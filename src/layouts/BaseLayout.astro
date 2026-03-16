@@ -17,14 +17,20 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
     <!-- og -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/icon/favicon.svg" />
+    <meta
+      property="og:image"
+      content=`${import.meta.env.SITE}/icon/favicon.webp`
+    />
     {canonical ? <meta property="og:url" content={canonical} /> : ""}
     <meta property="og:type" content={ogType ? ogType : "website"} />
     <!-- twitter cards -->
-    <meta name="twitter:card" content=`Ling的小窝 - ${title}` />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/icon/favicon.svg" />
+    <meta
+      name="twitter:image"
+      content=`${import.meta.env.SITE}/icon/favicon.webp`
+    />
     <title>Ling的小窝{title ? ` - ${title}` : ""}</title>
   </head>
   <body>
@@ -75,7 +81,7 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
         menu.style.top = scrollTop > lastScrollTop ? "-5.5rem" : "0.2rem";
         lastScrollTop = scrollTop;
       },
-      { passive: true }
+      { passive: true },
     );
   }
 
@@ -143,8 +149,8 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
       new ToastMessageEvent(
         "welcomeEvent",
         "welcome",
-        `欢迎来自${url.hostname}的访客`
-      )
+        `欢迎来自${url.hostname}的访客`,
+      ),
     );
   };
   window.addEventListener("load", welcome);

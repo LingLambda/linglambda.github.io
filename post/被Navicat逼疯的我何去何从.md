@@ -6,6 +6,9 @@ image: "../public/assets/images/arch1.jpg"
 category: 记录
 tags:
   - 数据库
+  - Navicat
+  - DBeaver
+  - DataGrip
 published: true
 sitemap: true
 ---
