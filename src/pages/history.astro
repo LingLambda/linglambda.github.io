@@ -1,17 +1,16 @@
 ---
 import Prose from "../components/Prose.astro";
-import { Content } from "../posts/index.md";
+import { Content } from "../posts/history.md";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
   description="欢迎来到我的小窝！我会在这里放一些编程学习记录和生活随笔，欢迎留下你的评论和友链！"
-  keywords="主页,main,LingLambda,博客,个人博客,blog"
-  title="技术博客与生活分享"
+  keywords="历史,LingLambda,博客,个人博客,blog"
+  title="博客历史"
   canonical={import.meta.env.SITE}
 >
   <div class="content-wrapper">
-    <h1 style="margin: 0 0 1.5rem 0;">LingLambda的温馨小站</h1>
     <Prose>
       <Content />
     </Prose>

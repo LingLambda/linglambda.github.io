@@ -2,11 +2,6 @@
 //导航菜单组件
 const pathList = [
   {
-    id: "index",
-    href: "/",
-    name: "Ling的小窝",
-  },
-  {
     id: "blog",
     href: "/blog/",
     name: "文章",
@@ -30,6 +25,11 @@ const pathList = [
     id: "friend-links",
     href: "/friend-links/",
     name: "友链",
+  },
+  {
+    id: "history",
+    href: "/history/",
+    name: "历史",
   },
   {
     id: "about",
@@ -102,14 +102,14 @@ const pathList = [
       newHamburger.classList.toggle("active");
       sidebar.classList.toggle("active");
       newOverlay.classList.toggle("active");
-      container.classList.toggle("no-scroll", sidebar.classList.contains("active"));
+      // container.classList.toggle("no-scroll", sidebar.classList.contains("active"));
     };
     // 关闭菜单
     const closeMenu = () => {
       newHamburger.classList.remove("active");
       sidebar.classList.remove("active");
       newOverlay.classList.remove("active");
-      container.classList.remove("no-scroll");
+      // container.classList.remove("no-scroll");
     };
 
     // 重新绑定事件监听器
@@ -193,12 +193,6 @@ const pathList = [
     updateSelected();
   }
 </script>
-
-<style is:inline>
-  .no-scroll {
-    overflow: hidden;
-  }
-</style>
 
 <style>
   .menu {

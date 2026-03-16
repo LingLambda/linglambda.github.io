@@ -8,7 +8,9 @@ export default defineConfig({
   site: "https://blog.llma.dev",
   base: "/",
   trailingSlash: "ignore",
-
+  redirects: {
+    "/": "/blog",
+  },
   //悬停预加载
   prefetch: true,
 
