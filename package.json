@@ -10,9 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/sitemap": "3.7.2",
     "@types/axios": "^0.14.4",
-    "astro": "^5.5.4",
+    "astro": "6.1.1",
     "astro-seo": "^0.8.4",
     "axios": "^1.9.0",
     "pinyin-pro": "^3.26.0"
