@@ -47,6 +47,9 @@ const pathList = [
       </a>
     ))
   }
+  <a id="rss" href="/rss.xml" data-astro-prefetch>
+    <img src="/icon/rss.svg" alt="rss" />
+  </a>
 </nav>
 
 <div>
@@ -379,6 +382,17 @@ const pathList = [
   .menu-item:hover::after {
     transform: translateY(-50%) translateX(0);
     opacity: 1;
+  }
+
+  a img {
+    margin: 0;
+    height: 22px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  a img:hover {
+    opacity: 0.7;
   }
 
   /* 响应式设计 */
