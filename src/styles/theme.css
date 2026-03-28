@@ -45,6 +45,9 @@
   --tag-bg-color: #f5f5f5;
   --tag-bg-h-color: #d6d6d6;
   --tag-count-color: #888888;
+
+  --block-quote-bg-color: rgba(246, 248, 250, 1);
+  --block-quote-left-color: rgba(209, 217, 224, 1);
 }
 
 :root[data-color-scheme="wilderness"] {
@@ -110,6 +113,9 @@
   --tag-bg-color: rgba(212, 228, 191, 0.2);
   --tag-bg-h-color: rgba(173, 200, 167, 0.2);
   --tag-count-color: #888888;
+
+  --block-quote-bg-color: rgba(173, 200, 167, 0.2);
+  --block-quote-left-color: rgba(209, 217, 224, 1);
 }
 
 :root[data-color-scheme="dark"] {
@@ -144,6 +150,9 @@
   --tag-bg-color: #2a2a2a;
   --tag-bg-h-color: #3a3a3a;
   --tag-count-color: #999999;
+
+  --block-quote-bg-color: #3a3a3a;
+  --block-quote-left-color: #999999;
 }
 
 :root[data-color-scheme="dark"] {
