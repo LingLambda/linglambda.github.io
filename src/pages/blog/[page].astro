@@ -7,7 +7,7 @@ import {
   titleToPinyin,
 } from "../../utils/utils";
 import BlogLayout from "../../layouts/BlogLayout.astro";
-import OnThisPages from "../../components/OnThisPages.astro";
+import type { Heading } from "../../utils/types";
 
 export const getStaticPaths = async () => {
   const blogs = await getCollectionOrderByDate("blog", ({ data }) => {
