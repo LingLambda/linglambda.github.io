@@ -134,26 +134,34 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
 </script>
 
 <script>
-  import { ToastMessageEvent } from "../utils/types";
+//  import { ToastMessageEvent } from "../utils/types";
+//
+//  const welcome = () => {
+//    // 获取完整的来源 URL
+//    let referrer = document.referrer;
+//    console.log("欢迎,referrer：", referrer);
+//    if (!referrer) {
+//      return;
+//    }
+//    let url = new URL(referrer);
+//    console.log("来源域名：", url.hostname);
+//    document.dispatchEvent(
+//      new ToastMessageEvent(
+//        "welcomeEvent",
+//        "welcome",
+//        `欢迎来自${url.hostname}的访客`,
+//      ),
+//    );
+//  };
+//  window.addEventListener("load", welcome);
+</script>
 
-  const welcome = () => {
-    // 获取完整的来源 URL
-    let referrer = document.referrer;
-    console.log("欢迎,referrer：", referrer);
-    if (!referrer) {
-      return;
-    }
-    let url = new URL(referrer);
-    console.log("来源域名：", url.hostname);
-    document.dispatchEvent(
-      new ToastMessageEvent(
-        "welcomeEvent",
-        "welcome",
-        `欢迎来自${url.hostname}的访客`,
-      ),
-    );
-  };
-  window.addEventListener("load", welcome);
+<script is:inline>
+if (confirm("今天网站里有彩蛋")) {
+    alert("快去找找吧！")
+} else {
+    alert("非常好，你现在看完彩蛋了！")
+}
 </script>
 
 <style>
