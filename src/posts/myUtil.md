@@ -38,7 +38,7 @@ title: 我的工具
 
 ## 我的设备
 
-### 台式机（个人用）
+### 台式机
 
 | 类型     | 硬件                                              |
 | -------- | ------------------------------------------------- |
@@ -53,11 +53,48 @@ title: 我的工具
 | 键盘     | Clash 80 + 洛可可 R2 轴 + 雪顶可可轴              |
 | 鼠标     | 毒蝰标准版                                        |
 
-### 笔记本（工作用）
-
-| 类型   | 硬件                                  |
-| ------ | ------------------------------------- |
-| 笔记本 | MacBook M2 Pro 16GB 2023 （公司发的） |
-| 鼠标   | 罗技 G304                             |
-
 <!--       | 外设                        | 毒蝰标准版, G304, G403, Crush 80, 腹灵 MK870 | -->
+
+### brew 包
+
+| 安装类型 | 包名                  |
+| -------- | --------------------- |
+| Formula  | ast-grep              |
+| Formula  | cowsay                |
+| Formula  | fastfetch             |
+| Formula  | fd                    |
+| Formula  | ffmpeg                |
+| Formula  | gh                    |
+| Formula  | git                   |
+| Formula  | go                    |
+| Formula  | maven                 |
+| Formula  | neovim                |
+| Formula  | nvm                   |
+| Formula  | ollama                |
+| Formula  | python                |
+| Formula  | ripgrep               |
+| Formula  | sevenzip              |
+| Formula  | telnet                |
+| Formula  | thefuck               |
+| Formula  | tmux                  |
+| Formula  | tree                  |
+| Formula  | uv                    |
+| Formula  | wget                  |
+| Formula  | yazi                  |
+| Cask     | apifox                |
+| Cask     | dbgate                |
+| Cask     | font-maple-mono-nf-cn |
+| Cask     | google-chrome         |
+| Cask     | iterm2                |
+| Cask     | snipaste              |
+| Cask     | visual-studio-code    |
+| Cask     | orbstack              |
+| Cask     | codex-app             |
+| Cask     | raycast               |
+| Cask     | dbeaver-community     |
+
+复制即装
+
+```
+brew install ast-grep cowsay fastfetch fd ffmpeg gh git go maven neovim nvm ollama python ripgrep sevenzip telnet thefuck tmux tree uv wget yazi && brew install --cask apifox dbgate font-maple-mono-nf-cn google-chrome iterm2 snipaste visual-studio-code orbstack codex-app raycast dbeaver-community
+```
