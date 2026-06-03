@@ -17,13 +17,6 @@ title: 我的工具
 | 網絡工具   | ClashVergeRev        |
 | 音樂軟體   | MusicFox             |
 
-### macos
-
-| 类型   | 软件  |
-| ------ | ----- |
-| 剪切板 | Clipy |
-| Shell  | Zsh   |
-
 ### windows
 
 | 类型     | 软件                |
