@@ -18,6 +18,5 @@
     "astro-seo": "^0.8.4",
     "axios": "^1.9.0",
     "pinyin-pro": "^3.26.0"
-  },
-  "devDependencies": {}
+  }
 }

@@ -17,6 +17,9 @@ pnpm-debug.log*
 .env
 .env.production
 
+# package manager
+.yarn
+
 # macOS-specific files
 .DS_Store
 
