@@ -1,0 +1,12 @@
+---
+---
+
+<script is:inline>
+  sessionStorage.setItem("entry-referrer", document.referrer);
+  location.replace("/blog");
+</script>
+
+<noscript>
+  <meta http-equiv="refresh" content="0;url=/blog" />
+  <a href="/blog">点此进入博客</a>
+</noscript>

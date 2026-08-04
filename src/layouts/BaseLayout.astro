@@ -138,11 +138,13 @@ const { description, keywords, title, canonical, ogType } = Astro.props;
 
   const welcome = () => {
     // 获取完整的来源 URL
-    let referrer = document.referrer;
-    console.log("欢迎,referrer：", referrer);
+    // let referrer = document.referrer;
+
+    let referrer = sessionStorage.getItem("entry-referrer");
     if (!referrer) {
       return;
     }
+    console.log("欢迎,referrer：", referrer);
     let url = new URL(referrer);
     console.log("来源域名：", url.hostname);
     document.dispatchEvent(
