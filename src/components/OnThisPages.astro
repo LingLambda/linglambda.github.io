@@ -28,7 +28,7 @@ const { headings } = Astro.props as { headings: Heading[] };
         stack.push(
           <a href={`#${heading.slug}`} class={`depth-${heading.depth}`}>
             {heading.text}
-          </a>
+          </a>,
         );
       }
       return stack;
