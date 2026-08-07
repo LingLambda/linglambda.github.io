@@ -54,7 +54,7 @@ const pathList = [
 
 <div>
   <!-- 圆形汉堡菜单按钮 -->
-  <button class="hamburger" id="hamburger">
+  <button class="hamburger" id="hamburger" aria-label="打开菜单">
     <span></span>
     <span></span>
     <span></span>
@@ -105,6 +105,8 @@ const pathList = [
       newHamburger.classList.toggle("active");
       sidebar.classList.toggle("active");
       newOverlay.classList.toggle("active");
+      hamburger.ariaLabel = "关闭菜单"
+      hamburger.ariaExpanded = "true"
       // container.classList.toggle("no-scroll", sidebar.classList.contains("active"));
     };
     // 关闭菜单
@@ -112,6 +114,8 @@ const pathList = [
       newHamburger.classList.remove("active");
       sidebar.classList.remove("active");
       newOverlay.classList.remove("active");
+      hamburger.ariaLabel = "打开菜单"
+      hamburger.ariaExpanded = "false"
       // container.classList.remove("no-scroll");
     };
 
@@ -250,7 +254,7 @@ const pathList = [
     background: white;
     border: none;
     border-radius: 50%;
-    z-index: 1001;
+    z-index: 500;
     box-shadow: 0 4px 20px var(--hamburger-shadow-color);
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   }
@@ -303,7 +307,7 @@ const pathList = [
     height: 100vh;
     background: var(--bg-color);
     transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    z-index: 999;
+    z-index: 500;
   }
 
   .sidebar.active {
@@ -353,7 +357,7 @@ const pathList = [
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    z-index: 998;
+    z-index: 409;
   }
 
   .overlay.active {

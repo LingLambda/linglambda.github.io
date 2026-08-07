@@ -32,7 +32,8 @@ const links = [
       />
       <div class="chat-bubble">你好我是tac</div>
     </div>
-    <img src="/assets/images/hdr.png" alt="HDR Image"/>
+    <img src="/assets/images/hdr.png" alt="HDR Image" id="hdr-image" hidden="true"/>
+    <button id="hdr-button" disabled="true">悲报：您的设备和浏览器可能不支持HDR</button>
     <div class="theme-button-wrapper">
       <ThemeButton />
     </div>
@@ -45,6 +46,22 @@ const links = [
     <PlayedGames />
   </div>
 </BaseLayout>
+
+<script>
+  const mathes = matchMedia("(dynamic-range: high)").matches
+
+  const hdrButton = document.getElementById("hdr-button") as HTMLButtonElement
+  const hdrImage = document.getElementById("hdr-image") as HTMLImageElement
+  if (mathes) {
+    hdrButton.textContent = "喜报：您的设备和浏览器支持HDR，点我亮瞎狗眼！"
+    hdrButton.disabled = false
+    hdrButton.onclick = () => {
+      hdrImage.hidden = false
+      hdrButton.hidden = true
+    }
+  }
+
+</script>
 
 <style>
   .content-wrapper {

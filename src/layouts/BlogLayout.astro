@@ -44,14 +44,14 @@ const { description, keywords, title, canonical, headings } = Astro.props;
   }
   .toc {
     position: sticky;
-    top: 80px; 
-    max-height: 70vh; 
-    overflow: auto; 
+    top: 80px;
+    max-height: 70vh;
+    overflow: auto;
   }
 
   @media (max-width: 1280px) {
     .toc-wrapper {
-      opacity: 0;
+      display: none;
     }
   }
 </style>

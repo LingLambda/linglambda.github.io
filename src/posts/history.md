@@ -23,4 +23,4 @@ title: index
 
 ![chair](/assets/images/power.webp "看起来充满能量的椅子")
 
-> > firefox 终于支持 View Transition API 了泪目!
+> firefox 终于支持 View Transition API 了泪目!
