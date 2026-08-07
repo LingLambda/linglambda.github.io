@@ -4,7 +4,7 @@ import { ThemeMode } from "../utils/constant";
 ThemeMode;
 ---
 
-<select class="dropdown-content">
+<select class="dropdown-content" id="theme-selection">
   {
     ThemeMode.map(({ code, name }) => {
       return (
@@ -23,29 +23,50 @@ ThemeMode;
   } from "../utils/constant";
 
   const themeButtonInit = () => {
-    const themeButtons = document.getElementsByClassName("theme-button");
+    // const themeButtons = document.getElementsByClassName("theme-button");
 
-    for (const element of themeButtons) {
-      const button = element as HTMLOptionElement;
+    // for (const element of themeButtons) {
+    //   const button = element as HTMLOptionElement;
 
-      button.addEventListener("click", () => {
-        const themeCode = button.value;
-        console.log(`主题按钮 ${button.value} 点击`);
+    //   button.addEventListener("click", () => {
+    //     const themeCode = button.value;
+    //     console.log(`主题按钮 ${button.value} 点击`);
+    //     themeSelected(themeCode)
+    //   });
+    // }
 
-        if (
-          !themeCode ||
-          !ThemeMode.map(({ code }) => code).includes(themeCode)
-        ) {
-          console.log(`未匹配到主题 ${themeCode}`);
-          return;
+    const themeSelection: HTMLSelectElement = document.getElementById(
+      "theme-selection",
+    ) as HTMLSelectElement;
+
+    const currentTheme = document.documentElement.getAttribute(THEME_VARIABLE)
+    console.log("当前主题：",currentTheme)
+    if (currentTheme != null) {
+      for (const option of themeSelection.options) {
+        if (option.value == currentTheme) {
+          themeSelection.value = currentTheme
+          break
         }
-        localStorage.setItem(THEME_LOCAL_STORAGE, themeCode);
-        document.documentElement.setAttribute(THEME_VARIABLE, themeCode);
-      });
+      }
     }
+
+    themeSelection.addEventListener("change", () =>
+      themeSelected(themeSelection.value),
+    );
+  };
+
+  const themeSelected = (themeCode: string) => {
+    if (!themeCode || !ThemeMode.map(({ code }) => code).includes(themeCode)) {
+      console.log(`未匹配到主题 ${themeCode}`);
+      return;
+    }
+    console.log(`切换到主题： ${themeCode}`);
+    localStorage.setItem(THEME_LOCAL_STORAGE, themeCode);
+    document.documentElement.setAttribute(THEME_VARIABLE, themeCode);
   };
 
   document.addEventListener("astro:page-load", () => {
+    console.log("刷新");
     themeButtonInit();
   });
 </script>
