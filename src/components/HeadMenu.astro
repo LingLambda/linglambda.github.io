@@ -54,7 +54,7 @@ const pathList = [
 
 <div>
   <!-- 圆形汉堡菜单按钮 -->
-  <button class="hamburger" id="hamburger">
+  <button class="hamburger" id="hamburger" aria-label="打开菜单">
     <span></span>
     <span></span>
     <span></span>
@@ -105,6 +105,8 @@ const pathList = [
       newHamburger.classList.toggle("active");
       sidebar.classList.toggle("active");
       newOverlay.classList.toggle("active");
+      hamburger.ariaLabel = "关闭菜单"
+      hamburger.ariaExpanded = "true"
       // container.classList.toggle("no-scroll", sidebar.classList.contains("active"));
     };
     // 关闭菜单
@@ -112,6 +114,8 @@ const pathList = [
       newHamburger.classList.remove("active");
       sidebar.classList.remove("active");
       newOverlay.classList.remove("active");
+      hamburger.ariaLabel = "打开菜单"
+      hamburger.ariaExpanded = "false"
       // container.classList.remove("no-scroll");
     };
 
