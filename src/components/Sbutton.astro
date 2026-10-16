@@ -1,0 +1,53 @@
+---
+
+---
+
+<button class="s-button">
+  hi
+</button>
+
+<style>
+.s-button {
+  --face: #efeff0;
+  --edge: #282828;
+  --depth: 5px;
+
+  appearance: none;
+  padding: 12px 24px;
+  border: 2px solid var(--edge);
+  border-radius: 10px;
+
+  background: var(--face);
+  color: var(--edge);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+
+  box-shadow: 0 var(--depth) 0 var(--edge);
+  transition:
+    transform 100ms ease,
+    box-shadow 100ms ease;
+}
+
+@media (hover: hover) {
+  .s-button:not(:disabled):hover {
+    filter:  brightness(1.08);
+  }
+}
+
+.s-button:not(:disabled):active {
+  transform: translateY(calc(var(--depth) - 1px));
+  box-shadow: 0 1px 0 var(--edge);
+}
+
+.s-button:focus-visible {
+  outline: 3px solid #458588;
+  outline-offset: 7px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s-button {
+    transition: none;
+  }
+}
+</style>
